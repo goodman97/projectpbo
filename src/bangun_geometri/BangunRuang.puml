@@ -1,0 +1,10 @@
+@startuml
+
+package bangun_geometri{
+    interface BangunRuang{
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+}
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/Trapesium.puml
+
+package jenis_ruang{
+    class LimasTrapesium{
+
+        + LimasTrapesium()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. LimasTrapesium
+    jenis_datar.Trapesium <-- LimasTrapesium
+}
+
+@enduml

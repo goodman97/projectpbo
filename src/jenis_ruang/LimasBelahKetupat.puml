@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/BelahKetupat.puml
+
+package jenis_ruang{
+    class LimasBelahKetupat{
+
+        + LimasBelahKetupat()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. LimasBelahKetupat
+    jenis_datar.BelahKetupat <-- LimasBelahKetupat
+}
+
+@enduml

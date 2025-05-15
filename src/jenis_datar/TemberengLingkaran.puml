@@ -1,0 +1,16 @@
+@startuml
+
+!include ../jenis_datar/JuringLingkaran.puml
+package jenis_datar{
+    class TemberengLingkaran{
+    - tBusur: double
+
+    + TemberengLingkaran(luasJuringLingkaran: JuringLingkarang, sudut: Juring, r: Lingkaran, pi: Lingkaran, tBusur: double)
+    + hitungLuas(): double
+    + hitungKeliling(): double
+    }
+
+    JuringLingkaran <-- TemberengLingkaran
+}
+
+@enduml

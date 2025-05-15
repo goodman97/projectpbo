@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/LayangLayang.puml
+
+package jenis_ruang{
+    class LimasLayangLayang{
+
+        + LimasLayangLayang()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. LimasLayangLayang
+    jenis_datar.LayangLayang <-- LimasLayangLayang
+}
+
+@enduml

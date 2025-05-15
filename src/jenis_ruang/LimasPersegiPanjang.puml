@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/PersegiPanjang.puml
+
+package jenis_ruang{
+    class LimasPersegiPanjang{
+
+        + LimasPersegiPanjang()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. LimasPersegiPanjang
+    jenis_datar.PersegiPanjang <-- LimasPersegiPanjang
+}
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/Segitiga.puml
+
+package jenis_ruang{
+    class PrismaSegitiga{
+
+        + PrismaSegitiga()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. PrismaSegitiga
+    jenis_datar.Segitiga <-- PrismaSegitiga
+}
+
+@enduml

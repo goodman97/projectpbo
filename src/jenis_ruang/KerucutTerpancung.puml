@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/Lingkaran.puml
+
+package jenis_ruang{
+    class KerucutTerpancung{
+
+        + KerucutTerpancung()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. KerucutTerpancung
+    jenis_datar.Lingkaran <-- KerucutTerpancung
+}
+
+@enduml

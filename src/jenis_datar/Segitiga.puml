@@ -1,0 +1,17 @@
+@startuml
+
+!include ../bangun_geometri/BangunDatar.puml
+package jenis_datar{
+    class Segitiga{
+    - a: double
+    - t: double
+
+    + Segitiga(a: double, t: double)
+    + hitungLuas(): double
+    + hitungKeliling(): double
+    }
+
+    bangun_geometri.BangunDatar <.. Segitiga
+}
+
+@enduml

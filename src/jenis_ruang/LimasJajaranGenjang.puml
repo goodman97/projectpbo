@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/JajaranGenjang.puml
+
+package jenis_ruang{
+    class LimasJajaranGenjang{
+
+        + LimasJajaranGenjang()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. LimasJajaranGenjang
+    jenis_datar.JajaranGenjang <-- LimasJajaranGenjang
+}
+
+@enduml
