@@ -13,7 +13,6 @@ package jenis_datar{
     }
 
     bangun_geometri.BangunDatar <.. JajaranGenjang
-    //mmmmm
 }
 
 @enduml
