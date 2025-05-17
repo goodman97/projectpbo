@@ -5,8 +5,9 @@
 
 package jenis_ruang{
     class Tabung{
-
-        + Tabung()
+        - alas:lingkaran
+        - h: doubel
+        + Tabung(alas:lingkaran, h:doubel)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

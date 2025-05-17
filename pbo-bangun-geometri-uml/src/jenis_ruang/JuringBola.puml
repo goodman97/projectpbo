@@ -1,6 +1,6 @@
 @startuml
 !include ../bangun_geometri/BangunRuang.puml
-!include ../jenis_datar/Lingkaran.puml
+!include ../jenis_ruang/Bola.puml
 
 package jenis_ruang{
     class JuringBola{
@@ -11,7 +11,7 @@ package jenis_ruang{
     }
 
     bangun_geometri.BangunRuang <.. JuringBola
-    jenis_datar.Lingkaran <-- JuringBola
+    jenis_ruang.Bola <-- JuringBola
 }
 
 @enduml
