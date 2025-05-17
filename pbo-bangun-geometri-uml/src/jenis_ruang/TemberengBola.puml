@@ -10,7 +10,7 @@ package jenis_ruang{
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }
-
+    //haii
     bangun_geometri.BangunRuang <.. TemberengLingkaran
     jenis_datar.Lingkaran <-- TemberengLingkaran
 }
