@@ -10,7 +10,7 @@ package jenis_datar{
     + hitungLuas(): double
     + hitungKeliling(): double
     }
-
+    //fu gay
     bangun_geometri.BangunDatar <.. Segitiga
 }
 
