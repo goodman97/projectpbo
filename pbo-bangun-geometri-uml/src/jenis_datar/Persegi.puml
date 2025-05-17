@@ -9,8 +9,9 @@ package jenis_datar{
     + hitungLuas(): double
     + hitungKeliling(): double
     }
-
+    //dddddfdsgdgsdsgsdg
     bangun_geometri.BangunDatar <.. Persegi
 }
 
 @enduml
+ 
