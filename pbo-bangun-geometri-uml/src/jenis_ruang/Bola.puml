@@ -5,8 +5,7 @@
 
 package jenis_ruang{
     class Bola{
-        - r : Lingkaran, pi : Lingkaran
-        
+                
         + Bola()
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
