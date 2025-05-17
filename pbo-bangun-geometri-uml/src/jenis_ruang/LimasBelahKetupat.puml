@@ -5,8 +5,10 @@
 
 package jenis_ruang{
     class LimasBelahKetupat{
+        - h : double
+        - alas : BelahKetupat
 
-        + LimasBelahKetupat()
+        + LimasBelahKetupat(alas : BelahKetupat, h : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

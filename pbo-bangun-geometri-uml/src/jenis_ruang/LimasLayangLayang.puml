@@ -5,8 +5,10 @@
 
 package jenis_ruang{
     class LimasLayangLayang{
-
-        + LimasLayangLayang()
+        - h : double
+        - alas : LayangLayang
+        
+        + LimasLayangLayang(alas : LayangLayang, h : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

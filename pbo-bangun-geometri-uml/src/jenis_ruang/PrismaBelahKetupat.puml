@@ -5,8 +5,10 @@
 
 package jenis_ruang{
     class PrismaBelahketupat{
+        - h : double
+        - alas : BelahKetupat
 
-        + PrismaBelahketupat()
+        + PrismaBelahketupat(alas : BelahKetupat, h : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

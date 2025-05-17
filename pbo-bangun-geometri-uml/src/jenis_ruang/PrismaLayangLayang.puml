@@ -5,8 +5,10 @@
 
 package jenis_ruang{
     class PrismaLayangLayang{
+        - h : double
+        - alas : LayangLayang
 
-        + PrismaLayangLayang()
+        + PrismaLayangLayang(alas : LayangLayang, h : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

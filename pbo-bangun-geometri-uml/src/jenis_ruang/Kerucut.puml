@@ -5,8 +5,10 @@
 
 package jenis_ruang{
     class Kerucut{
+        - h : double
+        - alas : Lingkaran
 
-        + Kerucut()
+        + Kerucut(Lingkaran , h : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }
