@@ -13,7 +13,10 @@ package jenis_datar{
     }
 
     bangun_geometri.BangunDatar <.. BelahKetupat
+<<<<<<< HEAD
     //coba terminal mmmmmmsdghsughsuhgsdgs
+=======
+>>>>>>> 896cd6be8b0e8765fef0abb0c6e5108da47fa5b2
 }
 
 @enduml
