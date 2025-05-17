@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunDatar.puml
+package jenis_datar{
+    class BelahKetupat{
+    - d1: double
+    - d2: double
+    - s: double
+
+    + BelahKetupat(d1: double, d2: double, s: double)
+    + hitungLuas(): double
+    + hitungKeliling(): double
+    }
+
+    bangun_geometri.BangunDatar <.. BelahKetupat
+}
+
+@enduml

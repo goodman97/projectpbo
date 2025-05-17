@@ -1,0 +1,17 @@
+@startuml
+
+!include ../bangun_geometri/BangunDatar.puml
+package jenis_datar{
+    class PersegiPanjang{
+    - p: double
+    - l: double
+
+    + PersegiPanjang(p: double, l: double)
+    + hitungLuas(): double
+    + hitungKeliling(): double
+    }
+
+    bangun_geometri.BangunDatar <.. PersegiPanjang
+}
+
+@enduml

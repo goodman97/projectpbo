@@ -1,0 +1,17 @@
+@startuml
+
+!include ../bangun_geometri/BangunDatar.puml
+package jenis_datar{
+    class Lingkaran{
+    - pi: double
+    - r: double
+
+    + Lingkaran(pi: double, r: double)
+    + hitungLuas(): double
+    + hitungKeliling(): double
+    }
+
+    bangun_geometri.BangunDatar <.. Lingkaran
+}
+
+@enduml

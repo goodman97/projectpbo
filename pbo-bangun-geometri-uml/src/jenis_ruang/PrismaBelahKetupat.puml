@@ -1,0 +1,18 @@
+@startuml
+
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/BelahKetupat.puml
+
+package jenis_ruang{
+    class PrismaBelahketupat{
+
+        + PrismaBelahketupat()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. PrismaBelahketupat
+    jenis_datar.BelahKetupat <-- PrismaBelahketupat
+}
+
+@enduml
