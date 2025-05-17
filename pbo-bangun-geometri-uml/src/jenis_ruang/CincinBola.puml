@@ -5,7 +5,7 @@
 
 package jenis_ruang{
     class CincinBola{
-
+        
         + CincinBola()
         + hitungVolume(): double
         + hitungLuasPermukaan(): double

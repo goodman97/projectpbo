@@ -1,2 +1,17 @@
 @startuml
+!include ../bangun_geometri/BangunRuang.puml
+!include ../jenis_datar/Lingkaran.puml
+
+package jenis_ruang{
+    class JuringBola{
+        
+        + JuringBola()
+        + hitungVolume(): double
+        + hitungLuasPermukaan(): double
+    }
+
+    bangun_geometri.BangunRuang <.. JuringBola
+    jenis_datar.Lingkaran <-- JuringBola
+}
+
 @enduml
