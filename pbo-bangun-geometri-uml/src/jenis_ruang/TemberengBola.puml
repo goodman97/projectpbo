@@ -1,7 +1,7 @@
 @startuml
 
 !include ../bangun_geometri/BangunRuang.puml
-!include ../jenis_datar/Lingkaran.puml
+!include ../jenis_ruang/Bola.puml
 
 package jenis_ruang{
     class TemberengLingkaran{
@@ -12,7 +12,7 @@ package jenis_ruang{
     }
     //haii
     bangun_geometri.BangunRuang <.. TemberengLingkaran
-    jenis_datar.Lingkaran <-- TemberengLingkaran
+    jenis_ruang.Bola <-- TemberengLingkaran
 }
 
 @enduml
