@@ -6,7 +6,9 @@
 package jenis_ruang{
     class LimasPersegi{
 
-        + LimasPersegi()
+        - alas : Persegi
+        - tinggi : double
+        + LimasPersegi(alas : Persegi, tinggi : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }

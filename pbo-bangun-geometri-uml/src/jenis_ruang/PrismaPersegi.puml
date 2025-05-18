@@ -6,7 +6,9 @@
 package jenis_ruang{
     class PrismaPersegi{
 
-        + PrismaPersegi()
+        - alas : Persegi
+        - tinggi : double
+        + PrismaPersegi(alas : Persegi, tinggi : double)
         + hitungVolume(): double
         + hitungLuasPermukaan(): double
     }
