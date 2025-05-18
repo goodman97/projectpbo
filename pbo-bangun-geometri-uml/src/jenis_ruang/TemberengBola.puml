@@ -4,13 +4,13 @@
 !include ../jenis_ruang/Bola.puml
 
 package jenis_ruang{
-    class TemberengLingkaran{
-
-        + TemberengLingkaran()
-        + hitungVolume(): double
-        + hitungLuasPermukaan(): double
+    class TemberengBola {
+        - tinggi : double
+        + TemberengBola(r: double, tinggi: double)
+        + hitungVolume() : double
+        + hitungLuasPermukaan() : double
     }
-    //haii
+    //haiidfafsaf
     bangun_geometri.BangunRuang <.. TemberengLingkaran
     jenis_ruang.Bola <-- TemberengLingkaran
 }

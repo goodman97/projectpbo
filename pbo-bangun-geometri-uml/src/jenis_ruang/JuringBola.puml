@@ -3,11 +3,11 @@
 !include ../jenis_ruang/Bola.puml
 
 package jenis_ruang{
-    class JuringBola{
-        
-        + JuringBola()
-        + hitungVolume(): double
-        + hitungLuasPermukaan(): double
+    class JuringBola {
+        - sudut : double
+        + JuringBola(r: double, sudut: double)
+        + hitungVolume() : double
+        + hitungLuasPermukaan() : double
     }
 
     bangun_geometri.BangunRuang <.. JuringBola

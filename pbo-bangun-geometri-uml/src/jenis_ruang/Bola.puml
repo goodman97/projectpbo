@@ -4,11 +4,11 @@
 !include ../jenis_datar/Lingkaran.puml
 
 package jenis_ruang{
-    class Bola{
-                
-        + Bola()
-        + hitungVolume(): double
-        + hitungLuasPermukaan(): double
+    class Bola {
+        - jariJari : double
+        + Bola(r: double)
+        + hitungVolume() : double
+        + hitungLuasPermukaan() : double
     }
 
     bangun_geometri.BangunRuang <.. Bola
