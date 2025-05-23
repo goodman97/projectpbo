@@ -1,0 +1,22 @@
+@startuml
+
+!include ../benda-geometri/BangunRuang.puml
+!include ../jenis-datar/Segitiga.puml
+
+package jenis-ruang{
+    class PrismaSegitiga{
+    - tinggiPrisma: double
+    - tSegitiga: double
+
+    + PrismaSegitiga(alas: double, tinggi: double, sisiA: double, sisiB: double, sisiC: double, tinggiPrisma: double, tSegitiga: double)
+    + hitungVolume(): double
+    + getVolumePrismaSegitiga(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanPrismaSegitiga(): double
+    }
+
+    BangunRuang <|.. PrismaSegitiga
+    Segitiga <|-- PrismaSegitiga
+}
+
+@enduml

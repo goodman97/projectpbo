@@ -1,0 +1,19 @@
+@startuml
+
+!include ../jenis-ruang/Bola.puml
+
+package jenis-ruang{
+    class TemberengBola{
+    - tTembereng: double
+
+    + TemberengBola(jariJari: double, tTembereng)
+    + hitungVolume(): double
+    + getVolumeTemberengBola(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanTemberengBola(): double
+    }
+
+    Bola <|-- TemberengBola
+}
+
+@enduml

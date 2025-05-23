@@ -1,0 +1,22 @@
+@startuml
+
+!include ../benda-geometri/BangunRuang.puml
+!include ../jenis-datar/Persegi.puml
+
+package jenis-ruang{
+    class LimasPersegi{
+    - tinggiLimas: double
+    - tSegitiga: double
+
+    + LimasPersegi(panjang: double, lebar: double, tinggiLimas: double, tSegitiga: double)
+    + hitungVolume(): double
+    + getVolumeLimasPersegi(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanLimasPersegi(): double
+    }
+
+    BangunRuang <|.. LimasPersegi
+    Persegi <|-- LimasPersegi
+}
+
+@enduml

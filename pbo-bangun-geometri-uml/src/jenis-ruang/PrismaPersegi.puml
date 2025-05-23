@@ -1,0 +1,21 @@
+@startuml
+
+!include ../benda-geometri/BangunRuang.puml
+!include ../jenis-datar/Persegi.puml
+
+package jenis-ruang{
+    class PrismaPersegi{
+    - tinggiPrisma: double
+
+    + PrismaPersegi(sisi: double, tinggiPrisma: double)
+    + hitungVolume(): double
+    + getVolumePrismaPersegi(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanPrismaPersegi(): double
+    }
+
+    BangunRuang <|.. PrismaPersegi
+    Persegi <|-- PrismaPersegi
+}
+
+@enduml

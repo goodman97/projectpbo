@@ -1,0 +1,20 @@
+@startuml
+
+!include ../jenis-ruang/Kerucut.puml
+
+package jenis-ruang{
+    class KerucutTerpancung{
+    - jariJari1: double
+    - jariJari2: double
+
+    + KerucutTerpancung(jariJari1: double, jariJari2: double, tinggi: double, s: double)
+    + hitungVolume(): double
+    + getVolumeKerucutTerpancung(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanKerucutTerpancung(): double
+    }
+
+    Kerucut <|-- KerucutTerpancung
+}
+
+@enduml

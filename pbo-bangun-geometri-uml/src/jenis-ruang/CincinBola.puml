@@ -1,0 +1,19 @@
+@startuml
+
+!include ../jenis-ruang/Bola.puml
+
+package jenis-ruang{
+    class CincinBola{
+    - sudut: double
+
+    + CincinBola(jariJari: double, sudut: double)
+    + hitungVolume(): double
+    + getVolumeCincinBola(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanCincinBola(): double
+    }
+
+    Bola <|-- CincinBola
+}
+
+@enduml

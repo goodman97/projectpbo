@@ -1,0 +1,19 @@
+@startuml
+
+!include ../jenis-datar/Lingkaran.puml
+
+package jenis-datar{
+    class JuringLingkaran{
+    - sudut: double
+
+    + JuringLingkaran(jariJari: double, sudut: double)
+    + hitungLuas(): double
+    + getLuasJuringLingkaran(): double
+    + hitungKeliling(): double
+    + getKelilingJuringLingkaran(): double
+    }
+
+    Lingkaran <|-- JuringLingkaran
+}
+
+@enduml

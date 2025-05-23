@@ -1,0 +1,10 @@
+@startuml
+
+package benda-geometri{
+    interface BangunDatar{
+        + hitungLuas(): double
+        + hitungKeliling(): double
+    }
+}
+
+@enduml

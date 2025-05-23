@@ -1,0 +1,19 @@
+@startuml
+
+!include ../benda-geometri/BangunDatar.puml
+
+package jenis-datar{
+    class Persegi{
+    - sisi: double
+
+    + Persegi(sisi: double)
+    + hitungLuas(): double
+    + getLuasPersegi(): double
+    + hitungKeliling(): double
+    + getKelilingPersegi(): double
+    }
+
+    BangunDatar <|.. Persegi
+}
+
+@enduml

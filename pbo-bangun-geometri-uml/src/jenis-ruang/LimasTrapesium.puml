@@ -1,0 +1,22 @@
+@startuml
+
+!include ../benda-geometri/BangunRuang.puml
+!include ../jenis-datar/Trapesium.puml
+
+package jenis-ruang{
+    class LimasTrapesium{
+    - tinggiLimas: double
+    - tSegitiga: double
+
+    + LimasTrapesium(atas: double, bawah: double, tinggi: double, sisiC: double, sisiD: double, tinggiLimas: double, tSegitiga: double)
+    + hitungVolume(): double
+    + getVolumeLimasTrapesium(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanLimasTrapesium(): double
+    }
+
+    BangunRuang <|.. LimasTrapesium
+    Trapesium <|-- LimasTrapesium
+}
+
+@enduml

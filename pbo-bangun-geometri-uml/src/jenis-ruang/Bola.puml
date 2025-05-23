@@ -1,0 +1,19 @@
+@startuml
+
+!include ../benda-geometri/BangunRuang.puml
+!include ../jenis-datar/Lingkaran.puml
+
+package jenis-ruang{
+    class Bola{
+    + Bola(jariJari: double)
+    + hitungVolume(): double
+    + getVolumeBola(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanBola(): double
+    }
+
+    BangunRuang <|.. Bola
+    Lingkaran <|-- Bola
+}
+
+@enduml

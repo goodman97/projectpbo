@@ -1,0 +1,19 @@
+@startuml
+
+!include ../jenis-ruang/Bola.puml
+
+package jenis-ruang{
+    class JuringBola{
+    - sudut: double
+
+    + JuringBola(jariJari: double, sudut: double)
+    + hitungVolume(): double
+    + getVolumeJuringBola(): double
+    + hitungLuasPermukaan(): double
+    + getLuasPermukaanJuringBola(): double
+    }
+
+    Bola <|-- JuringBola
+}
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+
+!include ../benda-geometri/BangunDatar.puml
+
+package jenis-datar{
+    class JajaranGenjang{
+    - alas: double
+    - tinggi: double
+    - sisiMiring: double
+
+    + JajaranGenjang(alas: double, tinggi: double, sisiMiring: double)
+    + hitungLuas(): double
+    + getLuasJajaranGenjang(): double
+    + hitungKeliling(): double
+    + getKelilingJajaranGenjang(): double
+    }
+
+    BangunDatar <|.. JajaranGenjang
+}
+
+@enduml
