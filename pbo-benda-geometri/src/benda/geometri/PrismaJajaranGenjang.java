@@ -18,13 +18,6 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements BangunRuang 
         return 2 * hitungLuas() + 2 * (alas + sisiMiring) * tinggiPrisma;
     }
 
-    public double getVolumePrismaJajaranGenjang() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanPrismaJajaranGenjang() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
