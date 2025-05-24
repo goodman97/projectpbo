@@ -20,13 +20,6 @@ public class LimasPersegiPanjang extends PersegiPanjang implements BangunRuang {
         return hitungLuas() + 2 * luasSegitigaPanjang + 2 * luasSegitigaLebar;
     }
 
-    public double getVolumeLimasPersegiPanjang() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanLimasPersegiPanjang() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
