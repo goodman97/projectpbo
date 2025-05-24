@@ -12,18 +12,13 @@ public class Persegi implements BangunDatar {
         return sisi * sisi;
     }
 
-    public double getLuasPersegi() {
-        return hitungLuas();
-    }
+
 
     @Override
     public double hitungKeliling() {
         return 4 * sisi;
     }
 
-    public double getKelilingPersegi() {
-        return hitungKeliling();
-    }
 
     @Override
     public String getNama() {
