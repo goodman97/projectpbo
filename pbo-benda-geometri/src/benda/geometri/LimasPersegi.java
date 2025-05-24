@@ -19,14 +19,6 @@ public class LimasPersegi extends Persegi implements BangunRuang {
         return hitungLuas() + 4 * luasSegitiga;
     }
 
-    public double getVolumeLimasPersegi() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanLimasPersegi() {
-        return hitungLuasPermukaan();
-    }
-
     @Override
     public String getNama() {
         return "Limas Persegi";
