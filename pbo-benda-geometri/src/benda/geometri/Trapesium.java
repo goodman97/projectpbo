@@ -19,18 +19,14 @@ public class Trapesium implements BangunDatar{
         return (atas + bawah)/2 * tinggi;
     }
     
-    public double getLuasTrapesium(){
-        return hitungLuas();
-    }
+
 
     @Override
     public double hitungKeliling() {
         return atas + bawah + (2 * sisiMiring);
     }
     
-    public double getKelilingTrapesium(){
-        return hitungKeliling();
-    }
+
 
     @Override
     public String getNama() {
