@@ -12,9 +12,7 @@ public class Lingkaran implements BangunDatar{
         return Math.PI * Math.pow(jariJari, 2);
     }
 
-    public double getLuasLingkaran(){
-        return hitungLuas();
-    }
+
     
     @Override
     public double hitungKeliling() {
