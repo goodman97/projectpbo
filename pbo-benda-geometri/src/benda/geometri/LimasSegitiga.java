@@ -20,13 +20,6 @@ public class LimasSegitiga extends Segitiga implements BangunRuang {
         return hitungLuas() + 3 * luasTegak;
     }
 
-    public double getVolumeLimasSegitiga() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanLimasSegitiga() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
