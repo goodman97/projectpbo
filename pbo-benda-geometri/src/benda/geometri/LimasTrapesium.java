@@ -20,13 +20,6 @@ public class LimasTrapesium extends Trapesium implements BangunRuang {
         return hitungLuas() + 4 * luasSegitiga;
     }
 
-    public double getVolumeLimasTrapesium() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanLimasTrapesium() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
