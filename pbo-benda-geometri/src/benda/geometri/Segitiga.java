@@ -14,9 +14,6 @@ public class Segitiga implements BangunDatar {
         return 0.5 * alas * tinggi;
     }
 
-    public double getLuasSegitiga() {
-        return hitungLuas();
-    }
 
     @Override
     public double hitungKeliling() {
@@ -24,9 +21,6 @@ public class Segitiga implements BangunDatar {
         return alas + 2 * sisiMiring;
     }
 
-    public double getKelilingSegitiga() {
-        return hitungKeliling();
-    }
 
     @Override
     public String getNama() {
