@@ -19,15 +19,6 @@ public class LimasLayangLayang extends LayangLayang implements BangunRuang {
         double luasTegakPendek = 0.5 * sisiPendek * tinggiLimas;
         return hitungLuas() + 2 * luasTegakPanjang + 2 * luasTegakPendek;
     }
-
-    public double getVolumeLimasLayangLayang() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanLimasLayangLayang() {
-        return hitungLuasPermukaan();
-    }
-
     @Override
     public String getNama() {
         return "Limas Layang-Layang";
