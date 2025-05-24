@@ -18,18 +18,13 @@ public class PrismaBelahKetupat extends BelahKetupat implements BangunRuang{
         return super.hitungLuas() * tinggiPrisma;
     }
 
-    public double getVolumePrismaBelahKetupat(){
-        return hitungVolume();
-    }
     
     @Override
     public double hitungLuasPermukaan() {
         return (super.hitungLuas()*2) + (sisi * tinggiPrisma) * 4;
     }
 
-    public double getLuasPermukaanBelahKetupat(){
-        return hitungLuasPermukaan();
-    }
+
     
     @Override
     public String getNama() {
