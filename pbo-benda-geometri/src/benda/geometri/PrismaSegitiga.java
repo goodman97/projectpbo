@@ -19,13 +19,7 @@ public class PrismaSegitiga extends Segitiga implements BangunRuang {
         return 2 * hitungLuas() + (alas + 2 * sisiMiring) * tinggiPrisma;
     }
 
-    public double getVolumePrismaSegitiga() {
-        return hitungVolume();
-    }
 
-    public double getLuasPermukaanPrismaSegitiga() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
