@@ -18,13 +18,6 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang 
         return 2 * hitungLuas() + 2 * (panjang + lebar) * tinggiPrisma;
     }
 
-    public double getVolumePrismaPersegiPanjang() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanPrismaPersegiPanjang() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
