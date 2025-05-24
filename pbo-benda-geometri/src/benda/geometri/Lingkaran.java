@@ -21,9 +21,6 @@ public class Lingkaran implements BangunDatar{
         return Math.PI * jariJari * 2;
     }
     
-    public double getKelilingLingkaran(){
-        return hitungKeliling();
-    }
 
     @Override
     public String getNama() {
