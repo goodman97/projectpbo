@@ -18,13 +18,6 @@ public class PrismaTrapesium extends Trapesium implements BangunRuang {
         return 2 * hitungLuas() + hitungKeliling() * tinggiPrisma;
     }
 
-    public double getVolumePrismaTrapesium() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanPrismaTrapesium() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
