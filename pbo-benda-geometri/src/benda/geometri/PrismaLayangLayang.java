@@ -22,13 +22,7 @@ public class PrismaLayangLayang extends LayangLayang implements BangunRuang {
         return 2 * hitungLuas() + 2 * (sisiPanjang + sisiPendek) * tinggiPrisma;
     }
 
-    public double getVolumePrismaLayangLayang() {
-        return hitungVolume();
-    }
 
-    public double getLuasPermukaanPrismaLayangLayang() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
