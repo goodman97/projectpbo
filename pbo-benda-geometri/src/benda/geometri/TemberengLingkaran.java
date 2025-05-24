@@ -9,9 +9,7 @@ public class TemberengLingkaran extends JuringLingkaran {
         this.taliBusur = 2 * jariJari * Math.sin(sudutRad / 2); // dihitung sekali di awal
     }
 
-    public double getTaliBusur() {
-        return taliBusur;
-    }
+
 
     @Override
     public double hitungLuas() {
