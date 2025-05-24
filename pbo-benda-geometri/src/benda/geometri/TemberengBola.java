@@ -18,13 +18,7 @@ public class TemberengBola extends Bola {
         return 2 * Math.PI * jariJari * tinggi;
     }
 
-    public double getVolumeBola() {
-        return hitungVolume();
-    }
 
-    public double getLuasPermukaanBola() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
