@@ -18,13 +18,7 @@ public class Tabung extends Lingkaran implements BangunRuang {
         return 2 * Math.PI * jariJari * (jariJari + tinggi);
     }
 
-    public double getVolumeTabung() {
-        return hitungVolume();
-    }
 
-    public double getLuasPermukaanTabung() {
-        return hitungLuasPermukaan();
-    }
 
     @Override
     public String getNama() {
