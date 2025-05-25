@@ -1,0 +1,8 @@
+# Ignore build outputs
+build/
+out/
+*.class
+
+# Ignore IDE settings
+.idea/
+.vscode/
