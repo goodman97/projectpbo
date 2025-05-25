@@ -10,7 +10,7 @@ public class Segitiga implements BangunDatar {
         this.alas = alas;
         this.tinggi = tinggi;
         this.luas = hitungLuas();
-        
+        this.keliling = hitungKeliling();
     }
 
     @Override

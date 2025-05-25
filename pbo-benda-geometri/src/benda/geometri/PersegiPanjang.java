@@ -10,7 +10,7 @@ public class PersegiPanjang implements BangunDatar {
         this.panjang = panjang;
         this.lebar = lebar;
         this.luas = hitungLuas();
-        
+        this.keliling = hitungKeliling();
     }
 
     @Override

@@ -9,6 +9,7 @@ public class LimasPersegi extends Persegi implements BangunRuang {
         super(sisi);
         this.tinggiLimas = tinggiLimas;
         this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
         
     }
 
