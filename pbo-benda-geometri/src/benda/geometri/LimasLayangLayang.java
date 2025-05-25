@@ -2,10 +2,14 @@ package benda.geometri;
 
 public class LimasLayangLayang extends LayangLayang implements BangunRuang {
     protected double tinggiLimas;
+    protected double volume;
+    protected double luasPermukaan;
 
     public LimasLayangLayang(double diagonal1, double diagonal2, double sisiPanjang, double sisiPendek, double tinggiLimas) {
         super(diagonal1, diagonal2, sisiPanjang, sisiPendek);
         this.tinggiLimas = tinggiLimas;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

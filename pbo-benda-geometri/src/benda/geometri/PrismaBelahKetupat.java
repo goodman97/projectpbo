@@ -1,11 +1,16 @@
 package benda.geometri;
 
 public class PrismaBelahKetupat extends BelahKetupat implements BangunRuang{
-    private double tinggiPrisma;
+    protected double tinggiPrisma;
+    protected double volume;
+    protected double luasPermukaan;
+    
 
     public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2, double sisi) {
         super(diagonal1, diagonal2, sisi);
         this.tinggiPrisma = tinggiPrisma;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
     
     @Override
