@@ -3,10 +3,14 @@ package benda.geometri;
 public class Segitiga implements BangunDatar {
     protected double alas;
     protected double tinggi;
+    protected double luas;
+    protected double keliling;
 
     public Segitiga(double alas, double tinggi) {
         this.alas = alas;
         this.tinggi = tinggi;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
 
     @Override

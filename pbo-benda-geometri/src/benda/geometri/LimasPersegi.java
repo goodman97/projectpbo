@@ -2,10 +2,14 @@ package benda.geometri;
 
 public class LimasPersegi extends Persegi implements BangunRuang {
     protected double tinggiLimas;
+    protected double volume;
+    protected double luasPermukaan;
 
     public LimasPersegi(double sisi, double tinggiLimas) {
         super(sisi);
         this.tinggiLimas = tinggiLimas;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override
