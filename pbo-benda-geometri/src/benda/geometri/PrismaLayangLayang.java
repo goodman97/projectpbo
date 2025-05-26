@@ -18,10 +18,14 @@ public class PrismaLayangLayang extends LayangLayang{
     }
     
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = hitungLuas() * tinggiPrisma;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
-        return 2 * hitungLuas() + 2 * (sisiPanjang + sisiPendek) * tinggiPrisma;
+        luasPermukaan = 2 * hitungLuas() + 2 * (sisiPanjang + sisiPendek) * tinggiPrisma;
+        return luasPermukaan;
     }
+
+
 }
