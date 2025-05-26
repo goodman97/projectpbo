@@ -19,12 +19,12 @@ public class PrismaBelahKetupat extends BelahKetupat{
     }
 
     public double hitungVolume() {
-        volume = super.hitungLuas() * tinggiPrisma;
+        volume = super.luas * tinggiPrisma;
         return volume;
     }
     
     public double hitungLuasPermukaan() {
-        luasPermukaan = (super.hitungLuas()*2) + (sisi * tinggiPrisma) * 4;
+        luasPermukaan = (super.luas*2) + (sisi * tinggiPrisma) * 4;
         return luasPermukaan;
     }
 }
