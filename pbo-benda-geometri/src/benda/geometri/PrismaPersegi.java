@@ -14,20 +14,14 @@ public class PrismaPersegi extends Persegi implements BangunRuang {
 
     @Override
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = hitungLuas() * tinggiPrisma;
+        return volume;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return 2 * hitungLuas() + 4 * sisi * tinggiPrisma;
-    }
-
-    public double getVolumePrismaPersegi() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanPrismaPersegi() {
-        return hitungLuasPermukaan();
+        luasPermukaan = 2 * hitungLuas() + 4 * sisi * tinggiPrisma;
+        return luasPermukaan;
     }
 
     @Override

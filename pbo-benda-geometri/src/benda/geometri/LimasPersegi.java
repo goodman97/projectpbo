@@ -15,13 +15,15 @@ public class LimasPersegi extends Persegi implements BangunRuang {
 
     @Override
     public double hitungVolume() {
-        return (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        volume = (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        return volume;
     }
 
     @Override
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow((sisi / 2), 2) + Math.pow(tinggiLimas, 2));
-        return hitungLuas() + 4 * luasSegitiga;
+        luasPermukaan = hitungLuas() + 4 * luasSegitiga;
+        return luasPermukaan;
     }
 
     @Override

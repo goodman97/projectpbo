@@ -14,20 +14,14 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang 
 
     @Override
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = hitungLuas() * tinggiPrisma;
+        return volume;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return 2 * hitungLuas() + 2 * (panjang + lebar) * tinggiPrisma;
-    }
-
-    public double getVolumePrismaPersegiPanjang() {
-        return hitungVolume();
-    }
-
-    public double getLuasPermukaanPrismaPersegiPanjang() {
-        return hitungLuasPermukaan();
+        luasPermukaan = 2 * hitungLuas() + 2 * (panjang + lebar) * tinggiPrisma;
+        return luasPermukaan;
     }
 
     @Override
