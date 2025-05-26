@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class Segitiga implements BangunDatar {
+public class Segitiga implements BendaGeometri {
     protected double alas;
     protected double tinggi;
     protected double luas;
@@ -14,20 +14,20 @@ public class Segitiga implements BangunDatar {
     }
 
     @Override
-    public double hitungLuas() {
-        return 0.5 * alas * tinggi;
+    public String getNama() {
+        return "Segitiga";
     }
 
+    @Override
+    public double hitungLuas() {
+        luas =  0.5 * alas * tinggi;
+        return luas;
+    }
 
     @Override
     public double hitungKeliling() {
         double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggi, 2));
-        return alas + 2 * sisiMiring;
-    }
-
-
-    @Override
-    public String getNama() {
-        return "Segitiga";
+        keliling = alas + 2 * sisiMiring;
+        return keliling;
     }
 }

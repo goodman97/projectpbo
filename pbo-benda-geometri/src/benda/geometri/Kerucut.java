@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class Kerucut extends Lingkaran implements BangunRuang {
+public class Kerucut extends Lingkaran{
     protected double tinggi;
     protected double volume;
     protected double luasPermukaan;
@@ -17,14 +17,14 @@ public class Kerucut extends Lingkaran implements BangunRuang {
         return "Kerucut";
     }
 
-    @Override
     public double hitungVolume() {
-        return (1.0 / 3.0) * super.hitungLuas() * tinggi;
+        volume = (1.0 / 3.0) * super.hitungLuas() * tinggi;
+        return volume;
     }
 
-    @Override
     public double hitungLuasPermukaan() {
         double s = Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
-        return Math.PI * jariJari * (jariJari + s);
+        luasPermukaan = Math.PI * jariJari * (jariJari + s);
+        return luasPermukaan;
     }
 }

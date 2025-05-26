@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class PersegiPanjang implements BangunDatar {
+public class PersegiPanjang implements BendaGeometri {
     protected double panjang;
     protected double lebar;
     protected double luas;
@@ -12,21 +12,21 @@ public class PersegiPanjang implements BangunDatar {
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
     }
-
-    @Override
-    public double hitungLuas() {
-        return panjang * lebar;
-    }
-
-
-
-    @Override
-    public double hitungKeliling() {
-        return 2 * (panjang + lebar);
-    }
-
+    
     @Override
     public String getNama() {
         return "Persegi Panjang";
+    }
+
+    @Override
+    public double hitungLuas() {
+        luas =  panjang * lebar;
+        return luas;
+    }
+
+    @Override
+    public double hitungKeliling() {
+        keliling = 2 * (panjang + lebar);
+        return keliling;
     }
 }

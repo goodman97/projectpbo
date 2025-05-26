@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
+public class LimasBelahKetupat extends BelahKetupat{
     protected double tinggiLimas;
     protected double volume;
     protected double luasPermukaan;
@@ -17,14 +17,12 @@ public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
         return "Limas Belah Ketupat";
     }
     
-    @Override
     public double hitungVolume() {
         return (1.0 / 3.0) * luas * tinggiLimas;
     }
 
-    @Override
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow(sisi, 2) - Math.pow(diagonal1 / 2, 2));
-        return hitungLuas() + 4 * luasSegitiga;
+        return luas + 4 * luasSegitiga;
     }
 }

@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class BelahKetupat implements BangunDatar{
+public class BelahKetupat implements BendaGeometri{
     protected double diagonal1;
     protected double diagonal2;
     protected double sisi;
@@ -16,17 +16,19 @@ public class BelahKetupat implements BangunDatar{
     }
     
     @Override
+    public String getNama() {
+        return "Belah Ketupat";
+    }
+    
+    @Override
     public double hitungLuas() {
-        return 0.5 * diagonal1 * diagonal2;
+        luas = 0.5 * diagonal1 * diagonal2;
+        return luas;
     }
     
     @Override
     public double hitungKeliling() {
-        return sisi * 4;
-    }
-    
-    @Override
-    public String getNama() {
-        return "Belah Ketupat";
+        keliling = sisi * 4;
+        return keliling;
     }    
 }

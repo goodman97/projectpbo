@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class PrismaJajaranGenjang extends JajaranGenjang implements BangunRuang {
+public class PrismaJajaranGenjang extends JajaranGenjang{
     protected double tinggiPrisma;
 
     public PrismaJajaranGenjang(double alas, double tinggiAlas, double sisiMiring, double tinggiPrisma) {
@@ -9,18 +9,15 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements BangunRuang 
     }
 
     @Override
+    public String getNama() {
+        return "Prisma Jajaran Genjang";
+    }
+    
     public double hitungVolume() {
         return hitungLuas() * tinggiPrisma;
     }
 
-    @Override
     public double hitungLuasPermukaan() {
         return 2 * hitungLuas() + 2 * (alas + sisiMiring) * tinggiPrisma;
-    }
-
-
-    @Override
-    public String getNama() {
-        return "Prisma Jajaran Genjang";
     }
 }

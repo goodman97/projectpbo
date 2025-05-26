@@ -19,11 +19,13 @@ public class JuringBola extends Bola {
     
     @Override
     public double hitungVolume() {
-        return (sudut / 360.0) * super.hitungVolume();
+        luas = (sudut / 360.0) * super.hitungVolume();
+        return luas;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return (sudut / 360.0) * super.hitungLuasPermukaan() + Math.PI * Math.pow(jariJari, 2);
+        luasPermukaan = (sudut / 360.0) * super.hitungLuasPermukaan() + Math.PI * Math.pow(jariJari, 2);
+        return luasPermukaan;
     }
 }

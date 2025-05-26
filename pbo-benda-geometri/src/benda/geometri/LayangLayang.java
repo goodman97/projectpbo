@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class LayangLayang implements BangunDatar {
+public class LayangLayang implements BendaGeometri {
     protected double diagonal1;
     protected double diagonal2;
     protected double sisiPanjang;
@@ -24,11 +24,13 @@ public class LayangLayang implements BangunDatar {
     
     @Override
     public double hitungLuas() {
-        return 0.5 * diagonal1 * diagonal2;
+        luas = 0.5 * diagonal1 * diagonal2;
+        return luas;
     }
 
     @Override
     public double hitungKeliling() {
-        return 2 * (sisiPanjang + sisiPendek);
+        keliling =  2 * (sisiPanjang + sisiPendek);
+        return keliling;
     }    
 }
