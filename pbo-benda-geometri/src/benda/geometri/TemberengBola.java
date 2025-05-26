@@ -2,6 +2,8 @@ package benda.geometri;
 
 public class TemberengBola extends Bola {
     protected double tinggi;
+    protected double volume;
+    protected double luasPermukaan;
 
     public TemberengBola(double jariJari, double tinggi) {
         super(jariJari);
@@ -15,11 +17,13 @@ public class TemberengBola extends Bola {
 
     @Override
     public double hitungVolume() {
-        return (1.0 / 6.0) * Math.PI * tinggi * (3 * Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
+        volume =(1.0 / 6.0) * Math.PI * tinggi * (3 * Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
+        return volume;    
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return 2 * Math.PI * jariJari * tinggi;
+        luasPermukaan = 2 * Math.PI * jariJari * tinggi;
+        return luasPermukaan; 
     }
 }

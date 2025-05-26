@@ -19,11 +19,13 @@ public class CincinBola extends Bola {
     
     @Override
     public double hitungVolume() {
-        return (4.0 / 3.0) * Math.PI * (Math.pow(jariJari, 3) - Math.pow(jariJariDalam, 3));
+        volume = (4.0 / 3.0) * Math.PI * (Math.pow(jariJari, 3) - Math.pow(jariJariDalam, 3));
+        return volume;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return 4 * Math.PI * (Math.pow(jariJari, 2) + Math.pow(jariJariDalam, 2));
+        luasPermukaan = 4 * Math.PI * (Math.pow(jariJari, 2) + Math.pow(jariJariDalam, 2));
+        return luasPermukaan;
     }
 }
