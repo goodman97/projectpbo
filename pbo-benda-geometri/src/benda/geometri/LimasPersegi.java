@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class LimasPersegi extends Persegi implements BangunRuang {
+public class LimasPersegi extends Persegi{
     protected double tinggiLimas;
     protected double volume;
     protected double luasPermukaan;
@@ -14,20 +14,18 @@ public class LimasPersegi extends Persegi implements BangunRuang {
     }
 
     @Override
+    public String getNama() {
+        return "Limas Persegi";
+    }
+
     public double hitungVolume() {
         volume = (1.0 / 3.0) * hitungLuas() * tinggiLimas;
         return volume;
     }
 
-    @Override
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow((sisi / 2), 2) + Math.pow(tinggiLimas, 2));
         luasPermukaan = hitungLuas() + 4 * luasSegitiga;
         return luasPermukaan;
-    }
-
-    @Override
-    public String getNama() {
-        return "Limas Persegi";
     }
 }

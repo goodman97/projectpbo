@@ -4,6 +4,7 @@ public class JuringLingkaran extends Lingkaran{
     protected double sudut;
     protected double luas;
     protected double keliling;
+    protected double panjangBusur;
     
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
@@ -19,12 +20,14 @@ public class JuringLingkaran extends Lingkaran{
 
     @Override
     public double hitungLuas() {
-        return (sudut / 360.0) * Math.PI * Math.pow(jariJari, 2);
+        luas = (sudut / 360.0) * super.luas;
+        return luas;
     }
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (sudut / 360.0) * 2 * Math.PI * jariJari;
-        return 2 * jariJari + panjangBusur;
+        panjangBusur = (sudut / 360.0) * super.keliling;
+        keliling = 2 * jariJari + panjangBusur;
+        return keliling;
     }
 }

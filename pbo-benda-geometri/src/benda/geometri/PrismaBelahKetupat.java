@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class PrismaBelahKetupat extends BelahKetupat implements BangunRuang{
+public class PrismaBelahKetupat extends BelahKetupat{
     protected double tinggiPrisma;
     protected double volume;
     protected double luasPermukaan;
@@ -14,27 +14,15 @@ public class PrismaBelahKetupat extends BelahKetupat implements BangunRuang{
     }
     
     @Override
-    public double hitungVolume() {
-        return super.hitungLuas() * tinggiPrisma;
-    }
-
-    public double getVolumePrismaBelahKetupat(){
-        return hitungVolume();
-    }
-    
-    @Override
-    public double hitungLuasPermukaan() {
-        return (super.hitungLuas()*2) + (sisi * tinggiPrisma) * 4;
-    }
-
-    public double getLuasPermukaanBelahKetupat(){
-        return hitungLuasPermukaan();
-    }
-    
-    @Override
     public String getNama() {
         return "Prisma Belah Ketupat";
     }
-    
-    
+
+    public double hitungVolume() {
+        return super.hitungLuas() * tinggiPrisma;
+    }
+   
+    public double hitungLuasPermukaan() {
+        return (super.hitungLuas()*2) + (sisi * tinggiPrisma) * 4;
+    }    
 }

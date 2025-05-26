@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class LimasJajaranGenjang extends JajaranGenjang implements BangunRuang {
+public class LimasJajaranGenjang extends JajaranGenjang{
     protected double tinggiLimas;
     protected double volume;
     protected double luasPermukaan;
@@ -17,12 +17,10 @@ public class LimasJajaranGenjang extends JajaranGenjang implements BangunRuang {
         return "Limas Jajaran Genjang";
     }
 
-    @Override
     public double hitungVolume() {
         return (1.0 / 3.0) * hitungLuas() * tinggiLimas;
     }
 
-    @Override
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * alas * tinggiLimas;
         return hitungLuas() + 2 * luasSegitiga + 2 * (0.5 * sisiMiring * tinggiLimas);

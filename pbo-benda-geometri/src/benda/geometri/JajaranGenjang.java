@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class JajaranGenjang implements BangunDatar{
+public class JajaranGenjang implements BendaGeometri{
     protected double alas;
     protected double tinggi;
     protected double sisiMiring;
@@ -22,12 +22,14 @@ public class JajaranGenjang implements BangunDatar{
     
     @Override
     public double hitungLuas() {
-        return alas * tinggi;
+        luas = alas * tinggi;
+        return luas;
     }
     
     @Override
     public double hitungKeliling() {
-        return alas * 2 + sisiMiring * 2;
+        keliling = alas * 2 + sisiMiring * 2;
+        return keliling;
     }
     
 }
