@@ -19,13 +19,13 @@ public class LimasPersegi extends Persegi{
     }
 
     public double hitungVolume() {
-        volume = (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        volume = (1.0 / 3.0) * super.luas * tinggiLimas;
         return volume;
     }
 
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow((sisi / 2), 2) + Math.pow(tinggiLimas, 2));
-        luasPermukaan = hitungLuas() + 4 * luasSegitiga;
+        luasPermukaan = super.luas + 4 * luasSegitiga;
         return luasPermukaan;
     }
 }
