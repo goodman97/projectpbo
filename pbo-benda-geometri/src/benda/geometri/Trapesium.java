@@ -22,11 +22,13 @@ public class Trapesium implements BendaGeometri{
 
     @Override
     public double hitungLuas() {
-        return (atas + bawah)/2 * tinggi;
+        luas = (atas + bawah)/2 * tinggi;
+        return luas ;
     }    
 
     @Override
     public double hitungKeliling() {
-        return atas + bawah + (2 * sisiMiring);
+        keliling =  atas + bawah + (2 * sisiMiring);
+        return keliling ;
     }    
 }
