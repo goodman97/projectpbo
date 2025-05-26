@@ -21,6 +21,10 @@ public class Lingkaran implements BendaGeometri{
         luas = Math.PI * Math.pow(jariJari, 2);
         return luas;
     }
+
+    public double hitungLuas(double newR) {
+        return  Math.PI * Math.pow(newR, 2);
+    }
     
     @Override
     public double hitungKeliling() {
