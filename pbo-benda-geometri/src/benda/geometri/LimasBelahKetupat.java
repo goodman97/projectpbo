@@ -18,11 +18,13 @@ public class LimasBelahKetupat extends BelahKetupat{
     }
     
     public double hitungVolume() {
-        return (1.0 / 3.0) * luas * tinggiLimas;
+        volume = (1.0 / 3.0) * luas * tinggiLimas;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow(sisi, 2) - Math.pow(diagonal1 / 2, 2));
-        return luas + 4 * luasSegitiga;
+        luasPermukaan = hitungLuas() + 4 * luasSegitiga;
+        return luasPermukaan;
     }
 }

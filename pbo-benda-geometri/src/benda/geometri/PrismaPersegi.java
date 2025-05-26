@@ -11,17 +11,19 @@ public class PrismaPersegi extends Persegi{
         this.volume = hitungVolume();
         this.luasPermukaan = hitungLuasPermukaan();
     }
-    
+
     @Override
     public String getNama() {
         return "Prisma Persegi";
     }
 
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = super.luas * tinggiPrisma;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
-        return 2 * hitungLuas() + 4 * sisi * tinggiPrisma;
+        luasPermukaan = 2 * super.luas + 4 * sisi * tinggiPrisma;
+        return luasPermukaan;
     }
 }

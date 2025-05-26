@@ -18,12 +18,14 @@ public class LimasLayangLayang extends LayangLayang{
     }
     
     public double hitungVolume() {
-        return (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        volume = (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
         double luasTegakPanjang = 0.5 * sisiPanjang * tinggiLimas;
         double luasTegakPendek = 0.5 * sisiPendek * tinggiLimas;
-        return hitungLuas() + 2 * luasTegakPanjang + 2 * luasTegakPendek;
+        luasPermukaan = hitungLuas() + 2 * luasTegakPanjang + 2 * luasTegakPendek;
+        return luasPermukaan;
     }
 }

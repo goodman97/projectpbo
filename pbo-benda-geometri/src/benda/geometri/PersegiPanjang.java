@@ -12,7 +12,7 @@ public class PersegiPanjang implements BendaGeometri {
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
     }
-    
+
     @Override
     public String getNama() {
         return "Persegi Panjang";
