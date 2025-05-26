@@ -18,10 +18,12 @@ public class PrismaPersegiPanjang extends PersegiPanjang{
     }
 
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = hitungLuas() * tinggiPrisma;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
-        return 2 * hitungLuas() + 2 * (panjang + lebar) * tinggiPrisma;
+        luasPermukaan = * hitungLuas() + 2 * (panjang + lebar) * tinggiPrisma;
+        return luasPermukaan;
     }    
 }
