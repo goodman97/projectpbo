@@ -1,9 +1,9 @@
 package benda.geometri;
 
 public class CincinBola extends Bola {
-    protected double jariJariDalam;
-    protected double volume;
-    protected double luasPermukaan;
+    private double jariJariDalam;
+    private double volume;
+    private double luasPermukaan;
 
     public CincinBola(double jariJariLuar, double jariJariDalam) {
         super(jariJariLuar);
