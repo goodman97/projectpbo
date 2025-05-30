@@ -1,9 +1,9 @@
 package benda.geometri;
 
 public class PrismaBelahKetupat extends BelahKetupat{
-    protected double tinggiPrisma;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiPrisma;
+    private double volume;
+    private double luasPermukaan;
     
 
     public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2, double sisi) {
@@ -20,7 +20,7 @@ public class PrismaBelahKetupat extends BelahKetupat{
 
     public double hitungVolume() {
         volume = super.luas * tinggiPrisma;
-        return volume;
+        return volume; 
     }
     
     public double hitungLuasPermukaan() {

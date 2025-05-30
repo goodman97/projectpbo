@@ -1,6 +1,6 @@
 package benda.geometri;
 
-public class Segitiga implements BendaGeometri {
+public class Segitiga extends BangunDatar {
     protected double alas;
     protected double tinggi;
     protected double luas;

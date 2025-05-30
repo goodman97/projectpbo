@@ -1,9 +1,9 @@
 package benda.geometri;
 
 public class PrismaSegitiga extends Segitiga{
-    protected double tinggiPrisma;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiPrisma;
+    private double volume;
+    private double luasPermukaan;
 
     public PrismaSegitiga(double alas, double tinggiSegitiga, double tinggiPrisma) {
         super(alas, tinggiSegitiga);

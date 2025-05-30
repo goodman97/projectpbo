@@ -1,9 +1,9 @@
 package benda.geometri;
 
 public class LimasBelahKetupat extends BelahKetupat{
-    protected double tinggiLimas;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiLimas;
+    private double volume;
+    private double luasPermukaan;
 
     public LimasBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiLimas) {
         super(diagonal1, diagonal2, sisi);

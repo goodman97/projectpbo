@@ -1,7 +1,7 @@
 package benda.geometri;
 
 public class LimasSegitiga extends Segitiga{
-    protected double tinggiLimas;
+    private double tinggiLimas;
 
     public LimasSegitiga(double alas, double tinggiSegitiga, double tinggiLimas) {
         super(alas, tinggiSegitiga);
