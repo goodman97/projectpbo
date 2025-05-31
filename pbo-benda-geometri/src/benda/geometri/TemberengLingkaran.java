@@ -1,7 +1,7 @@
 package benda.geometri;
 
 public class TemberengLingkaran extends JuringLingkaran {
-    protected double taliBusur;
+    private double taliBusur;
     protected double luas;
     protected double keliling;
 
@@ -37,5 +37,41 @@ public class TemberengLingkaran extends JuringLingkaran {
 
     public double hitungKeliling(double newJarijari){
 
+    }
+
+     public void ProsesPerhitungan(){
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Apakah ingin mengubah nilai jari-jari Tembereng Lingkarean? (Y/N): ");
+        String jawab = inp.nextLine();
+
+
+        if (jawab.equalsIgnoreCase("Y")) {
+            try {
+                System.out.print("Masukkan jari-jari baru: ");
+                double newJarijari = inp.nextDouble();
+                if (newJarijari <= 0) {
+                    throw new IllegalArgumentException("Jari-jari harus lebih dari nol.");
+                }
+                luas = hitungLuas(newJarijari);
+                keliling = hitungKeliling(newJarijari);
+            } catch (InputMismatchException e) {
+                throw new IllegalArgumentException("Input jari-jari harus berupa angka.");
+            }finally{
+                inp.close();
+            }
+        } else if (jawab.equalsIgnoreCase("N")) {
+                luas = hitungLuas();
+                keliling = hitungKeliling();
+        } else {
+            throw new IllegalArgumentException(" Jawaban hanya boleh Y atau N.");
+        }
+    }
+
+    public double luas() {
+        return luas;
+    }
+
+    public double keliling() {
+        return keliling;
     }
 }
