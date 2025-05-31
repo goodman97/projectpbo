@@ -2,20 +2,17 @@ package main;
 
 import benda.ruang.*;
 import benda.datar.*;
-import benda.geometri.*;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Lingkaran lingkaran = new Lingkaran(0);
+        lingkaran.prosesInputDanValidasi();
+        System.out.println("\nHitung Benda Geometri: " + lingkaran.getNama());
+        System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.getLuas());
+        System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.getKeliling());
 
-        Lingkaran ling = new Lingkaran(1); // nilai default
-        System.out.println("\nHitung Benda Geometri: " + ling.getNama());
-        ling.prosesInputDanValidasi();
-        System.out.printf("Luas Lingkaran: %.2f\n", ling.getLuas());
-        System.out.printf("Keliling Lingkaran: %.2f\n", ling.getKeliling());
-
-        Bola bola = new Bola(1);    
+        Bola bola = new Bola(lingkaran.getJariJari());    
         bola.prosesInputDanValidasi();
         System.out.println("\nHitung Benda Geometri: " + bola.getNama());
         System.out.printf("Volume Bola: %.2f\n", bola.getVolume());

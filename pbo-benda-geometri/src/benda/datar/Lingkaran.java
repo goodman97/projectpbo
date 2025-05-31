@@ -62,4 +62,8 @@ public class Lingkaran extends BangunDatar {
     public double getKeliling(){
         return keliling;
     }
+
+    public double getJariJari(){
+        return jariJari;
+    }
 }
