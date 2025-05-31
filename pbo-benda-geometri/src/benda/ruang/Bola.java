@@ -19,9 +19,7 @@ public class Bola extends Lingkaran {
     }
 
     public double hitungVolume() {
-        System.out.println("Jari-jari saat ini: " + super.jariJari);
-        double r = Math.sqrt(super.luas / (4 * Math.PI));
-        volume = (4.0 / 3.0) * Math.PI * Math.pow(r, 3);
+        volume = (4.0 / 3.0) * super.luas * super.jariJari;
         return volume;
     }
 
@@ -62,7 +60,7 @@ public class Bola extends Lingkaran {
                         this.luasPermukaan = hitungLuasPermukaan(newJariJari);
                         break;
                     } catch (InputMismatchException e) {
-                        System.out.println("Input jari-jari harus berupa angka.\n");
+                        System.out.println("Input jari-jari harus berupa angka.");
                         inp.nextLine();
                     }
                 }
