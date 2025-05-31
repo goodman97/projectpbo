@@ -1,6 +1,9 @@
 package benda.datar;
 
-public class TemberengLingkaran extends JuringLingkaran {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class TemberengLingkaran extends JuringLingkaran{
     private double taliBusur;
     protected double luas;
     protected double keliling;
@@ -30,40 +33,62 @@ public class TemberengLingkaran extends JuringLingkaran {
         keliling = super.panjangBusur + taliBusur;
         return keliling;
     }
-
-    public double hitungLuas(double newJarijari){
-        
+    //test
+    // Overload hitungLuas dengan parameter baru
+    public double hitungLuas(double newJariJari, double taliBusur) {
+        double sudutRad = Math.toRadians(sudut);
+        double luasJuring = (sudutRad / 2) * Math.pow(newJariJari, 2);
+        double luasSegitiga = 0.5 * Math.pow(newJariJari, 2) * Math.sin(sudutRad);
+        return luasJuring - luasSegitiga;
     }
 
-    public double hitungKeliling(double newJarijari){
-
+    public double hitungKeliling(double newJariJari, double taliBusur) {
+        double sudutRad = Math.toRadians(sudut);
+        double panjangBusur = sudutRad * newJariJari;
+        return panjangBusur + taliBusur;
     }
 
-     public void ProsesPerhitungan(){
+    public void ProsesPerhitungan() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai jari-jari Tembereng Lingkarean? (Y/N): ");
+        System.out.print("Apakah ingin mengubah nilai jari-jari Tembereng Lingkaran? (Y/N): ");
         String jawab = inp.nextLine();
-
 
         if (jawab.equalsIgnoreCase("Y")) {
             try {
                 System.out.print("Masukkan jari-jari baru: ");
-                double newJarijari = inp.nextDouble();
-                if (newJarijari <= 0) {
+                double newJariJari = inp.nextDouble();
+                if (newJariJari <= 0) {
                     throw new IllegalArgumentException("Jari-jari harus lebih dari nol.");
                 }
-                luas = hitungLuas(newJarijari);
-                keliling = hitungKeliling(newJarijari);
+
+                System.out.print("Masukkan panjang tali busur baru: ");
+                double newTaliBusur = inp.nextDouble();
+                if (newTaliBusur <= 0) {
+                    throw new IllegalArgumentException("Tali busur harus lebih dari nol.");
+                }
+
+                luas = hitungLuas(newJariJari, newTaliBusur);
+                keliling = hitungKeliling(newJariJari, newTaliBusur);
+
+                System.out.println("Luas Tembereng Lingkaran: " + luas);
+                System.out.println("Keliling Tembereng Lingkaran: " + keliling);
+
             } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("Input jari-jari harus berupa angka.");
-            }finally{
-                inp.close();
+                throw new IllegalArgumentException("Input harus berupa angka.");
             }
         } else if (jawab.equalsIgnoreCase("N")) {
+            try {
                 luas = hitungLuas();
                 keliling = hitungKeliling();
+
+                System.out.println("Luas Tembereng Lingkaran: " + luas);
+                System.out.println("Keliling Tembereng Lingkaran: " + keliling);
+
+            } catch (InputMismatchException e) {
+                throw new IllegalArgumentException("Input harus berupa angka.");
+            }
         } else {
-            throw new IllegalArgumentException(" Jawaban hanya boleh Y atau N.");
+            throw new IllegalArgumentException("Jawaban hanya boleh Y atau N.");
         }
     }
 
