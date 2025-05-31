@@ -1,8 +1,7 @@
 package main;
 
-import benda.ruang.*;
 import benda.datar.*;
-import benda.geometri.*;
+import benda.ruang.*;
 import java.util.*;
 
 public class Main {

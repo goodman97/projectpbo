@@ -19,7 +19,9 @@ public class Bola extends Lingkaran {
     }
 
     public double hitungVolume() {
-        volume = (4.0 / 3.0) * super.luas * jariJari;
+        System.out.println("Jari-jari saat ini: " + super.jariJari);
+        double r = Math.sqrt(super.luas / (4 * Math.PI));
+        volume = (4.0 / 3.0) * Math.PI * Math.pow(r, 3);
         return volume;
     }
 
@@ -34,7 +36,7 @@ public class Bola extends Lingkaran {
     }
 
     public double hitungLuasPermukaan(double newJariJari) {
-        luasPermukaan = 4 * Math.PI * Math.pow(newJariJari, 2);
+        luasPermukaan = 4 * Math.PI * Math.pow(super.jariJari, 2);
         return luasPermukaan;
     }
 
