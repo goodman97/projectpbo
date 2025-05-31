@@ -3,7 +3,6 @@ package benda.datar;
 import benda.geometri.BangunDatar;
 import java.util.*;
 
-import benda.geometri.BangunDatar;
 
 public class BelahKetupat extends BangunDatar{
     protected double diagonal1;
