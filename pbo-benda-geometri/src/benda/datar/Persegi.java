@@ -1,6 +1,7 @@
 package benda.datar;
 
 import benda.geometri.BangunDatar;
+import java.util.*;
 
 public class Persegi extends BangunDatar{
     protected double sisi;
