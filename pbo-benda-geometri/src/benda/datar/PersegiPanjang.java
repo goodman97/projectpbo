@@ -36,7 +36,6 @@ public class PersegiPanjang extends BangunDatar{
     public void prosesInputDanValidasi() {
     Scanner inp = new Scanner(System.in);
     
-    // Input Panjang
     while (true) {
         try {
             System.out.print("Masukkan Panjang : ");
@@ -52,16 +51,15 @@ public class PersegiPanjang extends BangunDatar{
             break;
         } catch (InputMismatchException e) {
             System.out.println("Input panjang harus berupa angka.\n");
-            inp.nextLine(); // clear invalid input
+            inp.nextLine(); 
         }
     }
     
-    // Input Lebar
     while (true) {
         try {
             System.out.print("Masukkan Lebar : ");
             double lebar = inp.nextDouble();
-            inp.nextLine(); // consume newline
+            inp.nextLine(); 
             
             if (lebar <= 0) {
                 System.out.println("Lebar harus lebih dari nol.\n");
@@ -72,11 +70,10 @@ public class PersegiPanjang extends BangunDatar{
             break;
         } catch (InputMismatchException e) {
             System.out.println("Input lebar harus berupa angka.\n");
-            inp.nextLine(); // clear invalid input
+            inp.nextLine(); 
         }
     }
-    
-    // Hitung luas dan keliling setelah kedua input valid
+
     this.luas = hitungLuas();
     this.keliling = hitungKeliling();
 }
