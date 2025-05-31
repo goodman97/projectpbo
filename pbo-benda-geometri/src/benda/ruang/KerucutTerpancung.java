@@ -1,4 +1,4 @@
-package benda.geometri;
+package benda.ruang;
 
 public class KerucutTerpancung extends Kerucut {
     protected double jariJariAtas;

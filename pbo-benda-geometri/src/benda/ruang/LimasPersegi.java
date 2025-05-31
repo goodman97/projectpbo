@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.ruang;
+
+import benda.datar.Persegi;
 
 public class LimasPersegi extends Persegi{
     protected double tinggiLimas;

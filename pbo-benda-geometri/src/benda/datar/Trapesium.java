@@ -1,6 +1,8 @@
-package benda.geometri;
+package benda.datar;
 
-public class Trapesium implements BendaGeometri{
+import benda.geometri.BangunDatar;
+
+public class Trapesium extends BangunDatar{
     protected double atas;
     protected double bawah;
     protected double tinggi;

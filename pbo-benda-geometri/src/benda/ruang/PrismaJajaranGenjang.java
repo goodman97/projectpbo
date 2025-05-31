@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.ruang;
+
+import benda.datar.JajaranGenjang;
 
 public class PrismaJajaranGenjang extends JajaranGenjang{
     protected double tinggiPrisma;

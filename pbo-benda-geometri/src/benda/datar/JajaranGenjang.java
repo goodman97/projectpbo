@@ -1,6 +1,8 @@
-package benda.geometri;
+package benda.datar;
 
-public class JajaranGenjang implements BendaGeometri{
+import benda.geometri.BangunDatar;
+
+public class JajaranGenjang extends BangunDatar{
     protected double alas;
     protected double tinggi;
     protected double sisiMiring;

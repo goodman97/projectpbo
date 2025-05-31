@@ -1,5 +1,6 @@
-package benda.geometri;
+package benda.ruang;
 
+import benda.datar.Segitiga;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

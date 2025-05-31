@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.ruang;
+
+import benda.datar.Lingkaran;
 
 public class Tabung extends Lingkaran{
     protected double tinggi;

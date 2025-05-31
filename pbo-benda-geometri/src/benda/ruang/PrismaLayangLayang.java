@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.ruang;
+
+import benda.datar.LayangLayang;
 
 public class PrismaLayangLayang extends LayangLayang{
     protected double tinggiPrisma;

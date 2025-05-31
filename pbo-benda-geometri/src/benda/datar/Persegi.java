@@ -1,6 +1,8 @@
-package benda.geometri;
+package benda.datar;
 
-public class Persegi implements BendaGeometri {
+import benda.geometri.BangunDatar;
+
+public class Persegi extends BangunDatar{
     protected double sisi;
     protected double luas;
     protected double keliling;

@@ -1,7 +1,7 @@
-package benda.geometri;
+package benda.ruang;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import benda.datar.Lingkaran;
+import java.util.*;
 
 public class Bola extends Lingkaran {
     protected double volume;
@@ -19,7 +19,12 @@ public class Bola extends Lingkaran {
     }
 
     public double hitungVolume() {
-        volume = (4.0 / 3.0) * super.jariJari * super.luas;
+        volume = (4.0 / 3.0) * super.luas * jariJari;
+        return volume;
+    }
+
+    public double hitungVolume(double newJariJari) {
+        volume = (4.0 / 3.0) * Math.PI * Math.pow(newJariJari, 3);
         return volume;
     }
 
@@ -28,36 +33,45 @@ public class Bola extends Lingkaran {
         return luasPermukaan;
     }
 
-    public double hitungVolume(double newJariJari) {
-        return (4.0 / 3.0) * Math.PI * Math.pow(newJariJari, 3);
-    }
-
     public double hitungLuasPermukaan(double newJariJari) {
-        return 4 * Math.PI * Math.pow(newJariJari, 2);
+        luasPermukaan = 4 * Math.PI * Math.pow(newJariJari, 2);
+        return luasPermukaan;
     }
 
-    public void prosesHitungVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai jari-jari bola? (Y/N): ");
-        String jawab = inp.nextLine();
+        while (true) {
+            System.out.print("\nApakah ingin mengubah nilai jari-jari bola? (Y/N): ");
+            String jawab = inp.nextLine();
 
-        if (jawab.equalsIgnoreCase("Y")) {
-            try {
-                System.out.print("Masukkan jari-jari baru: ");
-                double newJariJari = inp.nextDouble();
-                if (newJariJari <= 0) {
-                    throw new IllegalArgumentException("❌ Jari-jari harus lebih dari nol.");
+            if (jawab.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan jari-jari baru: ");
+                        double newJariJari = inp.nextDouble();
+                        inp.nextLine();
+                        if (newJariJari <= 0) {
+                            System.out.println("Jari-jari harus lebih dari nol.\n");
+                            continue;
+                        }
+                        super.jariJari = newJariJari;
+                        super.luas = super.hitungLuas();
+                        this.volume = hitungVolume(newJariJari);
+                        this.luasPermukaan = hitungLuasPermukaan(newJariJari);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input jari-jari harus berupa angka.\n");
+                        inp.nextLine();
+                    }
                 }
-                volume = hitungVolume(newJariJari);
-                luasPermukaan = hitungLuasPermukaan(newJariJari);
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Input jari-jari harus berupa angka.");
+                break;
+            } else if (jawab.equalsIgnoreCase("N")) {
+                this.volume = hitungVolume();
+                this.luasPermukaan = hitungLuasPermukaan();
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
-        } else if (jawab.equalsIgnoreCase("N")) {
-            volume = hitungVolume();
-            luasPermukaan = hitungLuasPermukaan();
-        } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
         }
     }
 

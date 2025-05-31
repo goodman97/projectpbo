@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.datar;
+
+import benda.geometri.BangunDatar;
 
 public class Segitiga extends BangunDatar {
     protected double alas;

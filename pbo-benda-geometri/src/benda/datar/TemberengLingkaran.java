@@ -1,4 +1,4 @@
-package benda.geometri;
+package benda.datar;
 
 public class TemberengLingkaran extends JuringLingkaran {
     private double taliBusur;

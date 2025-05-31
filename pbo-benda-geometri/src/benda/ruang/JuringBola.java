@@ -1,4 +1,4 @@
-package benda.geometri;
+package benda.ruang;
 
 public class JuringBola extends Bola {
     protected double sudut; // dalam derajat

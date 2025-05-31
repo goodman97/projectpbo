@@ -1,4 +1,4 @@
-package benda.geometri;
+package benda.ruang;
 
 public class TemberengBola extends Bola {
     protected double tinggi;

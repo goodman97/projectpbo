@@ -1,6 +1,8 @@
-package benda.geometri;
+package benda.datar;
 
-public class LayangLayang implements BendaGeometri {
+import benda.geometri.BangunDatar;
+
+public class LayangLayang extends BangunDatar{
     protected double diagonal1;
     protected double diagonal2;
     protected double sisiPanjang;

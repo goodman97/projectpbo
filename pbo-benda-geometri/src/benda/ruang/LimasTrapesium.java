@@ -1,4 +1,6 @@
-package benda.geometri;
+package benda.ruang;
+
+import benda.datar.Trapesium;
 
 public class LimasTrapesium extends Trapesium{
     protected double tinggiLimas;

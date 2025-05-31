@@ -1,4 +1,4 @@
-package benda.geometri;
+package benda.ruang;
 
 public class CincinBola extends Bola {
     private double jariJariDalam;
