@@ -20,13 +20,11 @@ public class PersegiPanjang extends BangunDatar{
         return "Persegi Panjang";
     }
 
-    @Override
     public double hitungLuas() {
         luas =  panjang * lebar;
         return luas;
     }
 
-    @Override
     public double hitungKeliling() {
         keliling = 2 * (panjang + lebar);
         return keliling;

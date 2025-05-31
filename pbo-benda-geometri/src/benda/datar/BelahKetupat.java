@@ -22,13 +22,11 @@ public class BelahKetupat extends BangunDatar{
         return "Belah Ketupat";
     }
     
-    @Override
     public double hitungLuas() {
         luas = 0.5 * diagonal1 * diagonal2;
         return luas;
     }
     
-    @Override
     public double hitungKeliling() {
         keliling = sisi * 4;
         return keliling;
