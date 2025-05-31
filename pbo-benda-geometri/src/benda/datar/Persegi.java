@@ -29,4 +29,40 @@ public class Persegi extends BangunDatar{
         luas = 4 * sisi;
         return luas;
     }
+
+    public void prosesInputDanValidasi() {
+        Scanner inp = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.print("Masukkan sisi persegi: ");
+                double sisi = inp.nextDouble();
+                inp.nextLine();
+
+                if (sisi <= 0) {
+                    System.out.println("sisi harus lebih dari nol.\n");
+                    continue;
+                }
+
+                this.sisi = sisi;
+                this.luas = hitungLuas();
+                this.keliling = hitungKeliling();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input sisi harus berupa angka.\n");
+                inp.nextLine();
+            }
+        }
+    }
+
+    public double getLuas(){
+        return luas;
+    }
+
+    public double getKeliling(){
+        return keliling;
+    }
+
+    public double getSisi(){
+        return sisi;
+    }
 }
