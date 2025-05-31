@@ -29,5 +29,13 @@ public class TemberengLingkaran extends JuringLingkaran {
     public double hitungKeliling() {
         keliling = super.panjangBusur + taliBusur;
         return keliling;
-    }    
+    }
+
+    public double hitungLuas(double newJarijari){
+        
+    }
+
+    public double hitungKeliling(double newJarijari){
+
+    }
 }
