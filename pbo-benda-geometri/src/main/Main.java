@@ -19,7 +19,7 @@ public class Main {
         System.out.printf("Luas Permukaan Bola: %.2f\n\n", bola.getLuasPermukaan());
         */
 
-        Segitiga segitiga = new Segitiga(0, 0);
+        Segitiga segitiga = new Segitiga(1, 1);
         segitiga.prosesInputDanValidasi();
         System.out.println("\nHitung Benda Geometri: " + segitiga.getNama());
         System.out.printf("Luas segitiga: %.2f\n", segitiga.getLuas());
