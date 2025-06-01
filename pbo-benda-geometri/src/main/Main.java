@@ -30,6 +30,10 @@ public class Main {
         LimasPersegiPanjang limasPersegiPanjang = new LimasPersegiPanjang(0, 0, 0);
         limasPersegiPanjang.prosesInputDanValidasi();
 
+        
+        PrismaPersegiPanjang prismaPersegiPanjang = new PrismaPersegiPanjang(0, 0, 0);
+        prismaPersegiPanjang.prosesInputDanValidasi();
+
         BelahKetupat belahKetupat = new BelahKetupat(0, 0, 0);
         belahKetupat.prosesInputDanValidasi();
 
@@ -89,6 +93,13 @@ public class Main {
                 System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n", limasPersegiPanjang.getKeliling());
             }, "Perhitungan limas persegi panjang");
 
+            PerhitunganThread prismaPersegiPanjangThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + prismaPersegiPanjang.getNama());
+                System.out.printf("Volume prisma persegi panjang: %.2f\n", prismaPersegiPanjang.getLuas());
+                System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n", prismaPersegiPanjang.getKeliling());
+            }, "Perhitungan prisma persegi panjang");
+
+
             PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + belahKetupat.getNama());
                 System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.getLuas());
@@ -110,6 +121,7 @@ public class Main {
             limasSegitigaThread.start();
             persegiPanjangThread.start();
             limasPersegiPanjangThread.start();
+            prismaPersegiPanjangThread.start();
             belahKetupatThread.start();
             trapesiumThread.start();
             
@@ -123,6 +135,7 @@ public class Main {
             limasSegitigaThread.join();
             persegiPanjangThread.join();
             limasPersegiPanjangThread.join();
+            prismaPersegiPanjangThread.join();
             belahKetupatThread.join();
             trapesiumThread.join();
 
