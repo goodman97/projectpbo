@@ -83,17 +83,17 @@ public class Main {
                 System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
             }, "Perhitungan Limas Segitiga");
 
-            PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
-                System.out.println("Hitung: " + limasPersegi.getNama());
-                System.out.printf("Volume Limas Persegi: %.2f\n", limasPersegi.getVolume());
-                System.out.printf("Luas Permukaan Limas Persegi: %.2f\n", limasPersegi.getLuasPermukaan());
-            }, "Perhitungan Limas Persegi");
-
             PerhitunganThread persegiThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + persegi.getNama());
                 System.out.printf("Luas persegi: %.2f\n", persegi.getLuas());
                 System.out.printf("Keliling persegi: %.2f\n", persegi.getKeliling());
             }, "Perhitungan persegi");
+
+                PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + limasPersegi.getNama());
+                System.out.printf("Volume Limas Persegi: %.2f\n", limasPersegi.getVolume());
+                System.out.printf("Luas Permukaan Limas Persegi: %.2f\n", limasPersegi.getLuasPermukaan());
+            }, "Perhitungan Limas Persegi");
 
             PerhitunganThread persegiPanjangThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + persegiPanjang.getNama());
@@ -126,8 +126,8 @@ public class Main {
             temberengBolaThread.start();
             segitigaThread.start();
             limasSegitigaThread.start();
-            limasPersegiThread.start();
             persegiThread.start();
+            limasPersegiThread.start();
             persegiPanjangThread.start();
             limasPersegiPanjangThread.start();
             belahKetupatThread.start();
@@ -141,8 +141,8 @@ public class Main {
             temberengBolaThread.join();
             segitigaThread.join();
             limasSegitigaThread.join();
-            limasPersegiThread.start();
             persegiThread.start();
+            limasPersegiThread.start();
             persegiPanjangThread.join();
             limasPersegiPanjangThread.join();
             belahKetupatThread.join();
