@@ -5,42 +5,85 @@ import benda.ruang.*;
 
 public class Main {
     public static void main(String[] args) {
-        
+        // Input semua nilai terlebih dahulu
         Lingkaran lingkaran = new Lingkaran(0);
         lingkaran.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + lingkaran.getNama());
-        System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.getLuas());
-        System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.getKeliling());
 
-        Bola bola = new Bola(lingkaran.getJariJari());    
+        Bola bola = new Bola(lingkaran.getJariJari());
         bola.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + bola.getNama());
-        System.out.printf("Volume Bola: %.2f\n", bola.getVolume());
-        System.out.printf("Luas Permukaan Bola: %.2f\n", bola.getLuasPermukaan());
 
-        JuringBola JBola = new JuringBola(bola.getJariJari(), 0);
-        JBola.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + JBola.getNama());
-        System.out.printf("Volume Juring Bola: %.2f\n", JBola.getVolume());
-        System.out.printf("Luas Permukaan Juring Bola: %.2f\n", JBola.getLuasPermukaan());
+        JuringBola juringBola = new JuringBola(bola.getJariJari(), 0);
+        juringBola.prosesInputDanValidasi();
 
-        TemberengBola TBola = new TemberengBola(bola.getJariJari(), 0);
-        TBola.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + TBola.getNama());
-        System.out.printf("Volume Tembereng Bola: %.2f\n", TBola.getVolume());
-        System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", TBola.getLuasPermukaan());
-        System.out.printf("Luas Permukaan Bola: %.2f\n\n", bola.getLuasPermukaan());
+        TemberengBola temberengBola = new TemberengBola(bola.getJariJari(), 0);
+        temberengBola.prosesInputDanValidasi();
 
         Segitiga segitiga = new Segitiga(1, 1);
         segitiga.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + segitiga.getNama());
-        System.out.printf("Luas segitiga: %.2f\n", segitiga.getLuas());
-        System.out.printf("Keliling segitiga: %.2f\n", segitiga.getKeliling());
 
         LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         limasSegitiga.prosesInputDanValidasi();
-        System.out.println("\nHitung Benda Geometri: " + limasSegitiga.getNama());
-        System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.getVolume());
-        System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
+
+        System.out.println("\n=== Memulai Proses Perhitungan Multithreading ===\n");
+
+        // Proses perhitungan menggunakan thread
+        try {
+            PerhitunganThread lingkaranThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + lingkaran.getNama());
+                System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.getLuas());
+                System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.getKeliling());
+            }, "Perhitungan Lingkaran");
+
+            PerhitunganThread bolaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + bola.getNama());
+                System.out.printf("Volume Bola: %.2f\n", bola.getVolume());
+                System.out.printf("Luas Permukaan Bola: %.2f\n", bola.getLuasPermukaan());
+            }, "Perhitungan Bola");
+
+            PerhitunganThread juringBolaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + juringBola.getNama());
+                System.out.printf("Volume Juring Bola: %.2f\n", juringBola.getVolume());
+                System.out.printf("Luas Permukaan Juring Bola: %.2f\n", juringBola.getLuasPermukaan());
+            }, "Perhitungan Juring Bola");
+
+            PerhitunganThread temberengBolaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + temberengBola.getNama());
+                System.out.printf("Volume Tembereng Bola: %.2f\n", temberengBola.getVolume());
+                System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", temberengBola.getLuasPermukaan());
+            }, "Perhitungan Tembereng Bola");
+
+            PerhitunganThread segitigaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + segitiga.getNama());
+                System.out.printf("Luas Segitiga: %.2f\n", segitiga.getLuas());
+                System.out.printf("Keliling Segitiga: %.2f\n", segitiga.getKeliling());
+            }, "Perhitungan Segitiga");
+
+            PerhitunganThread limasSegitigaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + limasSegitiga.getNama());
+                System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.getVolume());
+                System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
+            }, "Perhitungan Limas Segitiga");
+
+            // Mulai semua thread
+            lingkaranThread.start();
+            bolaThread.start();
+            juringBolaThread.start();
+            temberengBolaThread.start();
+            segitigaThread.start();
+            limasSegitigaThread.start();
+
+            // Tunggu semua thread selesai
+            lingkaranThread.join();
+            bolaThread.join();
+            juringBolaThread.join();
+            temberengBolaThread.join();
+            segitigaThread.join();
+            limasSegitigaThread.join();
+
+            System.out.println("\n=== Semua Proses Selesai ===");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
