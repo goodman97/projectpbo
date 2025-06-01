@@ -1,6 +1,7 @@
 package benda.ruang;
 
 import benda.datar.Persegi;
+import java.util.Scanner;
 
 public class LimasPersegi extends Persegi{
     protected double tinggiLimas;
@@ -28,6 +29,44 @@ public class LimasPersegi extends Persegi{
     public double hitungLuasPermukaan() {
         double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow((sisi / 2), 2) + Math.pow(tinggiLimas, 2));
         luasPermukaan = super.luas + 4 * luasSegitiga;
+        return luasPermukaan;
+    }
+
+    public void prosesHitungVolumeDanLuasPermukaan() {
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Apakah ingin mengubah nilai panjang dan tinggi limas persegi panjang? (Y/N): ");
+        String jawab = inp.nextLine();
+
+        if (jawab.equalsIgnoreCase("Y")) {
+            try {
+                 System.out.print("Masukkan panjang  baru: ");
+                double newPanjang = inp.nextDouble();
+                if (newPanjang <= 0) {
+                    throw new IllegalArgumentException("❌ Panjang harus lebih dari nol.");
+                }
+                System.out.print("Masukkan tinggi baru: ");
+                double newtinggiLimas = inp.nextDouble();
+                if (newtinggiLimas <= 0) {
+                    throw new IllegalArgumentException("❌ Tinggi limas harus lebih dari nol.");
+                }
+                volume = hitungVolume(newPanjang, newtinggiLimas);
+                luasPermukaan = hitungLuasPermukaan(newPanjang, newtinggiLimas);
+            } catch (InputMismatchException e) {
+                throw new IllegalArgumentException("❌ Inputan harus berupa angka.");
+            }
+        } else if (jawab.equalsIgnoreCase("N")) {
+            volume = hitungVolume();
+            luasPermukaan = hitungLuasPermukaan();
+        } else {
+            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
+        }
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getLuasPermukaan() {
         return luasPermukaan;
     }
 }

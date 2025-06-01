@@ -24,6 +24,12 @@ public class Main {
         LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         limasSegitiga.prosesInputDanValidasi();
 
+        LimasPersegi limasPersegi = new LimasPersegi(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
+        limasPersegi.prosesInputDanValidasi();
+
+        Persegi persegi = new Persegi (0);
+        persegi.prosesInputDanValidasi();
+
         PersegiPanjang persegiPanjang = new PersegiPanjang(0, 0);
         persegiPanjang.prosesInputDanValidasi();
 
@@ -81,6 +87,18 @@ public class Main {
                 System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
             }, "Perhitungan Limas Segitiga");
 
+            PerhitunganThread persegiThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + persegi.getNama());
+                System.out.printf("Luas persegi: %.2f\n", persegi.getLuas());
+                System.out.printf("Keliling persegi: %.2f\n", persegi.getKeliling());
+            }, "Perhitungan persegi");
+
+                PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + limasPersegi.getNama());
+                System.out.printf("Volume Limas Persegi: %.2f\n", limasPersegi.getVolume());
+                System.out.printf("Luas Permukaan Limas Persegi: %.2f\n", limasPersegi.getLuasPermukaan());
+            }, "Perhitungan Limas Persegi");
+
             PerhitunganThread persegiPanjangThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + persegiPanjang.getNama());
                 System.out.printf("Luas persegi panjang: %.2f\n", persegiPanjang.getLuas());
@@ -119,6 +137,8 @@ public class Main {
             temberengBolaThread.start();
             segitigaThread.start();
             limasSegitigaThread.start();
+            persegiThread.start();
+            limasPersegiThread.start();
             persegiPanjangThread.start();
             limasPersegiPanjangThread.start();
             prismaPersegiPanjangThread.start();
@@ -133,6 +153,8 @@ public class Main {
             temberengBolaThread.join();
             segitigaThread.join();
             limasSegitigaThread.join();
+            persegiThread.start();
+            limasPersegiThread.start();
             persegiPanjangThread.join();
             limasPersegiPanjangThread.join();
             prismaPersegiPanjangThread.join();
