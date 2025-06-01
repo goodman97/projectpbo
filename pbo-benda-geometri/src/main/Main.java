@@ -5,7 +5,7 @@ import benda.ruang.*;
 
 public class Main {
     public static void main(String[] args) {
-        /*
+        
         Lingkaran lingkaran = new Lingkaran(0);
         lingkaran.prosesInputDanValidasi();
         System.out.println("\nHitung Benda Geometri: " + lingkaran.getNama());
@@ -16,7 +16,6 @@ public class Main {
         bola.prosesInputDanValidasi();
         System.out.println("\nHitung Benda Geometri: " + bola.getNama());
         System.out.printf("Volume Bola: %.2f\n", bola.getVolume());
-<<<<<<< HEAD
         System.out.printf("Luas Permukaan Bola: %.2f\n", bola.getLuasPermukaan());
 
         JuringBola JBola = new JuringBola(bola.getJariJari(), 0);
@@ -30,9 +29,7 @@ public class Main {
         System.out.println("\nHitung Benda Geometri: " + TBola.getNama());
         System.out.printf("Volume Tembereng Bola: %.2f\n", TBola.getVolume());
         System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", TBola.getLuasPermukaan());
-=======
         System.out.printf("Luas Permukaan Bola: %.2f\n\n", bola.getLuasPermukaan());
-        */
 
         Segitiga segitiga = new Segitiga(1, 1);
         segitiga.prosesInputDanValidasi();
@@ -45,6 +42,5 @@ public class Main {
         System.out.println("\nHitung Benda Geometri: " + limasSegitiga.getNama());
         System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.getVolume());
         System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
->>>>>>> 5332e90a469e2a039633593b96ac4ee86d0853b1
     }
 }
