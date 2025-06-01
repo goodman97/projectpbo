@@ -18,22 +18,22 @@ public class Bola extends Lingkaran {
         return "Bola";
     }
 
-    public double hitungVolume() {
+    protected double hitungVolume() {
         volume = (4.0 / 3.0) * super.luas * super.jariJari;
         return volume;
     }
 
-    public double hitungVolume(double newJariJari) {
+    protected double hitungVolume(double newJariJari) {
         volume = (4.0 / 3.0) * Math.PI * Math.pow(newJariJari, 3);
         return volume;
     }
 
-    public double hitungLuasPermukaan() {
+    protected double hitungLuasPermukaan() {
         luasPermukaan = 4 * super.luas;
         return luasPermukaan;
     }
 
-    public double hitungLuasPermukaan(double newJariJari) {
+    protected double hitungLuasPermukaan(double newJariJari) {
         luasPermukaan = 4 * Math.PI * Math.pow(newJariJari, 2);
         return luasPermukaan;
     }
@@ -41,7 +41,7 @@ public class Bola extends Lingkaran {
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("\nApakah ingin mengubah nilai jari-jari bola? (Y/N): ");
+            System.out.print("\nNilai jari-jari lingkaran saat ini adalah " + super.jariJari + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
             String jawab = inp.nextLine();
 
             if (jawab.equalsIgnoreCase("Y")) {
@@ -55,7 +55,6 @@ public class Bola extends Lingkaran {
                             continue;
                         }
                         super.jariJari = newJariJari;
-                        super.luas = super.hitungLuas();
                         this.volume = hitungVolume(newJariJari);
                         this.luasPermukaan = hitungLuasPermukaan(newJariJari);
                         break;
