@@ -2,6 +2,9 @@ package benda.ruang;
 
 import benda.datar.Persegi;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class PrismaPersegi extends Persegi{
     protected double tinggiPrisma;
     protected double volume;
@@ -34,12 +37,10 @@ public class PrismaPersegi extends Persegi{
         return luasPermukaan;
     }
 
-<<<<<<< HEAD
     public double hitungLuasPermukaan(double newSisi, double tinggiPrisma) {
         luasPermukaan = 4 * (newSisi * tinggiPrisma) + 2 * (Math.pow(newSisi, 2));
         return luasPermukaan;
     }
-=======
     public void prosesHitungVolumeDanLuasPermukaan() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai panjang dan tinggi prisma persegi? (Y/N): ");
@@ -78,5 +79,4 @@ public class PrismaPersegi extends Persegi{
         return luasPermukaan;
     }
     
->>>>>>> 92985e39d3f82f6e283a5474e1bb64d33c5732f3
 }

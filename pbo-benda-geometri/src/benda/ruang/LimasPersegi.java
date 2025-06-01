@@ -1,6 +1,8 @@
 package benda.ruang;
 
 import benda.datar.Persegi;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LimasPersegi extends Persegi{
