@@ -28,4 +28,43 @@ public class PrismaPersegi extends Persegi{
         luasPermukaan = 2 * super.luas + 4 * sisi * tinggiPrisma;
         return luasPermukaan;
     }
+
+    public void prosesHitungVolumeDanLuasPermukaan() {
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Apakah ingin mengubah nilai panjang dan tinggi prisma persegi? (Y/N): ");
+        String jawab = inp.nextLine();
+
+        if (jawab.equalsIgnoreCase("Y")) {
+            try {
+                 System.out.print("Masukkan sisi baru: ");
+                double newSisi = inp.nextDouble();
+                if (newSisi <= 0) {
+                    throw new IllegalArgumentException("❌ Sisi harus lebih dari nol.");
+                }
+                System.out.print("Masukkan tinggi baru: ");
+                double newtinggiPrisma = inp.nextDouble();
+                if (newtinggiPrisma <= 0) {
+                    throw new IllegalArgumentException("❌ Tinggi Prisma harus lebih dari nol.");
+                }
+                volume = hitungVolume(newSisi, newtinggiPrisma);
+                luasPermukaan = hitungLuasPermukaan(newSisi, newtinggiPrisma);
+            } catch (InputMismatchException e) {
+                throw new IllegalArgumentException("❌ Input an harus berupa angka.");
+            }
+        } else if (jawab.equalsIgnoreCase("N")) {
+            volume = hitungVolume();
+            luasPermukaan = hitungLuasPermukaan();
+        } else {
+            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
+        }
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
+    }
+    
 }

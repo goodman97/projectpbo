@@ -39,18 +39,18 @@ public class LimasPersegi extends Persegi{
 
         if (jawab.equalsIgnoreCase("Y")) {
             try {
-                 System.out.print("Masukkan panjang  baru: ");
-                double newPanjang = inp.nextDouble();
-                if (newPanjang <= 0) {
-                    throw new IllegalArgumentException("❌ Panjang harus lebih dari nol.");
+                 System.out.print("Masukkan Sisi baru: ");
+                double newSisi = inp.nextDouble();
+                if (newSisi <= 0) {
+                    throw new IllegalArgumentException("❌ Sisi harus lebih dari nol.");
                 }
                 System.out.print("Masukkan tinggi baru: ");
                 double newtinggiLimas = inp.nextDouble();
                 if (newtinggiLimas <= 0) {
                     throw new IllegalArgumentException("❌ Tinggi limas harus lebih dari nol.");
                 }
-                volume = hitungVolume(newPanjang, newtinggiLimas);
-                luasPermukaan = hitungLuasPermukaan(newPanjang, newtinggiLimas);
+                volume = hitungVolume(newSisi, newtinggiLimas);
+                luasPermukaan = hitungLuasPermukaan(newSisi, newtinggiLimas);
             } catch (InputMismatchException e) {
                 throw new IllegalArgumentException("❌ Inputan harus berupa angka.");
             }

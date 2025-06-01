@@ -89,7 +89,7 @@ public class Main {
                 System.out.printf("Keliling persegi: %.2f\n", persegi.getKeliling());
             }, "Perhitungan persegi");
 
-                PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
+            PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + limasPersegi.getNama());
                 System.out.printf("Volume Limas Persegi: %.2f\n", limasPersegi.getVolume());
                 System.out.printf("Luas Permukaan Limas Persegi: %.2f\n", limasPersegi.getLuasPermukaan());
