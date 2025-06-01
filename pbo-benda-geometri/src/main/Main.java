@@ -2,6 +2,7 @@ package main;
 
 import benda.datar.*;
 import benda.ruang.*;
+import main.PerhitunganThread;
 
 public class Main {
     public static void main(String[] args) {
@@ -85,8 +86,8 @@ public class Main {
 
             PerhitunganThread limasPersegiPanjangThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + limasPersegiPanjang.getNama());
-                System.out.printf("Volume limas persegi panjang: %.2f\n", limasPersegiPanjang.getLuas());
-                System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n", limasPersegiPanjang.getKeliling());
+                System.out.printf("Volume limas persegi panjang: %.2f\n", limasPersegiPanjang.getVolume()());
+                System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n", limasPersegiPanjang.getLuasPermukaan()());
             }, "Perhitungan limas persegi panjang");
 
             PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {

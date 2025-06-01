@@ -31,11 +31,11 @@ public class LimasSegitiga extends Segitiga{
         return hitungLuas() + 3 * luasTegak;
     }
 
-    public double hitungVolume(double newAlas, double newTinggiSegitiga, double tinggiLimas) {
+    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
         return  (1.0 / 3.0) * (0.5 * newAlas * newTinggiSegitiga) * tinggiLimas;
     }
 
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga, double tinggiLimas) {
+    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
         double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiLimas, 2));
         double luasTegak = 0.5 * newAlas * sisiMiring;
         double luasAlas = 0.5 * newAlas * newTinggiSegitiga;
@@ -68,19 +68,19 @@ public class LimasSegitiga extends Segitiga{
                         }
 
                         System.out.print("Masukkan tinggi limas: ");
-                        double newTinggiLimas = inp.nextDouble();
+                        this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (newTinggiLimas <= 0) {
+                        if (tinggiLimas <= 0) {
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
 
                         super.alas = newAlas;
                         super.tinggiSegitiga = newTinggiSegitiga;
-                        this.tinggiLimas = newTinggiLimas;
+                        this.tinggiLimas = tinggiLimas;
                         super.luas = super.hitungLuas();
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga, newTinggiLimas);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, newTinggiLimas);
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
                         break;
 
                     } catch (InputMismatchException e) {
@@ -93,14 +93,14 @@ public class LimasSegitiga extends Segitiga{
                 while (true) {
                     try {
                         System.out.print("Masukkan tinggi limas: ");
-                        double newTinggiLimas = inp.nextDouble();
+                        this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (newTinggiLimas <= 0) {
+                        if (tinggiLimas <= 0) {
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
 
-                        this.tinggiLimas = newTinggiLimas;
+                        this.tinggiLimas = tinggiLimas;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;

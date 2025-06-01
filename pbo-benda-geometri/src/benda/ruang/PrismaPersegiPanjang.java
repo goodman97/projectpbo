@@ -1,7 +1,6 @@
 package benda.ruang;
 
 import benda.datar.PersegiPanjang;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
