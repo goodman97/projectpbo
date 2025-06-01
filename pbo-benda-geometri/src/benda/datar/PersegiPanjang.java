@@ -76,7 +76,7 @@ public class PersegiPanjang extends BangunDatar{
 
     this.luas = hitungLuas();
     this.keliling = hitungKeliling();
-}
+    }
 
     public double getLuas(){
         return luas;

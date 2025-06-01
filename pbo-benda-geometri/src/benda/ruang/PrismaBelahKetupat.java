@@ -41,46 +41,99 @@ public class PrismaBelahKetupat extends BelahKetupat{
         return luasPermukaan;
     }
 
-    public void prosesVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai diagonal dan sisi? (Y/N): ");
-        String jawab = inp.nextLine();
+        while (true) {
+            System.out.print("\nApakah ingin mengubah nilai diagonal dan sisi yang baru? (Y/N): ");
+            String jawab = inp.nextLine();
 
-        if (jawab.equalsIgnoreCase("Y")) {
-            try {
-                System.out.print("Masukkan diagonal 1 baru: ");
-                double newDiagonal1 = inp.nextDouble();
-                if (newDiagonal1 <= 0) {
-                    throw new IllegalArgumentException("❌ Diagonal 1 harus lebih dari nol.");
+            if (jawab.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan diagonal 1 yang baru: ");
+                        double newDiagonal1 = inp.nextDouble();
+                        inp.nextLine();
+                        if (newDiagonal1 <= 0) {
+                            System.out.println("Diagonal 1 harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan diagonal 2 yang baru: ");
+                        double newDiagonal2 = inp.nextDouble();
+                        inp.nextLine();
+                        if (newDiagonal2 <= 0) {
+                            System.out.println("Diagonal 2 harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan sisi yang baru: ");
+                        double newSisi = inp.nextDouble();
+                        inp.nextLine();
+                        if (newSisi <= 0) {
+                            System.out.println("Sisi harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan tinggi prisma: ");
+                        this.tinggiPrisma = inp.nextDouble();
+                        inp.nextLine();
+                        if (tinggiPrisma <= 0) {
+                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        super.diagonal1 = newDiagonal1;
+                        super.diagonal2 = newDiagonal2;
+                        super.sisi = newSisi;
+                        this.tinggiPrisma = tinggiPrisma;
+                        super.luas = super.hitungLuas();
+                        this.volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
+                        this.luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.");
+                        inp.nextLine();
+                    }
                 }
-                System.out.print("Masukkan diagonal 2 baru: ");
-                double newDiagonal2 = inp.nextDouble();
-                if (newDiagonal2 <= 0) {
-                    throw new IllegalArgumentException("❌ Diagonal 2 harus lebih dari nol.");
+                break;
+            } else if (jawab.equalsIgnoreCase("N")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan tinggi prisma: ");
+                        this.tinggiPrisma = inp.nextDouble();
+                        inp.nextLine();
+                        if (tinggiPrisma <= 0) {
+                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        this.tinggiPrisma = tinggiPrisma;
+                        this.volume = hitungVolume();
+                        this.luasPermukaan = hitungLuasPermukaan();
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.");
+                        inp.nextLine();
+                    }
                 }
-                System.out.print("Masukkan sisi baru: ");
-                double newSisi = inp.nextDouble();
-                if (newSisi <= 0) {
-                    throw new IllegalArgumentException("❌ Sisi harus lebih dari nol.");
-                }
-                volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
-                luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Input diagonal dan sisi harus berupa angka.");
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
-        } else if (jawab.equalsIgnoreCase("N")) {
-            volume = hitungVolume();
-            luasPermukaan = hitungLuasPermukaan();
-        } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
         }
     }
 
-    public double getVolume(){
+    public double getVolume() {
         return volume;
     }
 
-    public double getLuasPermukaan(){
+    public double getLuasPermukaan() {
         return luasPermukaan;
+    }
+
+    public double getTinggiPrisma() {
+        return tinggiPrisma;
     }
 }

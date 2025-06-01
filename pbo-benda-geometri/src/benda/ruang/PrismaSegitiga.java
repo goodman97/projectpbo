@@ -37,41 +37,90 @@ public class PrismaSegitiga extends Segitiga{
         return 2 * (1.0 / 2.0) * newAlas * newTinggiSegitiga + (alas + 2 * sisiMiring) * tinggiPrisma;
     }
 
-    public void prosesVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
-        String jawab = inp.nextLine();
+        while (true) {
+            System.out.print("\nApakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
+            String jawab = inp.nextLine();
 
-        if (jawab.equalsIgnoreCase("Y")) {
-            try {
-                System.out.print("Masukkan alas baru: ");
-                double newAlas = inp.nextDouble();
-                if (newAlas <= 0) {
-                    throw new IllegalArgumentException("❌ Alas harus lebih dari nol.");
+            if (jawab.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan alas baru: ");
+                        double newAlas = inp.nextDouble();
+                        inp.nextLine();
+                        if (newAlas <= 0) {
+                            System.out.println("Alas harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan tinggi segitiga baru: ");
+                        double newTinggiSegitiga = inp.nextDouble();
+                        inp.nextLine();
+                        if (newTinggiSegitiga <= 0) {
+                            System.out.println("Tinggi segitiga harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan tinggi prisma: ");
+                        this.tinggiPrisma = inp.nextDouble();
+                        inp.nextLine();
+                        if (tinggiPrisma <= 0) {
+                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        super.alas = newAlas;
+                        super.tinggiSegitiga = newTinggiSegitiga;
+                        this.tinggiPrisma = tinggiPrisma;
+                        super.luas = super.hitungLuas();
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.");
+                        inp.nextLine();
+                    }
                 }
-                System.out.print("Masukkan tinggi baru: ");
-                double newTinggiSegitiga = inp.nextDouble();
-                if (newTinggiSegitiga <= 0) {
-                    throw new IllegalArgumentException("❌ Tinggi segitiga harus lebih dari nol.");
+                break;
+            } else if (jawab.equalsIgnoreCase("N")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan tinggi prisma: ");
+                        this.tinggiPrisma = inp.nextDouble();
+                        inp.nextLine();
+                        if (tinggiPrisma <= 0) {
+                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        this.tinggiPrisma = tinggiPrisma;
+                        this.volume = hitungVolume();
+                        this.luasPermukaan = hitungLuasPermukaan();
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.");
+                        inp.nextLine();
+                    }
                 }
-                volume = hitungVolume(newAlas, newTinggiSegitiga);
-                luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Input alas dan tinggi segitiga harus berupa angka.");
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
-        } else if (jawab.equalsIgnoreCase("N")) {
-            volume = hitungVolume();
-            luasPermukaan = hitungLuasPermukaan();
-        } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
         }
     }
 
-    public double getVolume(){
+    public double getVolume() {
         return volume;
     }
 
-    public double getLuasPermukaan(){
+    public double getLuasPermukaan() {
         return luasPermukaan;
+    }
+
+    public double getTinggiPrisma() {
+        return tinggiPrisma;
     }
 }
