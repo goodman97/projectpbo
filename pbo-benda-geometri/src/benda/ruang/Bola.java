@@ -33,13 +33,8 @@ public class Bola extends Lingkaran {
         return luasPermukaan;
     }
 
-<<<<<<< HEAD
-    protected double hitungLuasPermukaan(double newJariJari) {
-        luasPermukaan = 4 * Math.PI * Math.pow(newJariJari, 2);
-=======
     public double hitungLuasPermukaan(double newJariJari) {
-        luasPermukaan = 4 * Math.PI * Math.pow(super.jariJari, 2);
->>>>>>> 5332e90a469e2a039633593b96ac4ee86d0853b1
+        luasPermukaan = 4 * Math.PI * Math.pow(newJariJari, 2);
         return luasPermukaan;
     }
 
