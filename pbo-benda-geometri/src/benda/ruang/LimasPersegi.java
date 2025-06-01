@@ -25,9 +25,20 @@ public class LimasPersegi extends Persegi{
         return volume;
     }
 
+    public double hitungVolume(double newSisi, double tinggiLimas) {
+        volume = (1.0 / 3.0) * Math.pow(newSisi, 2) * tinggiLimas;
+        return volume;
+    }
+
     public double hitungLuasPermukaan() {
-        double luasSegitiga = 0.5 * sisi * Math.sqrt(Math.pow((sisi / 2), 2) + Math.pow(tinggiLimas, 2));
-        luasPermukaan = super.luas + 4 * luasSegitiga;
+        double luasSegitigaTegak = 0.5 * super.sisi * Math.sqrt(Math.pow((0.5 * super.sisi), 2) + Math.pow(tinggiLimas, 2));
+        luasPermukaan = super.luas + 4 * luasSegitigaTegak;
+        return luasPermukaan;
+    }
+
+    public double hitungLuasPermukaan(double newSisi, double tinggiLimas) {
+        double luasSegitigaTegak = 0.5 * newSisi * Math.sqrt(Math.pow((0.5 * newSisi), 2) + Math.pow(tinggiLimas, 2));
+        luasPermukaan = Math.pow(newSisi, 2) + 4 * luasSegitigaTegak;
         return luasPermukaan;
     }
 }

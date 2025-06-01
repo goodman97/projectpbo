@@ -16,11 +16,20 @@ public class LimasTrapesium extends Trapesium{
     }
 
     public double hitungVolume() {
-        return (1.0 / 3.0) * hitungLuas() * tinggiLimas;
+        return (1.0 / 3.0) * super.luas * tinggiLimas;
+    }
+
+    public double hitungVolume(double newAtas, double newBawah, double newTinggi, double tinggiLimas) {
+        return (1.0 / 3.0) * (newAtas + newBawah) * 0.5 * newTinggi * tinggiLimas;
     }
 
     public double hitungLuasPermukaan() {
-        double luasSegitiga = 0.5 * hitungKeliling() * tinggiLimas / 4;
-        return hitungLuas() + 4 * luasSegitiga;
+        double luasSegitigaTegak = 0.5 * super.keliling * tinggiLimas / 4;
+        return hitungLuas() + 4 * luasSegitigaTegak;
+    }
+
+    public double hitungLuasPermukaan(double newAtas, double newBawah, double newTinggi, double tinggiLimas) {
+        double luasSegitigaTegak = 0.5 * super.keliling * tinggiLimas / 4;
+        return hitungLuas() + 4 * luasSegitigaTegak;
     }
 }
