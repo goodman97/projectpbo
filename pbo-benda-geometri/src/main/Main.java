@@ -33,6 +33,9 @@ public class Main {
         PersegiPanjang persegiPanjang = new PersegiPanjang(0, 0);
         persegiPanjang.prosesInputDanValidasi();
 
+        LimasPersegiPanjang limasPersegiPanjang = new LimasPersegiPanjang(0, 0, 0);
+        limasPersegiPanjang.prosesInputDanValidasi();
+
         BelahKetupat belahKetupat = new BelahKetupat(0, 0, 0);
         belahKetupat.prosesInputDanValidasi();
 
@@ -98,13 +101,19 @@ public class Main {
                 System.out.printf("Keliling persegi panjang: %.2f\n", persegiPanjang.getKeliling());
             }, "Perhitungan persegi panjang");
 
+            PerhitunganThread limasPersegiPanjangThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + limasPersegiPanjang.getNama());
+                System.out.printf("Volume limas persegi panjang: %.2f\n", limasPersegiPanjang.getLuas());
+                System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n", limasPersegiPanjang.getKeliling());
+            }, "Perhitungan limas persegi panjang");
+
             PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + belahKetupat.getNama());
                 System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.getLuas());
                 System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.getKeliling());
             }, "Perhitungan belah ketupat");
 
-             PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
+            PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + trapesium.getNama());
                 System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
                 System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
@@ -120,8 +129,10 @@ public class Main {
             limasPersegiThread.start();
             persegiThread.start();
             persegiPanjangThread.start();
+            limasPersegiPanjangThread.start();
             belahKetupatThread.start();
             trapesiumThread.start();
+            
 
             // Tunggu semua thread selesai
             lingkaranThread.join();
@@ -133,6 +144,7 @@ public class Main {
             limasPersegiThread.start();
             persegiThread.start();
             persegiPanjangThread.join();
+            limasPersegiPanjangThread.join();
             belahKetupatThread.join();
             trapesiumThread.join();
 
