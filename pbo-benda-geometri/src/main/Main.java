@@ -24,6 +24,16 @@ public class Main {
         LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         limasSegitiga.prosesInputDanValidasi();
 
+        PersegiPanjang persegiPanjang = new PersegiPanjang(0, 0);
+        persegiPanjang.prosesInputDanValidasi();
+
+        BelahKetupat belahKetupat = new BelahKetupat(0, 0, 0);
+        belahKetupat.prosesInputDanValidasi();
+
+        Trapesium trapesium = new Trapesium(0, 0, 0, 0);
+        trapesium.prosesInputDanValidasi();
+
+
         System.out.println("\n=== Memulai Proses Perhitungan Multithreading ===\n");
 
         // Proses perhitungan menggunakan thread
@@ -64,6 +74,24 @@ public class Main {
                 System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
             }, "Perhitungan Limas Segitiga");
 
+            PerhitunganThread persegiPanjangThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + persegiPanjang.getNama());
+                System.out.printf("Luas persegi panjang: %.2f\n", persegiPanjang.getLuas());
+                System.out.printf("Keliling persegi panjang: %.2f\n", persegiPanjang.getKeliling());
+            }, "Perhitungan persegi panjang");
+
+            PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + belahKetupat.getNama());
+                System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.getLuas());
+                System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.getKeliling());
+            }, "Perhitungan belah ketupat");
+
+             PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + trapesium.getNama());
+                System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
+                System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
+            }, "Perhitungan trapesium");
+
             // Mulai semua thread
             lingkaranThread.start();
             bolaThread.start();
@@ -71,6 +99,9 @@ public class Main {
             temberengBolaThread.start();
             segitigaThread.start();
             limasSegitigaThread.start();
+            persegiPanjangThread.start();
+            belahKetupatThread.start();
+            trapesiumThread.start();
 
             // Tunggu semua thread selesai
             lingkaranThread.join();
@@ -79,6 +110,9 @@ public class Main {
             temberengBolaThread.join();
             segitigaThread.join();
             limasSegitigaThread.join();
+            persegiPanjangThread.join();
+            belahKetupatThread.join();
+            trapesiumThread.join();
 
             System.out.println("\n=== Semua Proses Selesai ===");
 
