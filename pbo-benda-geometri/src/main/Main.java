@@ -47,6 +47,15 @@ public class Main {
         Trapesium trapesium = new Trapesium(0, 0, 0, 0);
         trapesium.prosesInputDanValidasi();
 
+        PrismaSegitiga prismaSegitiga = new PrismaSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
+        prismaSegitiga.prosesInputDanValidasi();
+
+        LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
+        limasBelahKetupat.prosesInputDanValidasi();
+
+        PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
+        prismaBelahKetupat.prosesInputDanValidasi(); 
+
 
         System.out.println("\n=== Memulai Proses Perhitungan Multithreading ===\n");
 
@@ -94,7 +103,7 @@ public class Main {
                 System.out.printf("Keliling persegi: %.2f\n", persegi.getKeliling());
             }, "Perhitungan persegi");
 
-                PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
+            PerhitunganThread limasPersegiThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + limasPersegi.getNama());
                 System.out.printf("Volume Limas Persegi: %.2f\n", limasPersegi.getVolume());
                 System.out.printf("Luas Permukaan Limas Persegi: %.2f\n", limasPersegi.getLuasPermukaan());
@@ -131,6 +140,24 @@ public class Main {
                 System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
             }, "Perhitungan trapesium");
 
+            PerhitunganThread prismaSegitigaThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + prismaSegitiga.getNama());
+                System.out.printf("Volume Prisma Segitiga: %.2f\n", prismaSegitiga.getVolume());
+                System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n", limasSegitiga.getLuasPermukaan());
+            }, "Perhitungan Prisma Segitiga");
+
+            PerhitunganThread limasBelahKetupatThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + limasBelahKetupat.getNama());
+                System.out.printf("Volume Limas Belah Ketupat: %.2f\n", limasBelahKetupat.getVolume());
+                System.out.printf("Luas Permukaan Limas Belah Ketupat: %.2f\n", limasBelahKetupat.getLuasPermukaan());
+            }, "Perhitungan Limas Belah Ketupat");
+
+            PerhitunganThread prismaBelahKetupatThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + prismaBelahKetupat.getNama());
+                System.out.printf("Volume Prisma Belah Ketupat: %.2f\n", prismaBelahKetupat.getVolume());
+                System.out.printf("Luas Permukaan Prisma Belah Ketupat: %.2f\n", prismaBelahKetupat.getLuasPermukaan());
+            }, "Perhitungan Prisma Belah Ketupat");
+
             // Mulai semua thread
             lingkaranThread.start();
             bolaThread.start();
@@ -145,6 +172,9 @@ public class Main {
             prismaPersegiPanjangThread.start();
             belahKetupatThread.start();
             trapesiumThread.start();
+            prismaSegitigaThread.start();
+            limasBelahKetupatThread.start();
+            prismaBelahKetupatThread.start();
             
 
             // Tunggu semua thread selesai
@@ -154,13 +184,16 @@ public class Main {
             temberengBolaThread.join();
             segitigaThread.join();
             limasSegitigaThread.join();
-            persegiThread.start();
-            limasPersegiThread.start();
+            persegiThread.join();
+            limasPersegiThread.join();
             persegiPanjangThread.join();
             limasPersegiPanjangThread.join();
             prismaPersegiPanjangThread.join();
             belahKetupatThread.join();
             trapesiumThread.join();
+            prismaSegitigaThread.join();
+            limasBelahKetupatThread.join();
+            prismaBelahKetupatThread.join();
 
             System.out.println("\n=== Semua Proses Selesai ===");
 
