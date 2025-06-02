@@ -3,6 +3,9 @@ package benda.ruang;
 import benda.datar.Persegi;
 import java.util.*;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class PrismaPersegi extends Persegi{
     protected double tinggiPrisma;
     protected double volume;

@@ -1,7 +1,13 @@
 package benda.ruang;
 
 import benda.datar.Persegi;
+<<<<<<< HEAD
 import java.util.*;
+=======
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+>>>>>>> b0cfc26bb44bcf0883e1559161b5cb260a9d0b33
 
 public class LimasPersegi extends Persegi{
     protected double tinggiLimas;
