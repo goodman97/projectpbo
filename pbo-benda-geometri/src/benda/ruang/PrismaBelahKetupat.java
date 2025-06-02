@@ -27,13 +27,13 @@ public class PrismaBelahKetupat extends BelahKetupat{
         return volume; 
     }
     
+    public double hitungVolume(double newDiagonal1, double newDiagonal2, double newSisi) {
+        return  (1.0 / 2.0) * newDiagonal1 * newDiagonal2 * tinggiPrisma;
+    }
+
     public double hitungLuasPermukaan() {
         luasPermukaan = (super.luas*2) + (sisi * tinggiPrisma) * 4;
         return luasPermukaan;
-    }
-
-    public double hitungVolume(double newDiagonal1, double newDiagonal2, double newSisi) {
-        return  (1.0 / 2.0) * newDiagonal1 * newDiagonal2 * tinggiPrisma;
     }
 
     public double hitungLuasPermukaan(double newDiagonal1, double newDiagonal2, double newSisi) {

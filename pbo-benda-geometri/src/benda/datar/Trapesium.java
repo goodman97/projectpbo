@@ -36,86 +36,86 @@ public class Trapesium extends BangunDatar{
     }    
 
     public void prosesInputDanValidasi() {
-    Scanner inp = new Scanner(System.in);
-    
-    while (true) {
-        try {
-            System.out.print("Masukkan sisi atas : ");
-            double atas = inp.nextDouble();
-            inp.nextLine(); // consume newline
-            
-            if (atas <= 0) {
-                System.out.println("Sisi Atas harus lebih dari nol.\n");
-                continue;
+        Scanner inp = new Scanner(System.in);
+        
+        while (true) {
+            try {
+                System.out.print("Masukkan sisi atas : ");
+                double atas = inp.nextDouble();
+                inp.nextLine(); // consume newline
+                
+                if (atas <= 0) {
+                    System.out.println("Sisi Atas harus lebih dari nol.\n");
+                    continue;
+                }
+                
+                this.atas = atas;
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input sisi atas harus berupa angka.\n");
+                inp.nextLine(); 
             }
-            
-            this.atas = atas;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input sisi atas harus berupa angka.\n");
-            inp.nextLine(); 
         }
-    }
-    
-    while (true) {
-        try {
-            System.out.print("Masukkan sisi bawah : ");
-            double bawah = inp.nextDouble();
-            inp.nextLine(); 
-            
-            if (bawah <= 0) {
-                System.out.println("Sisi bawah harus lebih dari nol.\n");
-                continue;
+        
+        while (true) {
+            try {
+                System.out.print("Masukkan sisi bawah : ");
+                double bawah = inp.nextDouble();
+                inp.nextLine(); 
+                
+                if (bawah <= 0) {
+                    System.out.println("Sisi bawah harus lebih dari nol.\n");
+                    continue;
+                }
+                
+                this.bawah = bawah;
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input sisi bawah  harus berupa angka.\n");
+                inp.nextLine(); 
             }
-            
-            this.bawah = bawah;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input sisi bawah  harus berupa angka.\n");
-            inp.nextLine(); 
         }
-    }
 
-    while (true) {
-        try {
-            System.out.print("Masukkan tinggi : ");
-            double tinggi = inp.nextDouble();
-            inp.nextLine(); 
-            
-            if (tinggi <= 0) {
-                System.out.println("tinggi harus lebih dari nol.\n");
-                continue;
+        while (true) {
+            try {
+                System.out.print("Masukkan tinggi : ");
+                double tinggi = inp.nextDouble();
+                inp.nextLine(); 
+                
+                if (tinggi <= 0) {
+                    System.out.println("tinggi harus lebih dari nol.\n");
+                    continue;
+                }
+                
+                this.tinggi = tinggi;
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input tinggi  harus berupa angka.\n");
+                inp.nextLine(); 
             }
-            
-            this.tinggi = tinggi;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input tinggi  harus berupa angka.\n");
-            inp.nextLine(); 
         }
-    }
 
-     while (true) {
-        try {
-            System.out.print("Masukkan sisi miring : ");
-            double sisiMiring = inp.nextDouble();
-            inp.nextLine(); 
-            
-            if (sisiMiring <= 0) {
-                System.out.println("Sisi miring harus lebih dari nol.\n");
-                continue;
+        while (true) {
+            try {
+                System.out.print("Masukkan sisi miring : ");
+                double sisiMiring = inp.nextDouble();
+                inp.nextLine(); 
+                
+                if (sisiMiring <= 0) {
+                    System.out.println("Sisi miring harus lebih dari nol.\n");
+                    continue;
+                }
+                
+                this.sisiMiring = sisiMiring;
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input sisi miring  harus berupa angka.\n");
+                inp.nextLine(); 
             }
-            
-            this.sisiMiring = sisiMiring;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input sisi miring  harus berupa angka.\n");
-            inp.nextLine(); 
         }
-    }
 
-    this.luas = hitungLuas();
-    this.keliling = hitungKeliling();
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
 
     public double getLuas(){

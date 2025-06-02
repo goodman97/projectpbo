@@ -42,7 +42,7 @@ public class LimasPersegiPanjang extends PersegiPanjang{
         return newPanjang*newLebar + 2 * luasSegitigaPanjang + 2 * luasSegitigaLebar;
     }   
 
-    public void prosesHitungVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai panjang, lebar, dan tinggi limas persegi panjang? (Y/N): ");
         String jawab = inp.nextLine();

@@ -41,9 +41,8 @@ public class Bola extends Lingkaran {
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("\nNilai jari-jari lingkaran saat ini adalah " + super.jariJari + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
+            System.out.print("Nilai jari-jari lingkaran saat ini adalah " + super.jariJari + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
             String jawab = inp.nextLine();
-
             if (jawab.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {

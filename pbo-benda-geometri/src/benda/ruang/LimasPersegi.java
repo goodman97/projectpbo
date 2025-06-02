@@ -1,13 +1,8 @@
 package benda.ruang;
 
 import benda.datar.Persegi;
-<<<<<<< HEAD
 import java.util.*;
-=======
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
->>>>>>> b0cfc26bb44bcf0883e1559161b5cb260a9d0b33
 
 public class LimasPersegi extends Persegi{
     protected double tinggiLimas;
@@ -49,11 +44,10 @@ public class LimasPersegi extends Persegi{
         return luasPermukaan;
     }
 
-    public void prosesHitungVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Nilai sisi persegi saat ini adalah " + super.sisi + "Apakah ingin mengubah nilai sisi persegi? (Y/N): ");
         String jawab = inp.nextLine();
-
         if (jawab.equalsIgnoreCase("Y")) {
             try {
                 System.out.print("Masukkan sisi baru: ");

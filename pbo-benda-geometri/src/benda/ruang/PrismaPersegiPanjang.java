@@ -40,7 +40,7 @@ public class PrismaPersegiPanjang extends PersegiPanjang{
     }
 
     
-    public void prosesHitungVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai panjang, lebar, dan tinggi prisma persegi panjang? (Y/N): ");
         String jawab = inp.nextLine();

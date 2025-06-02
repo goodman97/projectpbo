@@ -43,7 +43,7 @@ public class Kerucut extends Lingkaran{
         return luasPermukaan;
     }
     
-    public void ProsesPerhitungan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai jari-jari Kerucut? (Y/N): ");
         String jawab = inp.nextLine();

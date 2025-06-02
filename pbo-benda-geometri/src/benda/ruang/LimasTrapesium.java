@@ -35,7 +35,7 @@ public class LimasTrapesium extends Trapesium{
         return hitungLuas() + 4 * luasSegitigaTegak;
     }
 
-    public void prosesHitungVolumeDanLuasPermukaan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai panjang dan tinggi limas trapesium? (Y/N): ");
         String jawab = inp.nextLine();

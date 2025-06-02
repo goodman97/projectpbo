@@ -44,7 +44,7 @@ public class PrismaSegitiga extends Segitiga{
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("\nApakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
+            System.out.print("Apakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
             String jawab = inp.nextLine();
 
             if (jawab.equalsIgnoreCase("Y")) {

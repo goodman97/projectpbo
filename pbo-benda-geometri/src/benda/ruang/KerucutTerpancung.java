@@ -65,7 +65,7 @@ public class KerucutTerpancung extends Kerucut {
                Math.PI * Math.pow(newJariJariAtas, 2);
     }
 
-    public void ProsesPerhitungan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai jari-jari bawah, atas, dan tinggi? (Y/N): ");
         String jawab = inp.nextLine();

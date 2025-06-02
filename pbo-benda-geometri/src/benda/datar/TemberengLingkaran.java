@@ -33,7 +33,7 @@ public class TemberengLingkaran extends JuringLingkaran{
         keliling = super.panjangBusur + taliBusur;
         return keliling;
     }
-    //test
+
     // Overload hitungLuas dengan parameter baru
     public double hitungLuas(double newJariJari, double taliBusur) {
         double sudutRad = Math.toRadians(sudut);
@@ -48,7 +48,7 @@ public class TemberengLingkaran extends JuringLingkaran{
         return panjangBusur + taliBusur;
     }
 
-    public void ProsesPerhitungan() {
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai jari-jari Tembereng Lingkaran? (Y/N): ");
         String jawab = inp.nextLine();

@@ -44,7 +44,7 @@ public final class JuringLingkaran extends Lingkaran{
         return keliling;
     }
 
-    public void ProsesPerhitungan(){
+    public void prosesInputDanValidasi(){
         Scanner inp = new Scanner(System.in);
         System.out.print("Apakah ingin mengubah nilai jari-jari Juring Lingkaran? (Y/N): ");
         String jawab = inp.nextLine();
