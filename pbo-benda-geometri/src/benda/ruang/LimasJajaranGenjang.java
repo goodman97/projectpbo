@@ -10,8 +10,6 @@ public class LimasJajaranGenjang extends JajaranGenjang{
     public LimasJajaranGenjang(double alas, double tinggiAlas, double sisiMiring, double tinggiLimas) {
         super(alas, tinggiAlas, sisiMiring);
         this.tinggiLimas = tinggiLimas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

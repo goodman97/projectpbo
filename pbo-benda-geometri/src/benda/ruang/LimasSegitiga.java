@@ -12,8 +12,6 @@ public class LimasSegitiga extends Segitiga{
     public LimasSegitiga(double alas, double tinggiSegitiga, double tinggiLimas) {
         super(alas, tinggiSegitiga);
         this.tinggiLimas = tinggiLimas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

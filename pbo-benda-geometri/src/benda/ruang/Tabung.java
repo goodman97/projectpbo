@@ -10,8 +10,6 @@ public class Tabung extends Lingkaran{
     public Tabung(double jariJari, double tinggi) {
         super(jariJari);
         this.tinggi = tinggi;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
     
     @Override

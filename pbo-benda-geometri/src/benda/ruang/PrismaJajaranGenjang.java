@@ -10,8 +10,6 @@ public class PrismaJajaranGenjang extends JajaranGenjang{
     public PrismaJajaranGenjang(double alas, double tinggiAlas, double sisiMiring, double tinggiPrisma) {
         super(alas, tinggiAlas, sisiMiring);
         this.tinggiPrisma = tinggiPrisma;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

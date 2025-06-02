@@ -11,8 +11,6 @@ public class KerucutTerpancung extends Kerucut {
     public KerucutTerpancung(double jariJariBawah, double jariJariAtas, double tinggi) {
         super(jariJariBawah, tinggi);
         this.jariJariAtas = jariJariAtas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

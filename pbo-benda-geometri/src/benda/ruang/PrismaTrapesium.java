@@ -13,8 +13,6 @@ public class PrismaTrapesium extends Trapesium {
     public PrismaTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiPrisma) {
         super(atas, bawah, tinggiAlas, sisiMiring);
         this.tinggiPrisma = tinggiPrisma;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

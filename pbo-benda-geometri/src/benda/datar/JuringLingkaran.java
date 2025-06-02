@@ -2,7 +2,7 @@ package benda.datar;
 
 import java.util.*;
 
-public final class JuringLingkaran extends Lingkaran{
+public class JuringLingkaran extends Lingkaran{
     protected double sudut;
     protected double luas;
     protected double keliling;

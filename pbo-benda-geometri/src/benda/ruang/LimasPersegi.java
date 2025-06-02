@@ -12,8 +12,6 @@ public class LimasPersegi extends Persegi{
     public LimasPersegi(double sisi, double tinggiLimas) {
         super(sisi);
         this.tinggiLimas = tinggiLimas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

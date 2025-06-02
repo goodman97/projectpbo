@@ -12,8 +12,6 @@ public class LimasTrapesium extends Trapesium{
     public LimasTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiLimas) {
         super(atas, bawah, tinggiAlas, sisiMiring);
         this.tinggiLimas = tinggiLimas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
     
     @Override

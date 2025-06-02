@@ -11,8 +11,6 @@ public class TemberengLingkaran extends JuringLingkaran{
         super(jariJari, sudut);
         double sudutRad = Math.toRadians(sudut);
         this.taliBusur = 2 * jariJari * Math.sin(sudutRad / 2);
-        this.luas = hitungLuas();
-        this.keliling = hitungKeliling();
     }
 
     @Override
