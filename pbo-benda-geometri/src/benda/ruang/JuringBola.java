@@ -7,27 +7,27 @@ public class JuringBola extends Bola {
     private double volume;
     private double luasPermukaan;
 
+    // Konstruktor tanpa langsung menghitung volume & luasPermukaan
     public JuringBola(double jariJari, double sudut) {
         super(jariJari);
         this.sudut = sudut;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
-    
+
     @Override
     public String getNama() {
         return "Juring Bola";
     }
-    
+
     @Override
     protected double hitungVolume() {
-        volume = (sudut / 360.0) * super.volume;
+        volume = (sudut / 360.0) * ((4.0/3.0) * Math.PI * Math.pow(super.jariJari, 3));
         return volume;
     }
 
-    // Overload
-    protected double hitungVolume(double newJariJari, double sudut){
-        volume = (sudut/360.0) * (4.0/3.0) * Math.PI * Math.pow(newJariJari, 3);
+    // Overload untuk jari-jari & sudut baru
+    protected double hitungVolume(double newJariJari, double sudut) {
+        double volumeBola = (4.0 / 3.0) * Math.PI * Math.pow(newJariJari, 3);
+        volume = (sudut / 360.0) * volumeBola;
         return volume;
     }
 
@@ -37,16 +37,18 @@ public class JuringBola extends Bola {
         return luasPermukaan;
     }
 
-    // Overload
-    protected double hitungLuasPermukaan(double newJariJari, double sudut){
-        luasPermukaan = ((sudut / 360.0) * 4 * Math.PI * Math.pow(newJariJari, 2)) + (Math.PI * Math.pow(newJariJari, 2));
+    // Overload untuk jari-jari & sudut baru
+    protected double hitungLuasPermukaan(double newJariJari, double sudut) {
+        luasPermukaan = ((sudut / 360.0) * 4 * Math.PI * Math.pow(newJariJari, 2))   + (Math.PI * Math.pow(newJariJari, 2));
         return luasPermukaan;
     }
 
+    // Proses input dengan validasi aman
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("Nilai jari-jari Bola saat ini adalah " + super.jariJari + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
+            System.out.print("Nilai jari-jari Bola saat ini adalah " + super.jariJari 
+                             + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
             String jawab = inp.nextLine();
 
             if (jawab.equalsIgnoreCase("Y")) {
@@ -54,42 +56,63 @@ public class JuringBola extends Bola {
                     try {
                         System.out.print("Masukkan jari-jari baru: ");
                         double newJariJari = inp.nextDouble();
-                        inp.nextLine();
                         System.out.print("Masukkan besar sudut pusat: ");
-                        sudut = inp.nextDouble();
-                        inp.nextLine();
+                        double sudut = inp.nextDouble();
+                        inp.nextLine(); // Buang newline
+
                         if (newJariJari <= 0 || sudut <= 0) {
-                            System.out.println("Jari-jari dan Sudut Pusat harus lebih dari nol.\n");
+                            System.out.println("Jari-jari dan sudut pusat harus lebih dari nol.\n");
                             continue;
                         }
+
                         super.jariJari = newJariJari;
                         this.sudut = sudut;
+                        super.volume = super.hitungVolume(newJariJari); // Update volume bola
+                        super.luasPermukaan = super.hitungLuasPermukaan(newJariJari); // Update luas bola
                         this.volume = hitungVolume(newJariJari, sudut);
                         this.luasPermukaan = hitungLuasPermukaan(newJariJari, sudut);
                         break;
+
                     } catch (InputMismatchException e) {
-                        System.out.println("Input jari-jari harus berupa angka.");
+                        System.out.println("Input harus berupa angka.\n");
+                        inp.nextLine(); // Buang input salah
+                    }
+                }
+                break;
+
+            } else if (jawab.equalsIgnoreCase("N")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan besar sudut pusat: ");
+                        sudut = inp.nextDouble();
+                        inp.nextLine();
+                        if (sudut <= 0) {
+                            System.out.println("Sudut pusat harus lebih dari nol.\n");
+                            continue;
+                        }
+                        this.sudut = sudut;
+                        this.volume = hitungVolume();
+                        this.luasPermukaan = hitungLuasPermukaan();
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.\n");
                         inp.nextLine();
                     }
                 }
                 break;
-            } else if (jawab.equalsIgnoreCase("N")) {
-                System.out.print("Masukkan besar sudut pusat: ");
-                this.sudut = inp.nextDouble();
-                this.volume = hitungVolume();
-                this.luasPermukaan = hitungLuasPermukaan();
-                break;
+
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
     }
 
-    public double getVolume(){
+    public double getVolume() {
         return volume;
     }
 
-    public double getLuasPermukaan(){
+    public double getLuasPermukaan() {
         return luasPermukaan;
     }
 }

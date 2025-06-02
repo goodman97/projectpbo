@@ -10,8 +10,6 @@ public class Lingkaran extends BangunDatar {
 
     public Lingkaran(double jariJari) {
         this.jariJari = jariJari;
-        this.luas = hitungLuas();
-        this.keliling = hitungKeliling();
     }
   
     @Override

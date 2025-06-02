@@ -9,8 +9,6 @@ public class Bola extends Lingkaran {
 
     public Bola(double jariJari) {
         super(jariJari);
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override
@@ -64,6 +62,7 @@ public class Bola extends Lingkaran {
                 }
                 break;
             } else if (jawab.equalsIgnoreCase("N")) {
+                super.jariJari = jariJari;
                 this.volume = hitungVolume();
                 this.luasPermukaan = hitungLuasPermukaan();
                 break;

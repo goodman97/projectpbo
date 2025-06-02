@@ -8,8 +8,6 @@ public class CincinBola extends Bola {
     public CincinBola(double jariJariLuar, double jariJariDalam) {
         super(jariJariLuar);
         this.jariJariDalam = jariJariDalam;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

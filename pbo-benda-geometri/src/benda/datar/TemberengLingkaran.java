@@ -1,7 +1,6 @@
 package benda.datar;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class TemberengLingkaran extends JuringLingkaran{
     private double taliBusur;

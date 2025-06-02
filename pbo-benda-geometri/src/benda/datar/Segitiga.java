@@ -13,8 +13,6 @@ public class Segitiga extends BangunDatar {
     public Segitiga(double alas, double tinggiSegitiga) {
         this.alas = alas;
         this.tinggiSegitiga = tinggiSegitiga;
-        this.luas = hitungLuas();
-        this.keliling = hitungKeliling();
     }
 
     @Override

@@ -74,6 +74,7 @@ public class TemberengBola extends Bola {
                 break;
             } else if (jawab.equalsIgnoreCase("N")) {
                 System.out.print("Masukkan tinggi tembereng bola: ");
+                super.jariJari = jariJari;
                 this.tinggi = inp.nextDouble();
                 this.volume = hitungVolume();
                 this.luasPermukaan = hitungLuasPermukaan();
