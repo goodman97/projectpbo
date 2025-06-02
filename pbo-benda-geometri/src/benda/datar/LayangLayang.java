@@ -18,6 +18,8 @@ public class LayangLayang extends BangunDatar{
         this.diagonal2 = diagonal2;
         this.sisiPanjang = sisiPanjang;
         this.sisiPendek = sisiPendek;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
 
     @Override

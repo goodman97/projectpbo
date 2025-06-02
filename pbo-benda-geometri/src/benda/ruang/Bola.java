@@ -9,6 +9,8 @@ public class Bola extends Lingkaran {
 
     public Bola(double jariJari) {
         super(jariJari);
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

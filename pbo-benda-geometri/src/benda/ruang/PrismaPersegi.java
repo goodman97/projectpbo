@@ -7,13 +7,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PrismaPersegi extends Persegi{
-    protected double tinggiPrisma;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiPrisma;
+    private double volume;
+    private double luasPermukaan;
 
     public PrismaPersegi(double sisi, double tinggiPrisma) {
         super(sisi);
         this.tinggiPrisma = tinggiPrisma;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

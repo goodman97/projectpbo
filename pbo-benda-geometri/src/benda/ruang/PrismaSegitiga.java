@@ -12,6 +12,8 @@ public class PrismaSegitiga extends Segitiga{
     public PrismaSegitiga(double alas, double tinggiSegitiga, double tinggiPrisma) {
         super(alas, tinggiSegitiga);
         this.tinggiPrisma = tinggiPrisma;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
    
     @Override

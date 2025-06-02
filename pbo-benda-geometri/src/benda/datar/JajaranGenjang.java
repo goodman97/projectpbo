@@ -13,6 +13,8 @@ public class JajaranGenjang extends BangunDatar{
         this.alas = alas;
         this.tinggi = tinggi;
         this.sisiMiring = sisiMiring;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
 
     @Override

@@ -11,6 +11,8 @@ public final class JuringLingkaran extends Lingkaran{
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
         this.sudut = sudut;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
     
     @Override

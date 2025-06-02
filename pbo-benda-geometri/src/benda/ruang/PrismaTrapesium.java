@@ -6,13 +6,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PrismaTrapesium extends Trapesium {
-    protected double tinggiPrisma;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiPrisma;
+    private double volume;
+    private double luasPermukaan;
 
     public PrismaTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiPrisma) {
         super(atas, bawah, tinggiAlas, sisiMiring);
         this.tinggiPrisma = tinggiPrisma;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

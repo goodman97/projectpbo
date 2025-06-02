@@ -5,11 +5,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LimasTrapesium extends Trapesium{
-    protected double tinggiLimas;
+    private double tinggiLimas;
+    private double volume;
+    private double luasPermukaan;
 
     public LimasTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiLimas) {
         super(atas, bawah, tinggiAlas, sisiMiring);
         this.tinggiLimas = tinggiLimas;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
     
     @Override

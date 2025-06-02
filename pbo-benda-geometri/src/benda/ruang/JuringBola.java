@@ -11,6 +11,8 @@ public class JuringBola extends Bola {
     public JuringBola(double jariJari, double sudut) {
         super(jariJari);
         this.sudut = sudut;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

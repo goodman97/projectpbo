@@ -4,13 +4,15 @@ import java.util.*;
 
 public class TemberengLingkaran extends JuringLingkaran{
     private double taliBusur;
-    protected double luas;
-    protected double keliling;
+    private double luas;
+    private double keliling;
 
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut);
         double sudutRad = Math.toRadians(sudut);
         this.taliBusur = 2 * jariJari * Math.sin(sudutRad / 2);
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
 
     @Override

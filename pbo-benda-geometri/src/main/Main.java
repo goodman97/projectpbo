@@ -273,12 +273,15 @@ public class Main {
             if (l instanceof TemberengBola) {
                 TemberengBola tb = (TemberengBola) l;
                 System.out.printf("  Volume (Tembereng): %.2f\n", tb.getVolume());
+                System.out.printf("  Luas Permukaan (Tembereng): %.2f\n", tb.getLuasPermukaan());
             } else if (l instanceof JuringBola) {
                 JuringBola jb = (JuringBola) l;
                 System.out.printf("  Volume (Juring): %.2f\n", jb.getVolume());
+                System.out.printf("  Luas Permukaan (Juring): %.2f\n", jb.getLuasPermukaan());
             } else if (l instanceof Bola) {
                 Bola b = (Bola) l;
                 System.out.printf("  Volume (Bola): %.2f\n", b.getVolume());
+                System.out.printf("  Luas Permukaan (Bola): %.2f\n", b.getLuasPermukaan());
             }
             System.out.println();
         }

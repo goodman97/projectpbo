@@ -10,6 +10,8 @@ public class Persegi extends BangunDatar{
 
     public Persegi(double sisi) {
         this.sisi = sisi;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
     
     @Override
