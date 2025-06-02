@@ -35,68 +35,34 @@ public class BelahKetupat extends BangunDatar{
     }    
 
     public void prosesInputDanValidasi() {
-    Scanner inp = new Scanner(System.in);
-    
-    while (true) {
-        try {
-            System.out.print("Masukkan Diagonal1 : ");
-            double diagonal1 = inp.nextDouble();
-            inp.nextLine(); // consume newline
-            
-            if (diagonal1 <= 0) {
-                System.out.println("Diagonal1 harus lebih dari nol.\n");
-                continue;
+        Scanner inp = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.print("Masukkan Diagonal1 : ");
+                double diagonal1 = inp.nextDouble();
+                inp.nextLine();
+                System.out.print("Masukkan diagonal2 : ");
+                double diagonal2 = inp.nextDouble();
+                System.out.print("Masukkan sisi : ");
+                double sisi = inp.nextDouble();
+                inp.nextLine(); 
+                inp.nextLine(); 
+                if (diagonal1 <= 0) {
+                    System.out.println("Diagonal1 harus lebih dari nol.\n");
+                    continue;
+                }            
+                this.diagonal1 = diagonal1;
+                this.diagonal2 = diagonal2;
+                this.sisi = sisi;
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Input Diagonal1 harus berupa angka.\n");
+                inp.nextLine(); 
             }
-            
-            this.diagonal1 = diagonal1;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input Diagonal1 harus berupa angka.\n");
-            inp.nextLine(); 
         }
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
-    
-    while (true) {
-        try {
-            System.out.print("Masukkan diagonal2 : ");
-            double diagonal2 = inp.nextDouble();
-            inp.nextLine(); 
-            
-            if (diagonal2 <= 0) {
-                System.out.println("Diagonal2 harus lebih dari nol.\n");
-                continue;
-            }
-            
-            this.diagonal2 = diagonal2;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input diagonal2  harus berupa angka.\n");
-            inp.nextLine(); 
-        }
-    }
-
-    while (true) {
-        try {
-            System.out.print("Masukkan sisi : ");
-            double sisi = inp.nextDouble();
-            inp.nextLine(); 
-            
-            if (sisi <= 0) {
-                System.out.println("Sisi harus lebih dari nol.\n");
-                continue;
-            }
-            
-            this.sisi = sisi;
-            break;
-        } catch (InputMismatchException e) {
-            System.out.println("Input sisi  harus berupa angka.\n");
-            inp.nextLine(); 
-        }
-    }
-
-    this.luas = hitungLuas();
-    this.keliling = hitungKeliling();
-}
 
     public double getLuas(){
         return luas;

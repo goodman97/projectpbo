@@ -20,21 +20,25 @@ public class PrismaSegitiga extends Segitiga{
     }
 
     public double hitungVolume() {
-        return hitungLuas() * tinggiPrisma;
+        volume = super.luas * tinggiPrisma;
+        return  volume;
+    }
+
+    public double hitungVolume(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
+        volume = newAlas * newTinggiSegitiga * tinggiPrisma;
+        return volume;
     }
 
     public double hitungLuasPermukaan() {
         double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        return 2 * hitungLuas() + (alas + 2 * sisiMiring) * tinggiPrisma;
+        luasPermukaan = 2 * super.luas + 2 * sisiMiring * tinggiPrisma;
+        return luasPermukaan;
     }
 
-    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
-        return newAlas * newTinggiSegitiga * tinggiPrisma;
-    }
-
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
+    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
         double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        return 2 * (1.0 / 2.0) * newAlas * newTinggiSegitiga + (alas + 2 * sisiMiring) * tinggiPrisma;
+        luasPermukaan = 2 * (0.5 * newAlas * newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
+        return luasPermukaan;
     }
 
     public void prosesInputDanValidasi() {
@@ -69,13 +73,10 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
-
-                        super.alas = newAlas;
-                        super.tinggiSegitiga = newTinggiSegitiga;
                         this.tinggiPrisma = tinggiPrisma;
                         super.luas = super.hitungLuas();
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga, tinggiPrisma);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, tinggiPrisma);
                         break;
 
                     } catch (InputMismatchException e) {
@@ -94,12 +95,10 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
-
                         this.tinggiPrisma = tinggiPrisma;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
-
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
                         inp.nextLine();
@@ -115,12 +114,8 @@ public class PrismaSegitiga extends Segitiga{
     public double getVolume() {
         return volume;
     }
-
+    
     public double getLuasPermukaan() {
         return luasPermukaan;
-    }
-
-    public double getTinggiPrisma() {
-        return tinggiPrisma;
     }
 }

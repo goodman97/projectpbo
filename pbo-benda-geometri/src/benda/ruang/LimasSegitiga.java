@@ -22,32 +22,35 @@ public class LimasSegitiga extends Segitiga{
     }
     
     public double hitungVolume() {
-        return (1.0 / 3.0) * hitungLuas() * tinggiLimas;
-    }
-
-    public double hitungLuasPermukaan() {
-        double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiLimas, 2));
-        double luasTegak = 0.5 * alas * sisiMiring;
-        return hitungLuas() + 3 * luasTegak;
+        volume = (1.0 / 3.0) * super.luas * tinggiLimas;
+        return volume;
     }
 
     public double hitungVolume(double newAlas, double newTinggiSegitiga) {
-        return  (1.0 / 3.0) * (0.5 * newAlas * newTinggiSegitiga) * tinggiLimas;
+        volume = (1.0 / 3.0) * (0.5 * newAlas * newTinggiSegitiga) * tinggiLimas;
+        return volume;
+    }
+
+    public double hitungLuasPermukaan() {
+        double tinggiSegitigaTegak = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiLimas, 2));
+        double luasSegitigaTegak = 0.5 * alas * tinggiSegitigaTegak;
+        luasPermukaan = super.luas + 3 * luasSegitigaTegak;
+        return luasPermukaan;
     }
 
     public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
-        double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiLimas, 2));
-        double luasTegak = 0.5 * newAlas * sisiMiring;
+        double tinggiSegitigaTegak = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiLimas, 2));
+        double luasTegak = 0.5 * newAlas * tinggiSegitigaTegak;
         double luasAlas = 0.5 * newAlas * newTinggiSegitiga;
-        return luasAlas + 3 * luasTegak;
+        luasPermukaan = luasAlas + 3 * luasTegak;
+        return luasPermukaan;
     }
 
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("\nApakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
+            System.out.print("Apakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
             String jawab = inp.nextLine();
-
             if (jawab.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {
@@ -58,7 +61,6 @@ public class LimasSegitiga extends Segitiga{
                             System.out.println("Alas harus lebih dari nol.\n");
                             continue;
                         }
-
                         System.out.print("Masukkan tinggi segitiga baru: ");
                         double newTinggiSegitiga = inp.nextDouble();
                         inp.nextLine();
@@ -66,7 +68,6 @@ public class LimasSegitiga extends Segitiga{
                             System.out.println("Tinggi segitiga harus lebih dari nol.\n");
                             continue;
                         }
-
                         System.out.print("Masukkan tinggi limas: ");
                         this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();
@@ -74,15 +75,12 @@ public class LimasSegitiga extends Segitiga{
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-
                         super.alas = newAlas;
                         super.tinggiSegitiga = newTinggiSegitiga;
                         this.tinggiLimas = tinggiLimas;
-                        super.luas = super.hitungLuas();
                         this.volume = hitungVolume(newAlas, newTinggiSegitiga);
                         this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
                         break;
-
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
                         inp.nextLine();
@@ -99,12 +97,10 @@ public class LimasSegitiga extends Segitiga{
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-
                         this.tinggiLimas = tinggiLimas;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
-
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
                         inp.nextLine();
@@ -123,9 +119,5 @@ public class LimasSegitiga extends Segitiga{
 
     public double getLuasPermukaan() {
         return luasPermukaan;
-    }
-
-    public double getTinggiLimas() {
-        return tinggiLimas;
     }
 }

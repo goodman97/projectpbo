@@ -1,7 +1,7 @@
 package benda.ruang;
 
 import benda.datar.Persegi;
-import java.util.Scanner;
+import java.util.*;
 
 public class LimasPersegi extends Persegi{
     protected double tinggiLimas;
@@ -45,31 +45,31 @@ public class LimasPersegi extends Persegi{
 
     public void prosesHitungVolumeDanLuasPermukaan() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai panjang dan tinggi limas persegi panjang? (Y/N): ");
+        System.out.print("Nilai sisi persegi saat ini adalah " + super.sisi + "Apakah ingin mengubah nilai sisi persegi? (Y/N): ");
         String jawab = inp.nextLine();
 
         if (jawab.equalsIgnoreCase("Y")) {
             try {
-                 System.out.print("Masukkan Sisi baru: ");
+                System.out.print("Masukkan sisi baru: ");
                 double newSisi = inp.nextDouble();
                 if (newSisi <= 0) {
-                    throw new IllegalArgumentException("❌ Sisi harus lebih dari nol.");
+                    throw new IllegalArgumentException("Sisi harus lebih dari nol.");
                 }
-                System.out.print("Masukkan tinggi baru: ");
-                double newtinggiLimas = inp.nextDouble();
-                if (newtinggiLimas <= 0) {
-                    throw new IllegalArgumentException("❌ Tinggi limas harus lebih dari nol.");
+                System.out.print("Masukkan tinggi limas persegi: ");
+                double tinggiLimas = inp.nextDouble();
+                if (tinggiLimas <= 0) {
+                    throw new IllegalArgumentException("Tinggi limas harus lebih dari nol.");
                 }
-                volume = hitungVolume(newSisi, newtinggiLimas);
-                luasPermukaan = hitungLuasPermukaan(newSisi, newtinggiLimas);
+                volume = hitungVolume(newSisi, tinggiLimas);
+                luasPermukaan = hitungLuasPermukaan(newSisi, tinggiLimas);
             } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Inputan harus berupa angka.");
+                throw new IllegalArgumentException("Inputan harus berupa angka.");
             }
         } else if (jawab.equalsIgnoreCase("N")) {
             volume = hitungVolume();
             luasPermukaan = hitungLuasPermukaan();
         } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
+            throw new IllegalArgumentException("Jawaban hanya boleh Y atau N.");
         }
     }
 

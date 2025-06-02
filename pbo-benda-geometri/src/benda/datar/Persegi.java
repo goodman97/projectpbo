@@ -35,7 +35,7 @@ public class Persegi extends BangunDatar{
         Scanner inp = new Scanner(System.in);
         while (true) {
             try {
-                System.out.print("Masukkan sisi persegi: ");
+                System.out.print("Masukkan nilai sisi persegi: ");
                 double sisi = inp.nextDouble();
                 inp.nextLine();
 
