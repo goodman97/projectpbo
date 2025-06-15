@@ -66,9 +66,15 @@ public class Main {
         // System.out.println("\nInput benda geometri: " + prismaPersegiPanjang.getNama());
         // prismaPersegiPanjang.prosesInputDanValidasi();
 
-        // BelahKetupat belahKetupat = new BelahKetupat(0, 0, 0);
+        // BelahKetupat belahKetupat = new BelahKetupat(0, 0);
         // System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
         // belahKetupat.prosesInputDanValidasi();
+
+
+        BelahKetupat belahKetupat = new BelahKetupat(0, 0);
+        System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
+        belahKetupat.prosesInputDanValidasi();
+        belahKetupat.startCalculationThread();
 
         // LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
         // System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
@@ -78,7 +84,7 @@ public class Main {
         // System.out.println("\nInput benda geometri: " + prismaBelahKetupat.getNama());
         // prismaBelahKetupat.prosesInputDanValidasi(); 
 
-        Trapesium trapesium = new Trapesium(0, 0, 0, 0);
+        Trapesium trapesium = new Trapesium(0, 0, 0);
         System.out.println("\nInput benda geometri: " + trapesium.getNama());
         trapesium.prosesInputDanValidasi();
 
@@ -201,8 +207,8 @@ public class Main {
 
             // PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {
             //     System.out.println("Hitung: " + belahKetupat.getNama());
-            //     System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.getLuas());
-            //     System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.getKeliling());
+            //     System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.hitungLuas());
+            //     System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.hitungKeliling());
             // }, "Perhitungan belah ketupat");
 
             // PerhitunganThread limasBelahKetupatThread = new PerhitunganThread(() -> {
@@ -219,8 +225,8 @@ public class Main {
 
             PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + trapesium.getNama());
-                System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
-                System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
+                System.out.printf("Luas trapesium: %.2f\n", trapesium.hitungLuas());
+                System.out.printf("Keliling trapesium: %.2f\n", trapesium.hitungKeliling());
             }, "Perhitungan trapesium");
 
             // Mulai semua thread
