@@ -31,11 +31,13 @@ public class Trapesium extends BangunDatar implements Runnable {
     }
 
     public double hitungLuas() {
-        return (atas + bawah) / 2 * tinggi;
+        luas =(atas + bawah) / 2 * tinggi;
+        return luas;
     }
 
     public double hitungKeliling() {
-        return atas + bawah + (2 * sisiMiring);
+        keliling = atas + bawah + (2 * sisiMiring);
+        return keliling;
     }
 
     public void prosesInputDanValidasi() {
