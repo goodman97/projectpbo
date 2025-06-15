@@ -2,7 +2,6 @@ package main;
 
 import benda.datar.*;
 import benda.ruang.*;
-import main.PerhitunganThread;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +15,7 @@ public class Main {
         System.out.println("\nInput benda geometri: " + bola.getNama());
         bola.prosesInputDanValidasi();
 
-        Lingkaran juringBola = new JuringBola(lingkaran.getJariJari(), 1);
+        Lingkaran juringBola = new JuringBola(bola.getJariJari(), 1);
         System.out.println("\nInput benda geometri: " + juringBola.getNama());
         juringBola.prosesInputDanValidasi();
 

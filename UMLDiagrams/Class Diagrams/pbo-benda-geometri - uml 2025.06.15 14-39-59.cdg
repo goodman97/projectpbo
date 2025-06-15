@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="pbo-benda-geometri - uml">
+  <ClassDiagramComponents>
+    <Class name="BangunDatar" package="benda.geometri" visibility="public" isAbstract="true" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public" isAbstract="true"/>
+        <Method name="hitungLuas" returnType="double" visibility="public" isAbstract="true"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="BelahKetupat" package="benda.geometri" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="diagonal1" type="double" visibility="protected"/>
+        <Field name="diagonal2" type="double" visibility="protected"/>
+        <Field name="sisi" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="BendaGeometri" package="benda.geometri" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="Bola" package="benda.geometri" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="volume" type="double" visibility="protected"/>
+        <Field name="luasPermukaan" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="protected"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="CincinBola" package="benda.geometri" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="jariJariDalam" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJariLuar"/>
+          <Argument type="double" name="jariJariDalam"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JajaranGenjang" package="benda.geometri" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="alas" type="double" visibility="protected"/>
+        <Field name="tinggi" type="double" visibility="protected"/>
+        <Field name="sisiMiring" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggi"/>
+          <Argument type="double" name="sisiMiring"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JuringBola" package="benda.geometri" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="sudut" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="sudut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="protected"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="JuringLingkaran" package="benda.geometri" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="sudut" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+        <Field name="panjangBusur" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="sudut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Kerucut" package="benda.geometri" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiKerucut" type="double" visibility="protected"/>
+        <Field name="volume" type="double" visibility="protected"/>
+        <Field name="luasPermukaan" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="tinggi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="KerucutTerpancung" package="benda.geometri" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="jariJariAtas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJariBawah"/>
+          <Argument type="double" name="jariJariAtas"/>
+          <Argument type="double" name="tinggi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LayangLayang" package="benda.geometri" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="diagonal1" type="double" visibility="protected"/>
+        <Field name="diagonal2" type="double" visibility="protected"/>
+        <Field name="sisiPanjang" type="double" visibility="protected"/>
+        <Field name="sisiPendek" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisiPanjang"/>
+          <Argument type="double" name="sisiPendek"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasBelahKetupat" package="benda.geometri" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisi"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasJajaranGenjang" package="benda.geometri" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggiAlas"/>
+          <Argument type="double" name="sisiMiring"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasLayangLayang" package="benda.geometri" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisiPanjang"/>
+          <Argument type="double" name="sisiPendek"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasPersegi" package="benda.geometri" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="sisi"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasPersegiPanjang" package="benda.geometri" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="panjang"/>
+          <Argument type="double" name="lebar"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasSegitiga" package="benda.geometri" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggiSegitiga"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LimasTrapesium" package="benda.geometri" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="tinggiLimas" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="atas"/>
+          <Argument type="double" name="bawah"/>
+          <Argument type="double" name="tinggiAlas"/>
+          <Argument type="double" name="sisiMiring"/>
+          <Argument type="double" name="tinggiLimas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Lingkaran" package="benda.geometri" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="jariJari" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persegi" package="benda.geometri" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="sisi" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="sisi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PersegiPanjang" package="benda.geometri" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="panjang" type="double" visibility="protected"/>
+        <Field name="lebar" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="panjang"/>
+          <Argument type="double" name="lebar"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaBelahKetupat" package="benda.geometri" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="tinggiPrisma"/>
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaJajaranGenjang" package="benda.geometri" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggiAlas"/>
+          <Argument type="double" name="sisiMiring"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaLayangLayang" package="benda.geometri" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="diagonal1"/>
+          <Argument type="double" name="diagonal2"/>
+          <Argument type="double" name="sisiPanjang"/>
+          <Argument type="double" name="sisiPendek"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaPersegi" package="benda.geometri" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="sisi"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaPersegiPanjang" package="benda.geometri" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="panjang"/>
+          <Argument type="double" name="lebar"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaSegitiga" package="benda.geometri" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggiSegitiga"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrismaTrapesium" package="benda.geometri" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggiPrisma" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="atas"/>
+          <Argument type="double" name="bawah"/>
+          <Argument type="double" name="tinggiAlas"/>
+          <Argument type="double" name="sisiMiring"/>
+          <Argument type="double" name="tinggiPrisma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Segitiga" package="benda.geometri" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="alas" type="double" visibility="protected"/>
+        <Field name="tinggiSegitiga" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="alas"/>
+          <Argument type="double" name="tinggiSegitiga"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tabung" package="benda.geometri" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggi" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="tinggi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="public"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TemberengBola" package="benda.geometri" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Fields>
+        <Field name="tinggi" type="double" visibility="private"/>
+        <Field name="volume" type="double" visibility="private"/>
+        <Field name="luasPermukaan" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="tinggi"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungVolume" returnType="double" visibility="protected"/>
+        <Method name="hitungLuasPermukaan" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TemberengLingkaran" package="benda.geometri" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields>
+        <Field name="taliBusur" type="double" visibility="private"/>
+        <Field name="luas" type="double" visibility="private"/>
+        <Field name="keliling" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="jariJari"/>
+          <Argument type="double" name="sudut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Trapesium" package="benda.geometri" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields>
+        <Field name="atas" type="double" visibility="protected"/>
+        <Field name="bawah" type="double" visibility="protected"/>
+        <Field name="tinggi" type="double" visibility="protected"/>
+        <Field name="sisiMiring" type="double" visibility="protected"/>
+        <Field name="luas" type="double" visibility="protected"/>
+        <Field name="keliling" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="atas"/>
+          <Argument type="double" name="bawah"/>
+          <Argument type="double" name="tinggi"/>
+          <Argument type="double" name="sisiMiring"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="hitungLuas" returnType="double" visibility="public"/>
+        <Method name="hitungKeliling" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AplikasiGeometri" package="main" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="benda.geometri.JajaranGenjang" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.PrismaBelahKetupat" target="benda.geometri.BelahKetupat"/>
+    <IsRelation name="is" source="benda.geometri.PrismaPersegi" target="benda.geometri.Persegi"/>
+    <IsRelation name="is" source="benda.geometri.TemberengBola" target="benda.geometri.Bola"/>
+    <IsRelation name="is" source="benda.geometri.TemberengLingkaran" target="benda.geometri.JuringLingkaran"/>
+    <IsRelation name="is" source="benda.geometri.PrismaLayangLayang" target="benda.geometri.LayangLayang"/>
+    <IsRelation name="is" source="benda.geometri.LimasTrapesium" target="benda.geometri.Trapesium"/>
+    <IsRelation name="is" source="benda.geometri.LimasBelahKetupat" target="benda.geometri.BelahKetupat"/>
+    <IsRelation name="is" source="benda.geometri.LimasPersegi" target="benda.geometri.Persegi"/>
+    <IsRelation name="is" source="benda.geometri.Segitiga" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.JuringBola" target="benda.geometri.Bola"/>
+    <IsRelation name="is" source="benda.geometri.LayangLayang" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.PersegiPanjang" target="benda.geometri.BangunDatar"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="benda.geometri.BangunDatar" target="benda.geometri.BendaGeometri"/>
+    <IsRelation name="is" source="benda.geometri.Tabung" target="benda.geometri.Lingkaran"/>
+    <IsRelation name="is" source="benda.geometri.Kerucut" target="benda.geometri.Lingkaran"/>
+    <IsRelation name="is" source="benda.geometri.BelahKetupat" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.LimasPersegiPanjang" target="benda.geometri.PersegiPanjang"/>
+    <IsRelation name="is" source="benda.geometri.CincinBola" target="benda.geometri.Bola"/>
+    <IsRelation name="is" source="benda.geometri.PrismaTrapesium" target="benda.geometri.Trapesium"/>
+    <IsRelation name="is" source="benda.geometri.KerucutTerpancung" target="benda.geometri.Kerucut"/>
+    <IsRelation name="is" source="benda.geometri.LimasJajaranGenjang" target="benda.geometri.JajaranGenjang"/>
+    <IsRelation name="is" source="benda.geometri.PrismaSegitiga" target="benda.geometri.Segitiga"/>
+    <IsRelation name="is" source="benda.geometri.Bola" target="benda.geometri.Lingkaran"/>
+    <IsRelation name="is" source="benda.geometri.JuringLingkaran" target="benda.geometri.Lingkaran"/>
+    <IsRelation name="is" source="benda.geometri.PrismaPersegiPanjang" target="benda.geometri.PersegiPanjang"/>
+    <IsRelation name="is" source="benda.geometri.PrismaJajaranGenjang" target="benda.geometri.JajaranGenjang"/>
+    <IsRelation name="is" source="benda.geometri.LimasLayangLayang" target="benda.geometri.LayangLayang"/>
+    <IsRelation name="is" source="benda.geometri.Trapesium" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.Persegi" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.Lingkaran" target="benda.geometri.BangunDatar"/>
+    <IsRelation name="is" source="benda.geometri.LimasSegitiga" target="benda.geometri.Segitiga"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
