@@ -73,11 +73,4 @@ public class PrismaPersegiPanjang extends PersegiPanjang{
         }
     }
 
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
 }
