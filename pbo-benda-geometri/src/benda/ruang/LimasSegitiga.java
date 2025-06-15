@@ -6,12 +6,17 @@ import java.util.Scanner;
 
 public class LimasSegitiga extends Segitiga{
     private double tinggiLimas;
+    private Double newAlas = null;
+    private Double newTinggiSegitiga = null;
     private double volume;
     private double luasPermukaan;
+    private Thread thread;
+    private String namaProses;
 
     public LimasSegitiga(double alas, double tinggiSegitiga, double tinggiLimas) {
         super(alas, tinggiSegitiga);
         this.tinggiLimas = tinggiLimas;
+        this.namaProses = "Perhitungan limas segitiga";
     }
 
     @Override
@@ -109,5 +114,37 @@ public class LimasSegitiga extends Segitiga{
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
+    }
+    
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        
+        if (newAlas != null && newTinggiSegitiga != null){
+            this.volume = hitungVolume(newAlas, newTinggiSegitiga);
+            this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+            System.out.printf("Volmue limas segitiga: %.2f\n", volume);
+            System.out.printf("Luas permukaan limas segitiga: %.2f\n", luasPermukaan);
+        }else{
+            this.volume = hitungVolume();
+            this.luasPermukaan = hitungLuasPermukaan();
+            System.out.printf("Volmue limas segitiga: %.2f\n", volume);
+            System.out.printf("Luas permukaan limas segitiga: %.2f\n", luasPermukaan);
+        }
+
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }

@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class LimasBelahKetupat extends BelahKetupat{
     private double tinggiLimas;
+    private double newDiagonal1;
+    private double newDiagonal2;
+    private double newSisi;
     private double volume;
     private double luasPermukaan;
 
-<<<<<<< HEAD
-    public LimasBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiLimas) {
-=======
     public LimasBelahKetupat(double diagonal1, double diagonal2,  double tinggiLimas) {
->>>>>>> b20d97f135cf6d28c0e118120e20cee95271a446
         super(diagonal1, diagonal2);
         this.tinggiLimas = tinggiLimas;
+        this.newSisi = Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
     }
 
     @Override
@@ -76,7 +76,9 @@ public class LimasBelahKetupat extends BelahKetupat{
                             System.out.println("Sisi harus lebih dari nol.\n");
                             continue;
                         }
-
+                        
+                        this.newSisi = Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
+                        
                         System.out.print("Masukkan tinggi limas: ");
                         this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();

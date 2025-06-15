@@ -4,17 +4,20 @@ import benda.geometri.BangunDatar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Segitiga extends BangunDatar {
+public class Segitiga extends BangunDatar implements Runnable {
     protected double alas;
     protected double tinggiSegitiga;
     protected double luas;
     protected double keliling;
+    private Thread thread;
+    private String namaProses;
 
     public Segitiga(double alas, double tinggiSegitiga) {
         this.alas = alas;
         this.tinggiSegitiga = tinggiSegitiga;
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
+        this.namaProses = "Perhitungan segitiga";
     }
 
     @Override
@@ -23,7 +26,7 @@ public class Segitiga extends BangunDatar {
     }
 
     public double hitungLuas() {
-        luas =  0.5 * alas * tinggiSegitiga;
+        luas = 0.5 * alas * tinggiSegitiga;
         return luas;
     }
 
@@ -38,25 +41,25 @@ public class Segitiga extends BangunDatar {
         while (true) {
             try {
                 System.out.print("Masukkan alas segitiga: ");
-                double alas = inp.nextDouble();
+                double inputAlas = inp.nextDouble();
                 inp.nextLine();
 
-                if (alas <= 0) {
-                    System.out.println("alas harus lebih dari nol.\n");
+                if (inputAlas <= 0) {
+                    System.out.println("Alas harus lebih dari nol.\n");
                     continue;
                 }
 
                 System.out.print("Masukkan tinggi segitiga: ");
-                double tinggiSegitiga = inp.nextDouble();
+                double inputTinggi = inp.nextDouble();
                 inp.nextLine();
 
-                if (tinggiSegitiga <= 0) {
+                if (inputTinggi <= 0) {
                     System.out.println("Tinggi segitiga harus lebih dari nol.\n");
                     continue;
                 }
 
-                this.alas = alas;
-                this.tinggiSegitiga = tinggiSegitiga;
+                this.alas = inputAlas;
+                this.tinggiSegitiga = inputTinggi;
                 this.luas = hitungLuas();
                 this.keliling = hitungKeliling();
                 break;
@@ -66,12 +69,33 @@ public class Segitiga extends BangunDatar {
             }
         }
     }
-    
-    public double getAlas(){
+
+    public double getAlas() {
         return alas;
     }
-    
-    public double getTinggiSegitiga(){
+
+    public double getTinggiSegitiga() {
         return tinggiSegitiga;
+    }
+
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Luas segitiga: %.2f\n", hitungLuas());
+        System.out.printf("Keliling segitiga: %.2f\n", hitungKeliling());
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }

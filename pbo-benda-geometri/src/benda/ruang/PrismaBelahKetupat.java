@@ -16,11 +16,7 @@ public class PrismaBelahKetupat extends BelahKetupat{
     public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2) {
         super(diagonal1, diagonal2);
         this.tinggiPrisma = tinggiPrisma;
-<<<<<<< HEAD
-        this.newSisi = hitungNewSisi();
-=======
-
->>>>>>> b20d97f135cf6d28c0e118120e20cee95271a446
+        this.newSisi = Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
     }
     
     @Override
@@ -38,17 +34,13 @@ public class PrismaBelahKetupat extends BelahKetupat{
     }
     
     public double hitungLuasPermukaan() {
-        luasPermukaan = (super.luas*2) + (sisi * tinggiPrisma) * 4;
+        luasPermukaan = (super.luas*2) + (newSisi * tinggiPrisma) * 4;
         return luasPermukaan;
     }
 
     public double hitungLuasPermukaan(double newDiagonal1, double newDiagonal2, double newSisi) {
         luasPermukaan = ((1.0 / 2.0) * newDiagonal1 * newDiagonal2) + (newSisi * tinggiPrisma) * 4;
         return luasPermukaan;
-    }
-    
-    public double hitungNewSisi() {
-        return Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
     }
 
     public void prosesInputDanValidasi() {
@@ -76,8 +68,7 @@ public class PrismaBelahKetupat extends BelahKetupat{
                             continue;
                         }
 
-                        // Hitung newSisi dari newDiagonal1 dan newDiagonal2
-                        this.newSisi = hitungNewSisi();
+                        this.newSisi = Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
 
                         System.out.print("Masukkan tinggi prisma: ");
                         this.tinggiPrisma = inp.nextDouble();
@@ -87,11 +78,9 @@ public class PrismaBelahKetupat extends BelahKetupat{
                             continue;
                         }
 
-                        // Simpan juga ke superclass jika mau diperlihatkan ke user
                         super.diagonal1 = newDiagonal1;
                         super.diagonal2 = newDiagonal2;
                         super.sisi = newSisi;
-                        // Hitung hasil
                         this.volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
                         this.luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
                         break;
