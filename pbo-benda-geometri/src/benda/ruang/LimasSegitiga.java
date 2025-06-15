@@ -111,11 +111,7 @@ public class LimasSegitiga extends Segitiga{
         }
     }
 
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
+    public double getTinggiLimas() {
+        return tinggiLimas;
     }
 }

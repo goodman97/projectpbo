@@ -81,4 +81,8 @@ public class Bola extends Lingkaran {
     public double getLuasPermukaan() {
         return luasPermukaan;
     }
+
+    public double getLuas() {
+        return super.luas;
+    }
 }

@@ -2,7 +2,6 @@ package main;
 
 import benda.datar.*;
 import benda.ruang.*;
-import main.PerhitunganThread;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,26 +15,36 @@ public class Main {
         System.out.println("\nInput benda geometri: " + bola.getNama());
         bola.prosesInputDanValidasi();
 
-        Lingkaran juringBola = new JuringBola(lingkaran.getJariJari(), 1);
+        Lingkaran juringBola = new JuringBola(bola.getJariJari(), 1);
         System.out.println("\nInput benda geometri: " + juringBola.getNama());
         juringBola.prosesInputDanValidasi();
 
         // Polymorphism - TemberengBola extends Lingkaran
-        Lingkaran temberengBola = new TemberengBola(lingkaran.getJariJari(), 1);
+        Lingkaran temberengBola = new TemberengBola(bola.getJariJari(), 1);
         System.out.println("\nInput benda geometri: " + temberengBola.getNama());
         temberengBola.prosesInputDanValidasi();
 
-        // Segitiga segitiga = new Segitiga(1, 1);
-        // System.out.println("\nInput benda geometri: " + segitiga.getNama());
-        // segitiga.prosesInputDanValidasi();
+        Segitiga segitiga = new Segitiga(1, 1);
+        System.out.println("\nInput benda geometri: " + segitiga.getNama());
+        segitiga.prosesInputDanValidasi();
+        segitiga.hitungLuas();
+        segitiga.hitungKeliling();
+        
+        LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
+        System.out.println("\nInput benda geometri: " + limasSegitiga.getNama());
+        limasSegitiga.prosesInputDanValidasi();
+        limasSegitiga.hitungVolume();
+        limasSegitiga.hitungVolume(0, 0);
+        limasSegitiga.hitungLuasPermukaan();
+        limasSegitiga.hitungLuasPermukaan(0, 0);
 
-        // LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
-        // System.out.println("\nInput benda geometri: " + limasSegitiga.getNama());
-        // limasSegitiga.prosesInputDanValidasi();
-
-        // PrismaSegitiga prismaSegitiga = new PrismaSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
-        // System.out.println("\nInput benda geometri: " + prismaSegitiga.getNama());
-        // prismaSegitiga.prosesInputDanValidasi();
+        PrismaSegitiga prismaSegitiga = new PrismaSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
+        System.out.println("\nInput benda geometri: " + prismaSegitiga.getNama());
+        prismaSegitiga.prosesInputDanValidasi();
+        prismaSegitiga.hitungVolume();
+        prismaSegitiga.hitungVolume(0, 0);
+        prismaSegitiga.hitungLuasPermukaan();
+        prismaSegitiga.hitungLuasPermukaan(0, 0);
 
         // Persegi persegi = new Persegi (0);
         // System.out.println("\nInput benda geometri: " + persegi.getNama());
@@ -69,9 +78,9 @@ public class Main {
         // System.out.println("\nInput benda geometri: " + prismaBelahKetupat.getNama());
         // prismaBelahKetupat.prosesInputDanValidasi(); 
 
-        // Trapesium trapesium = new Trapesium(0, 0, 0, 0);
-        // System.out.println("\nInput benda geometri: " + trapesium.getNama());
-        // trapesium.prosesInputDanValidasi();
+        Trapesium trapesium = new Trapesium(0, 0, 0, 0);
+        System.out.println("\nInput benda geometri: " + trapesium.getNama());
+        trapesium.prosesInputDanValidasi();
 
         System.out.println("\n=== Memulai Proses Perhitungan Multithreading ===\n");
         
@@ -208,11 +217,11 @@ public class Main {
             //     System.out.printf("Luas Permukaan Prisma Belah Ketupat: %.2f\n", prismaBelahKetupat.getLuasPermukaan());
             // }, "Perhitungan Prisma Belah Ketupat");
 
-            // PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
-            //     System.out.println("Hitung: " + trapesium.getNama());
-            //     System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
-            //     System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
-            // }, "Perhitungan trapesium");
+            PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
+                System.out.println("Hitung: " + trapesium.getNama());
+                System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
+                System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
+            }, "Perhitungan trapesium");
 
             // Mulai semua thread
             lingkaranThread.start();
@@ -231,7 +240,6 @@ public class Main {
             // limasBelahKetupatThread.start();
             // prismaBelahKetupatThread.start();
             // trapesiumThread.start();
-            
 
             // Tunggu semua thread selesai
             lingkaranThread.join();

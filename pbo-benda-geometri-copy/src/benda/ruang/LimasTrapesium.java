@@ -6,9 +6,15 @@ import java.util.Scanner;
 
 public class LimasTrapesium extends Trapesium{
     protected double tinggiLimas;
+<<<<<<< HEAD:pbo-benda-geometri - Copy/src/benda/ruang/LimasTrapesium.java
     protected double volume;
     protected double luasPermukaan;
     
+=======
+    private double volume;
+    private double luasPermukaan;
+
+>>>>>>> 4fea9d23db40964ff69c99574d99e3edeea54e96:pbo-benda-geometri-copy/src/benda/ruang/LimasTrapesium.java
     public LimasTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiLimas) {
         super(atas, bawah, tinggiAlas, sisiMiring);
         this.tinggiLimas = tinggiLimas;
