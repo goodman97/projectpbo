@@ -1,86 +1,83 @@
 package benda.datar;
 
 import benda.geometri.BangunDatar;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-
-public class BelahKetupat extends BangunDatar{
+public class BelahKetupat extends BangunDatar {
     protected double diagonal1;
     protected double diagonal2;
     protected double sisi;
     protected double luas;
     protected double keliling;
-    
-    public BelahKetupat(double diagonal1, double diagonal2, double sisi) {
+
+    // Konstruktor dengan sisi dihitung otomatis
+    public BelahKetupat(double diagonal1, double diagonal2) {
         this.diagonal1 = diagonal1;
         this.diagonal2 = diagonal2;
-        this.sisi = sisi;
+        this.sisi = hitungSisi();
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
     }
-    
+
     @Override
     public String getNama() {
         return "Belah Ketupat";
     }
-    
-    public double hitungLuas() {
-        luas = 0.5 * diagonal1 * diagonal2;
-        return luas;
+
+    public double hitungSisi() {
+        return Math.sqrt(Math.pow(diagonal1 / 2, 2) + Math.pow(diagonal2 / 2, 2));
     }
-    
+
+    public double hitungLuas() {
+        return 0.5 * diagonal1 * diagonal2;
+    }
+
     public double hitungKeliling() {
-        keliling = sisi * 4;
-        return keliling;
-    }    
+        return sisi * 4;
+    }
 
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
+
         while (true) {
             try {
                 System.out.print("Masukkan Diagonal1 : ");
-                double diagonal1 = inp.nextDouble();
-                inp.nextLine();
-                System.out.print("Masukkan diagonal2 : ");
-                double diagonal2 = inp.nextDouble();
-                System.out.print("Masukkan sisi : ");
-                double sisi = inp.nextDouble();
-                inp.nextLine(); 
-                inp.nextLine(); 
-                if (diagonal1 <= 0) {
-                    System.out.println("Diagonal1 harus lebih dari nol.\n");
+                double d1 = inp.nextDouble();
+
+                System.out.print("Masukkan Diagonal2 : ");
+                double d2 = inp.nextDouble();
+
+                if (d1 <= 0 || d2 <= 0) {
+                    System.out.println("Semua nilai harus lebih dari nol.\n");
                     continue;
-                }            
-                this.diagonal1 = diagonal1;
-                this.diagonal2 = diagonal2;
-                this.sisi = sisi;
-                break;
+                }
+
+                this.diagonal1 = d1;
+                this.diagonal2 = d2;
+                this.sisi = hitungSisi();
+                this.luas = hitungLuas();
+                this.keliling = hitungKeliling();
+
+                break; // input valid
             } catch (InputMismatchException e) {
-                System.out.println("Input Diagonal1 harus berupa angka.\n");
-                inp.nextLine(); 
+                System.out.println("Semua input harus berupa angka desimal.\n");
+                inp.nextLine(); // bersihkan buffer
             }
         }
-        this.luas = hitungLuas();
-        this.keliling = hitungKeliling();
     }
 
-    public double getLuas(){
-        return luas;
-    }
-
-    public double getKeliling(){
-        return keliling;
-    }
-
-    public double getDiagonal1(){
+    // Getter
+    public double getDiagonal1() {
         return diagonal1;
     }
 
-    public double getDiagonal2(){
+    public double getDiagonal2() {
         return diagonal2;
     }
 
-    public double getSisi(){
+    public double getSisi() {
         return sisi;
     }
+
 }

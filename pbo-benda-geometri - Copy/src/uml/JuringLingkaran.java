@@ -1,5 +1,6 @@
-package benda.datar;
+package uml;
 
+import benda.datar.*;
 import java.util.*;
 
 public class JuringLingkaran extends Lingkaran{

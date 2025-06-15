@@ -1,5 +1,6 @@
-package benda.datar;
+package uml;
 
+import benda.datar.*;
 import benda.geometri.BangunDatar;
 import java.util.*;
 
@@ -60,6 +61,14 @@ public class BelahKetupat extends BangunDatar{
         }
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
+    }
+
+    public double getLuas(){
+        return luas;
+    }
+
+    public double getKeliling(){
+        return keliling;
     }
 
     public double getDiagonal1(){

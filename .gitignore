@@ -6,3 +6,4 @@ out/
 # Ignore IDE settings
 .idea/
 .vscode/
+/pbo-benda-geometri - Copy/dist/

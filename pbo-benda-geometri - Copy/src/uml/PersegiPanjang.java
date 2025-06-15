@@ -1,5 +1,6 @@
-package benda.datar;
+package uml;
 
+import benda.datar.*;
 import benda.geometri.BangunDatar;
 import java.util.*;
 
@@ -46,7 +47,17 @@ public class PersegiPanjang extends BangunDatar{
                 System.out.println("Panjang harus lebih dari nol.\n");
                 continue;
             }
-
+            
+            this.panjang = panjang;
+            break;
+        } catch (InputMismatchException e) {
+            System.out.println("Input panjang harus berupa angka.\n");
+            inp.nextLine(); 
+        }
+    }
+    
+    while (true) {
+        try {
             System.out.print("Masukkan Lebar : ");
             double lebar = inp.nextDouble();
             inp.nextLine(); 
@@ -55,18 +66,25 @@ public class PersegiPanjang extends BangunDatar{
                 System.out.println("Lebar harus lebih dari nol.\n");
                 continue;
             }
+            
             this.lebar = lebar;
-            this.panjang = panjang;
-             this.luas = hitungLuas();
-             this.keliling = hitungKeliling();
             break;
         } catch (InputMismatchException e) {
-            System.out.println("Input panjang harus berupa angka.\n");
+            System.out.println("Input lebar harus berupa angka.\n");
             inp.nextLine(); 
         }
     }
 
-   
+    this.luas = hitungLuas();
+    this.keliling = hitungKeliling();
+    }
+
+    public double getLuas(){
+        return luas;
+    }
+
+    public double getKeliling(){
+        return keliling;
     }
 
     public double getPanjang(){
