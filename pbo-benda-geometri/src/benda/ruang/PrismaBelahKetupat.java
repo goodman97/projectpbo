@@ -16,7 +16,11 @@ public class PrismaBelahKetupat extends BelahKetupat{
     public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2) {
         super(diagonal1, diagonal2);
         this.tinggiPrisma = tinggiPrisma;
+<<<<<<< HEAD
         this.newSisi = hitungNewSisi();
+=======
+
+>>>>>>> b20d97f135cf6d28c0e118120e20cee95271a446
     }
     
     @Override

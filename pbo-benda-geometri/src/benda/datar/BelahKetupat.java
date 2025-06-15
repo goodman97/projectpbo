@@ -17,7 +17,7 @@ public class BelahKetupat extends BangunDatar implements Runnable {
     public BelahKetupat(double diagonal1, double diagonal2) {
         this.diagonal1 = diagonal1;
         this.diagonal2 = diagonal2;
-        this.sisi = hitungSisi();
+        this.sisi = Math.sqrt(Math.pow(diagonal1 / 2, 2) + Math.pow(diagonal2 / 2, 2));
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
         this.namaProses = "Perhitungan belah ketupat";
@@ -27,17 +27,15 @@ public class BelahKetupat extends BangunDatar implements Runnable {
     public String getNama() {
         return "Belah Ketupat";
     }
-
-    public double hitungSisi() {
-        return Math.sqrt(Math.pow(diagonal1 / 2, 2) + Math.pow(diagonal2 / 2, 2));
-    }
-
+    
     public double hitungLuas() {
-        return 0.5 * diagonal1 * diagonal2;
+        luas = 0.5 * diagonal1 * diagonal2;
+        return luas;
     }
 
     public double hitungKeliling() {
-        return sisi * 4;
+        keliling = sisi * 4;
+        return keliling;
     }
 
     public void prosesInputDanValidasi() {
@@ -48,17 +46,21 @@ public class BelahKetupat extends BangunDatar implements Runnable {
                 System.out.print("Masukkan Diagonal1 : ");
                 double d1 = inp.nextDouble();
 
+                if (d1 <= 0 ) {
+                    System.out.println("Semua nilai harus lebih dari nol.\n");
+                    continue;
+                }
                 System.out.print("Masukkan Diagonal2 : ");
                 double d2 = inp.nextDouble();
 
-                if (d1 <= 0 || d2 <= 0) {
+                if ( d2 <= 0) {
                     System.out.println("Semua nilai harus lebih dari nol.\n");
                     continue;
                 }
 
                 this.diagonal1 = d1;
                 this.diagonal2 = d2;
-                this.sisi = hitungSisi();
+                this.sisi = Math.sqrt(Math.pow(diagonal1 / 2, 2) + Math.pow(diagonal2 / 2, 2));
                 this.luas = hitungLuas();
                 this.keliling = hitungKeliling();
 
