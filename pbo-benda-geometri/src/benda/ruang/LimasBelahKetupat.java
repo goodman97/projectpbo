@@ -10,7 +10,7 @@ public class LimasBelahKetupat extends BelahKetupat{
     private double luasPermukaan;
 
     public LimasBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiLimas) {
-        super(diagonal1, diagonal2, sisi);
+        super(diagonal1, diagonal2);
         this.tinggiLimas = tinggiLimas;
     }
 
@@ -122,17 +122,5 @@ public class LimasBelahKetupat extends BelahKetupat{
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
-
-    public double getTinggiLimas() {
-        return tinggiLimas;
     }
 }

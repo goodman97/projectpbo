@@ -4,12 +4,14 @@ import benda.geometri.BangunDatar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BelahKetupat extends BangunDatar {
+public class BelahKetupat extends BangunDatar implements Runnable {
     protected double diagonal1;
     protected double diagonal2;
     protected double sisi;
     protected double luas;
     protected double keliling;
+    private Thread thread;
+    private String namaProses;
 
     // Konstruktor dengan sisi dihitung otomatis
     public BelahKetupat(double diagonal1, double diagonal2) {
@@ -18,6 +20,7 @@ public class BelahKetupat extends BangunDatar {
         this.sisi = hitungSisi();
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
+        this.namaProses = "Perhitungan belah ketupat";
     }
 
     @Override
@@ -80,4 +83,21 @@ public class BelahKetupat extends BangunDatar {
         return sisi;
     }
 
+    // Thread-related methods
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Luas belah ketupat: %.2f\n", hitungLuas());
+        System.out.printf("Keliling belah ketupat: %.2f\n", hitungKeliling());
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null; // Reset thread after completion
+    }
 }

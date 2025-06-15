@@ -110,8 +110,4 @@ public class PrismaSegitiga extends Segitiga{
             }
         }
     }
-    
-    public double getTinggiPrisma(){
-        return tinggiPrisma;
-    }
 }

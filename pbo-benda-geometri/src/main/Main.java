@@ -27,24 +27,24 @@ public class Main {
         Segitiga segitiga = new Segitiga(1, 1);
         System.out.println("\nInput benda geometri: " + segitiga.getNama());
         segitiga.prosesInputDanValidasi();
-        segitiga.hitungLuas();
-        segitiga.hitungKeliling();
+        System.out.println("Luas segitiga: " + segitiga.hitungLuas());
+        System.out.println("Keliling segitiga: " + segitiga.hitungKeliling());
         
         LimasSegitiga limasSegitiga = new LimasSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         System.out.println("\nInput benda geometri: " + limasSegitiga.getNama());
         limasSegitiga.prosesInputDanValidasi();
-        limasSegitiga.hitungVolume();
-        limasSegitiga.hitungVolume(0, 0);
-        limasSegitiga.hitungLuasPermukaan();
-        limasSegitiga.hitungLuasPermukaan(0, 0);
+        System.out.println("Volume limas segitiga: " + limasSegitiga.hitungVolume());
+        System.out.println("Volume limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungVolume(0, 0));
+        System.out.println("Luas permukaan limas segitiga: " + limasSegitiga.hitungLuasPermukaan());
+        System.out.println("Luas permukaan limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungLuasPermukaan(0, 0));
 
         PrismaSegitiga prismaSegitiga = new PrismaSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         System.out.println("\nInput benda geometri: " + prismaSegitiga.getNama());
         prismaSegitiga.prosesInputDanValidasi();
-        prismaSegitiga.hitungVolume();
-        prismaSegitiga.hitungVolume(0, 0);
-        prismaSegitiga.hitungLuasPermukaan();
-        prismaSegitiga.hitungLuasPermukaan(0, 0);
+        System.out.println("Volume prisma segitiga: " + prismaSegitiga.hitungVolume());
+        System.out.println("Volume prisma segitiga (mengubah alas dan tinggi segitiga)" + prismaSegitiga.hitungVolume(0, 0));
+        System.out.println("Luas permukaan prisma segitiga: " + prismaSegitiga.hitungLuasPermukaan());
+        System.out.println("Luas permukaan prisma segitiga (mengubah alas dan tinggi segitiga): " + prismaSegitiga.hitungLuasPermukaan(0, 0));
 
         // Persegi persegi = new Persegi (0);
         // System.out.println("\nInput benda geometri: " + persegi.getNama());
@@ -66,19 +66,33 @@ public class Main {
         // System.out.println("\nInput benda geometri: " + prismaPersegiPanjang.getNama());
         // prismaPersegiPanjang.prosesInputDanValidasi();
 
-        // BelahKetupat belahKetupat = new BelahKetupat(0, 0, 0);
+        // BelahKetupat belahKetupat = new BelahKetupat(0, 0);
         // System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
         // belahKetupat.prosesInputDanValidasi();
 
-        // LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
-        // System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
-        // limasBelahKetupat.prosesInputDanValidasi();
 
-        // PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
-        // System.out.println("\nInput benda geometri: " + prismaBelahKetupat.getNama());
-        // prismaBelahKetupat.prosesInputDanValidasi(); 
+        BelahKetupat belahKetupat = new BelahKetupat(0, 0);
+        System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
+        belahKetupat.prosesInputDanValidasi();
+        belahKetupat.startCalculationThread();
 
-        Trapesium trapesium = new Trapesium(0, 0, 0, 0);
+        LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
+        System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
+        limasBelahKetupat.prosesInputDanValidasi();
+        limasBelahKetupat.hitungVolume();
+        limasBelahKetupat.hitungVolume(0, 0, 0);
+        limasBelahKetupat.hitungLuasPermukaan();
+        limasBelahKetupat.hitungLuasPermukaan(0, 0, 0);
+
+        PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi());
+        System.out.println("\nInput benda geometri: " + prismaBelahKetupat.getNama());
+        prismaBelahKetupat.prosesInputDanValidasi(); 
+        prismaBelahKetupat.hitungVolume(); 
+        prismaBelahKetupat.hitungVolume(0, 0, 0); 
+        prismaBelahKetupat.hitungLuasPermukaan(); 
+        prismaBelahKetupat.hitungLuasPermukaan(0, 0, 0); 
+
+        Trapesium trapesium = new Trapesium(0, 0, 0);
         System.out.println("\nInput benda geometri: " + trapesium.getNama());
         trapesium.prosesInputDanValidasi();
 
@@ -201,8 +215,8 @@ public class Main {
 
             // PerhitunganThread belahKetupatThread = new PerhitunganThread(() -> {
             //     System.out.println("Hitung: " + belahKetupat.getNama());
-            //     System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.getLuas());
-            //     System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.getKeliling());
+            //     System.out.printf("Luas belah ketupat: %.2f\n", belahKetupat.hitungLuas());
+            //     System.out.printf("Keliling belah ketupat: %.2f\n", belahKetupat.hitungKeliling());
             // }, "Perhitungan belah ketupat");
 
             // PerhitunganThread limasBelahKetupatThread = new PerhitunganThread(() -> {
@@ -219,8 +233,8 @@ public class Main {
 
             PerhitunganThread trapesiumThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + trapesium.getNama());
-                System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
-                System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
+                System.out.printf("Luas trapesium: %.2f\n", trapesium.hitungLuas());
+                System.out.printf("Keliling trapesium: %.2f\n", trapesium.hitungKeliling());
             }, "Perhitungan trapesium");
 
             // Mulai semua thread

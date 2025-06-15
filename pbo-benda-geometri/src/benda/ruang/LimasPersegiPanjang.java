@@ -77,14 +77,4 @@ public class LimasPersegiPanjang extends PersegiPanjang{
         }
     }
 
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
-
-
-
 }

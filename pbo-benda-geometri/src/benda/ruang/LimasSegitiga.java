@@ -110,8 +110,4 @@ public class LimasSegitiga extends Segitiga{
             }
         }
     }
-
-    public double getTinggiLimas() {
-        return tinggiLimas;
-    }
 }

@@ -6,13 +6,17 @@ import java.util.Scanner;
 
 public class PrismaBelahKetupat extends BelahKetupat{
     private double tinggiPrisma;
+    private double newDiagonal1;
+    private double newDiagonal2;
+    private double newSisi;
     private double volume;
     private double luasPermukaan;
     
 
-    public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2, double sisi) {
-        super(diagonal1, diagonal2, sisi);
+    public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2) {
+        super(diagonal1, diagonal2);
         this.tinggiPrisma = tinggiPrisma;
+        this.newSisi = hitungNewSisi();
     }
     
     @Override
@@ -28,7 +32,7 @@ public class PrismaBelahKetupat extends BelahKetupat{
     public double hitungVolume(double newDiagonal1, double newDiagonal2, double newSisi) {
         return  (1.0 / 2.0) * newDiagonal1 * newDiagonal2 * tinggiPrisma;
     }
-
+    
     public double hitungLuasPermukaan() {
         luasPermukaan = (super.luas*2) + (sisi * tinggiPrisma) * 4;
         return luasPermukaan;
@@ -37,6 +41,10 @@ public class PrismaBelahKetupat extends BelahKetupat{
     public double hitungLuasPermukaan(double newDiagonal1, double newDiagonal2, double newSisi) {
         luasPermukaan = ((1.0 / 2.0) * newDiagonal1 * newDiagonal2) + (newSisi * tinggiPrisma) * 4;
         return luasPermukaan;
+    }
+    
+    public double hitungNewSisi() {
+        return Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
     }
 
     public void prosesInputDanValidasi() {
@@ -49,7 +57,7 @@ public class PrismaBelahKetupat extends BelahKetupat{
                 while (true) {
                     try {
                         System.out.print("Masukkan diagonal 1 yang baru: ");
-                        double newDiagonal1 = inp.nextDouble();
+                        this.newDiagonal1 = inp.nextDouble();
                         inp.nextLine();
                         if (newDiagonal1 <= 0) {
                             System.out.println("Diagonal 1 harus lebih dari nol.\n");
@@ -57,20 +65,15 @@ public class PrismaBelahKetupat extends BelahKetupat{
                         }
 
                         System.out.print("Masukkan diagonal 2 yang baru: ");
-                        double newDiagonal2 = inp.nextDouble();
+                        this.newDiagonal2 = inp.nextDouble();
                         inp.nextLine();
                         if (newDiagonal2 <= 0) {
                             System.out.println("Diagonal 2 harus lebih dari nol.\n");
                             continue;
                         }
 
-                        System.out.print("Masukkan sisi yang baru: ");
-                        double newSisi = inp.nextDouble();
-                        inp.nextLine();
-                        if (newSisi <= 0) {
-                            System.out.println("Sisi harus lebih dari nol.\n");
-                            continue;
-                        }
+                        // Hitung newSisi dari newDiagonal1 dan newDiagonal2
+                        this.newSisi = hitungNewSisi();
 
                         System.out.print("Masukkan tinggi prisma: ");
                         this.tinggiPrisma = inp.nextDouble();
@@ -80,11 +83,11 @@ public class PrismaBelahKetupat extends BelahKetupat{
                             continue;
                         }
 
+                        // Simpan juga ke superclass jika mau diperlihatkan ke user
                         super.diagonal1 = newDiagonal1;
                         super.diagonal2 = newDiagonal2;
                         super.sisi = newSisi;
-                        this.tinggiPrisma = tinggiPrisma;
-                        super.luas = super.hitungLuas();
+                        // Hitung hasil
                         this.volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
                         this.luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
                         break;
@@ -106,7 +109,6 @@ public class PrismaBelahKetupat extends BelahKetupat{
                             continue;
                         }
 
-                        this.tinggiPrisma = tinggiPrisma;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
@@ -121,17 +123,5 @@ public class PrismaBelahKetupat extends BelahKetupat{
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
-
-    public double getTinggiPrisma() {
-        return tinggiPrisma;
     }
 }
