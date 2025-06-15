@@ -64,6 +64,7 @@ public class Bola extends Lingkaran {
                 }
                 break;
             } else if (jawab.equalsIgnoreCase("N")) {
+                super.jariJari = jariJari;
                 this.volume = hitungVolume();
                 this.luasPermukaan = hitungLuasPermukaan();
                 break;

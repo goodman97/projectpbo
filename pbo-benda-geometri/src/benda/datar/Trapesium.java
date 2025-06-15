@@ -18,6 +18,8 @@ public class Trapesium extends BangunDatar{
         this.bawah = bawah;
         this.tinggi = tinggi;
         this.sisiMiring = sisiMiring;
+        this.luas = hitungLuas();
+        this.keliling = hitungKeliling();
     }
     
     @Override

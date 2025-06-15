@@ -6,9 +6,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LimasPersegiPanjang extends PersegiPanjang{
-    protected double tinggiLimas;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiLimas;
+    private double volume;
+    private double luasPermukaan;
 
     public LimasPersegiPanjang(double panjang, double lebar, double tinggiLimas) {
         super(panjang, lebar);

@@ -3,7 +3,9 @@ package benda.ruang;
 import benda.datar.Lingkaran;
 
 public class Tabung extends Lingkaran{
-    protected double tinggi;
+    private double tinggi;
+    private double volume;
+    private double luasPermukaan;
 
     public Tabung(double jariJari, double tinggi) {
         super(jariJari);

@@ -66,18 +66,11 @@ public class Segitiga extends BangunDatar {
             }
         }
     }
-
-    public double getLuas(){
-        return luas;
-    }
-
-    public double getKeliling(){
-        return keliling;
-    }
-
+    
     public double getAlas(){
         return alas;
     }
+    
     public double getTinggiSegitiga(){
         return tinggiSegitiga;
     }

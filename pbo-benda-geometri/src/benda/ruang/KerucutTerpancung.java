@@ -5,14 +5,12 @@ import java.util.Scanner;
 
 public class KerucutTerpancung extends Kerucut {
     private double jariJariAtas;
-    protected double volume;
-    protected double luasPermukaan;
+    private double volume;
+    private double luasPermukaan;
 
     public KerucutTerpancung(double jariJariBawah, double jariJariAtas, double tinggi) {
         super(jariJariBawah, tinggi);
         this.jariJariAtas = jariJariAtas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

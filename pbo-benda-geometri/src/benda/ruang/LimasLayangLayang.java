@@ -3,15 +3,13 @@ package benda.ruang;
 import benda.datar.LayangLayang;
 
 public class LimasLayangLayang extends LayangLayang{
-    protected double tinggiLimas;
-    protected double volume;
-    protected double luasPermukaan;
+    private double tinggiLimas;
+    private double volume;
+    private double luasPermukaan;
 
     public LimasLayangLayang(double diagonal1, double diagonal2, double sisiPanjang, double sisiPendek, double tinggiLimas) {
         super(diagonal1, diagonal2, sisiPanjang, sisiPendek);
         this.tinggiLimas = tinggiLimas;
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
     }
 
     @Override

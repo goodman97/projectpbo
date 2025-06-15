@@ -3,7 +3,9 @@ package benda.ruang;
 import benda.datar.JajaranGenjang;
 
 public class PrismaJajaranGenjang extends JajaranGenjang{
-    protected double tinggiPrisma;
+    private double tinggiPrisma;
+    private double volume;
+    private double luasPermukaan;
 
     public PrismaJajaranGenjang(double alas, double tinggiAlas, double sisiMiring, double tinggiPrisma) {
         super(alas, tinggiAlas, sisiMiring);

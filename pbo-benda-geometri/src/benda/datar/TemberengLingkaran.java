@@ -1,12 +1,11 @@
 package benda.datar;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class TemberengLingkaran extends JuringLingkaran{
     private double taliBusur;
-    protected double luas;
-    protected double keliling;
+    private double luas;
+    private double keliling;
 
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut);

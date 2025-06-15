@@ -38,12 +38,10 @@ public class Lingkaran extends BangunDatar {
                 System.out.print("Masukkan jari-jari lingkaran: ");
                 double jariJari = inp.nextDouble();
                 inp.nextLine();
-
                 if (jariJari <= 0) {
                     System.out.println("Jari-jari harus lebih dari nol.\n");
                     continue;
                 }
-
                 this.jariJari = jariJari;
                 this.luas = hitungLuas();
                 this.keliling = hitungKeliling();
