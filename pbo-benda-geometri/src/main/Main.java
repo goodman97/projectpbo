@@ -5,7 +5,7 @@ import benda.ruang.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Input semua nilai terlebih dahulu menggunakan polymorphism
+        /*// Input semua nilai terlebih dahulu menggunakan polymorphism
         Lingkaran lingkaran = new Lingkaran(0);
         System.out.println("Input benda geometri: " + lingkaran.getNama());
         lingkaran.prosesInputDanValidasi();
@@ -68,15 +68,33 @@ public class Main {
 
         // BelahKetupat belahKetupat = new BelahKetupat(0, 0);
         // System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
-        // belahKetupat.prosesInputDanValidasi();
+        // belahKetupat.prosesInputDanValidasi();*/
 
 
         BelahKetupat belahKetupat = new BelahKetupat(0, 0);
         System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
         belahKetupat.prosesInputDanValidasi();
-        belahKetupat.startCalculationThread();
+        System.out.println("Luas :"+ belahKetupat.hitungLuas());
+        System.out.println("Keliling :"+ belahKetupat.hitungKeliling());
+     
 
-        // LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
+        Trapesium Trapesium = new Trapesium(0, 0,0);
+        System.out.println("\nInput benda geometri: " + Trapesium.getNama());
+        Trapesium.prosesInputDanValidasi();
+        System.out.println("Luas :"+ Trapesium.hitungLuas());
+        System.out.println("Keliling :"+ Trapesium.hitungKeliling());
+        
+
+        PersegiPanjang PersegiPanjang = new PersegiPanjang(0, 0);
+        System.out.println("\nInput benda geometri: " + PersegiPanjang.getNama());
+        PersegiPanjang.prosesInputDanValidasi();
+        System.out.println("Luas :"+ PersegiPanjang.hitungLuas());
+        System.out.println("Keliling :"+ PersegiPanjang.hitungKeliling());
+       
+        belahKetupat.startCalculationThread();
+        Trapesium.startCalculationThread();
+        PersegiPanjang.startCalculationThread();
+        /*// LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), belahKetupat.getSisi(), 0);
         // System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
         // limasBelahKetupat.prosesInputDanValidasi();
 
@@ -298,6 +316,6 @@ public class Main {
                 System.out.printf("  Luas Permukaan (Bola): %.2f\n", b.getLuasPermukaan());
             }
             System.out.println();
-        }
+        }*/
     }
 }

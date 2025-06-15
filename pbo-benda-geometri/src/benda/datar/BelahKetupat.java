@@ -48,10 +48,14 @@ public class BelahKetupat extends BangunDatar implements Runnable {
                 System.out.print("Masukkan Diagonal1 : ");
                 double d1 = inp.nextDouble();
 
+                if (d1 <= 0 ) {
+                    System.out.println("Semua nilai harus lebih dari nol.\n");
+                    continue;
+                }
                 System.out.print("Masukkan Diagonal2 : ");
                 double d2 = inp.nextDouble();
 
-                if (d1 <= 0 || d2 <= 0) {
+                if ( d2 <= 0) {
                     System.out.println("Semua nilai harus lebih dari nol.\n");
                     continue;
                 }

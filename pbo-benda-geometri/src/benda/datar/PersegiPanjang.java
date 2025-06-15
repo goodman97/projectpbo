@@ -3,17 +3,20 @@ package benda.datar;
 import benda.geometri.BangunDatar;
 import java.util.*;
 
-public class PersegiPanjang extends BangunDatar{
+public class PersegiPanjang extends BangunDatar implements Runnable{
     protected double panjang;
     protected double lebar;
     protected double luas;
     protected double keliling;
+    private Thread thread;
+    private String namaProses;
 
     public PersegiPanjang(double panjang, double lebar) {
         this.panjang = panjang;
         this.lebar = lebar;
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
+        this.namaProses = "Perhitungan Persegi Panjang";
     }
 
     @Override
@@ -75,5 +78,22 @@ public class PersegiPanjang extends BangunDatar{
 
     public double getLebar(){
         return lebar;
+    }
+
+     public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Luas trapesium: %.2f\n", hitungLuas());
+        System.out.printf("Keliling trapesium: %.2f\n", hitungKeliling());
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null; // Reset thread after completion
     }
 }

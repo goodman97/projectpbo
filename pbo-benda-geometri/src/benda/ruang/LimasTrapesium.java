@@ -9,8 +9,8 @@ public class LimasTrapesium extends Trapesium{
     private double volume;
     private double luasPermukaan;
 
-    public LimasTrapesium(double atas, double bawah, double tinggiAlas, double sisiMiring, double tinggiLimas) {
-        super(atas, bawah, tinggiAlas, sisiMiring);
+    public LimasTrapesium(double atas, double bawah, double tinggiAlas, double tinggiLimas) {
+        super(atas, bawah, tinggiAlas);
         this.tinggiLimas = tinggiLimas;
     }
     
@@ -65,11 +65,4 @@ public class LimasTrapesium extends Trapesium{
         }
     }
 
-    public double getVolume() {
-        return volume;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
 }
