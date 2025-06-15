@@ -2,7 +2,6 @@ package main;
 
 import benda.datar.*;
 import benda.ruang.*;
-import main.PerhitunganThread;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +25,7 @@ public class Main {
         System.out.println("\nInput benda geometri: " + temberengBola.getNama());
         temberengBola.prosesInputDanValidasi();
 
+        /* 
         Segitiga segitiga = new Segitiga(1, 1);
         System.out.println("\nInput benda geometri: " + segitiga.getNama());
         segitiga.prosesInputDanValidasi();
@@ -73,6 +73,7 @@ public class Main {
         Trapesium trapesium = new Trapesium(0, 0, 0, 0);
         System.out.println("\nInput benda geometri: " + trapesium.getNama());
         trapesium.prosesInputDanValidasi();
+        */
 
         System.out.println("\n=== Memulai Proses Perhitungan Multithreading ===\n");
         
@@ -143,6 +144,7 @@ public class Main {
                 }
             }, "Perhitungan Tembereng Bola");
 
+            /*
             PerhitunganThread segitigaThread = new PerhitunganThread(() -> {
                 System.out.println("Hitung: " + segitiga.getNama());
                 System.out.printf("Luas Segitiga: %.2f\n", segitiga.getLuas());
@@ -214,12 +216,14 @@ public class Main {
                 System.out.printf("Luas trapesium: %.2f\n", trapesium.getLuas());
                 System.out.printf("Keliling trapesium: %.2f\n", trapesium.getKeliling());
             }, "Perhitungan trapesium");
+            */
 
             // Mulai semua thread
             lingkaranThread.start();
             bolaThread.start();
             juringBolaThread.start();
             temberengBolaThread.start();
+            /*
             segitigaThread.start();
             limasSegitigaThread.start();
             prismaSegitigaThread.start();
@@ -232,13 +236,14 @@ public class Main {
             limasBelahKetupatThread.start();
             prismaBelahKetupatThread.start();
             trapesiumThread.start();
-            
+            */
 
             // Tunggu semua thread selesai
             lingkaranThread.join();
             bolaThread.join();
             juringBolaThread.join();
             temberengBolaThread.join();
+            /*
             segitigaThread.join();
             limasSegitigaThread.join();
             prismaSegitigaThread.join();
@@ -251,6 +256,7 @@ public class Main {
             limasBelahKetupatThread.join();
             prismaBelahKetupatThread.join();
             trapesiumThread.join();
+            */
 
             System.out.println("\n=== Semua Proses Selesai ===");
 
