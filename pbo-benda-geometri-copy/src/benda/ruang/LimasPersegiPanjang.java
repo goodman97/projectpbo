@@ -6,9 +6,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LimasPersegiPanjang extends PersegiPanjang{
-    private double tinggiLimas;
-    private double volume;
-    private double luasPermukaan;
+    protected double tinggiLimas;
+    protected double volume;
+    protected double luasPermukaan;
 
     public LimasPersegiPanjang(double panjang, double lebar, double tinggiLimas) {
         super(panjang, lebar);
@@ -76,5 +76,15 @@ public class LimasPersegiPanjang extends PersegiPanjang{
             throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
         }
     }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
+    }
+
+
 
 }

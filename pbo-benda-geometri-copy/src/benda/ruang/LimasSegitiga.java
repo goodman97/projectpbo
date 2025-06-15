@@ -4,40 +4,45 @@ import benda.datar.Segitiga;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaSegitiga extends Segitiga{
-    private double tinggiPrisma;
+public class LimasSegitiga extends Segitiga{
+    private double tinggiLimas;
     private double volume;
     private double luasPermukaan;
 
-    public PrismaSegitiga(double alas, double tinggiSegitiga, double tinggiPrisma) {
+    public LimasSegitiga(double alas, double tinggiSegitiga, double tinggiLimas) {
         super(alas, tinggiSegitiga);
-        this.tinggiPrisma = tinggiPrisma;
-    }
-   
-    @Override
-    public String getNama() {
-        return "Prisma Segitiga";
+        this.tinggiLimas = tinggiLimas;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
 
+    @Override
+    public String getNama() {
+        return "Limas Segitiga";
+    }
+    
     public double hitungVolume() {
-        volume = super.luas * tinggiPrisma;
-        return  volume;
+        volume = (1.0 / 3.0) * super.luas * tinggiLimas;
+        return volume;
     }
 
     public double hitungVolume(double newAlas, double newTinggiSegitiga) {
-        volume = newAlas * newTinggiSegitiga * tinggiPrisma;
+        volume = (1.0 / 3.0) * (0.5 * newAlas * newTinggiSegitiga) * tinggiLimas;
         return volume;
     }
 
     public double hitungLuasPermukaan() {
-        double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        luasPermukaan = 2 * super.luas + 2 * sisiMiring * tinggiPrisma;
+        double tinggiSegitigaTegak = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiLimas, 2));
+        double luasSegitigaTegak = 0.5 * alas * tinggiSegitigaTegak;
+        luasPermukaan = super.luas + 3 * luasSegitigaTegak;
         return luasPermukaan;
     }
 
     public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
-        double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        luasPermukaan = 2 * (0.5 * newAlas * newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
+        double tinggiSegitigaTegak = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiLimas, 2));
+        double luasTegak = 0.5 * newAlas * tinggiSegitigaTegak;
+        double luasAlas = 0.5 * newAlas * newTinggiSegitiga;
+        luasPermukaan = luasAlas + 3 * luasTegak;
         return luasPermukaan;
     }
 
@@ -46,7 +51,6 @@ public class PrismaSegitiga extends Segitiga{
         while (true) {
             System.out.print("Apakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
             String jawab = inp.nextLine();
-
             if (jawab.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {
@@ -57,7 +61,6 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Alas harus lebih dari nol.\n");
                             continue;
                         }
-
                         System.out.print("Masukkan tinggi segitiga baru: ");
                         double newTinggiSegitiga = inp.nextDouble();
                         inp.nextLine();
@@ -65,20 +68,19 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Tinggi segitiga harus lebih dari nol.\n");
                             continue;
                         }
-
-                        System.out.print("Masukkan tinggi prisma: ");
-                        this.tinggiPrisma = inp.nextDouble();
+                        System.out.print("Masukkan tinggi limas: ");
+                        this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiPrisma <= 0) {
-                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                        if (tinggiLimas <= 0) {
+                            System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-                        this.tinggiPrisma = tinggiPrisma;
-                        super.luas = super.hitungLuas();
+                        super.alas = newAlas;
+                        super.tinggiSegitiga = newTinggiSegitiga;
+                        this.tinggiLimas = tinggiLimas;
                         this.volume = hitungVolume(newAlas, newTinggiSegitiga);
                         this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
                         break;
-
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
                         inp.nextLine();
@@ -88,14 +90,14 @@ public class PrismaSegitiga extends Segitiga{
             } else if (jawab.equalsIgnoreCase("N")) {
                 while (true) {
                     try {
-                        System.out.print("Masukkan tinggi prisma: ");
-                        this.tinggiPrisma = inp.nextDouble();
+                        System.out.print("Masukkan tinggi limas: ");
+                        this.tinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiPrisma <= 0) {
-                            System.out.println("Tinggi prisma harus lebih dari nol.\n");
+                        if (tinggiLimas <= 0) {
+                            System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-                        this.tinggiPrisma = tinggiPrisma;
+                        this.tinggiLimas = tinggiLimas;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
@@ -110,8 +112,12 @@ public class PrismaSegitiga extends Segitiga{
             }
         }
     }
-    
-    public double getTinggiPrisma(){
-        return tinggiPrisma;
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
     }
 }

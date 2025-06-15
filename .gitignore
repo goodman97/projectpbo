@@ -6,3 +6,8 @@ out/
 # Ignore IDE settings
 .idea/
 .vscode/
+<<<<<<< HEAD
+/pbo-benda-geometri - Copy/dist/
+=======
+/pbo-benda-geometri-copy/nbproject/private/
+>>>>>>> 4fea9d23db40964ff69c99574d99e3edeea54e96

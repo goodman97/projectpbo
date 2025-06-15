@@ -1,68 +1,76 @@
 package benda.ruang;
 
-import benda.datar.Segitiga;
+import benda.datar.BelahKetupat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaSegitiga extends Segitiga{
+public class PrismaBelahKetupat extends BelahKetupat{
     private double tinggiPrisma;
     private double volume;
     private double luasPermukaan;
+    
 
-    public PrismaSegitiga(double alas, double tinggiSegitiga, double tinggiPrisma) {
-        super(alas, tinggiSegitiga);
+    public PrismaBelahKetupat(double tinggiPrisma, double diagonal1, double diagonal2, double sisi) {
+        super(diagonal1, diagonal2, sisi);
         this.tinggiPrisma = tinggiPrisma;
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
     }
-   
+    
     @Override
     public String getNama() {
-        return "Prisma Segitiga";
+        return "Prisma Belah Ketupat";
     }
 
     public double hitungVolume() {
         volume = super.luas * tinggiPrisma;
-        return  volume;
+        return volume; 
     }
-
-    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
-        volume = newAlas * newTinggiSegitiga * tinggiPrisma;
-        return volume;
+    
+    public double hitungVolume(double newDiagonal1, double newDiagonal2, double newSisi) {
+        return  (1.0 / 2.0) * newDiagonal1 * newDiagonal2 * tinggiPrisma;
     }
 
     public double hitungLuasPermukaan() {
-        double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        luasPermukaan = 2 * super.luas + 2 * sisiMiring * tinggiPrisma;
+        luasPermukaan = (super.luas*2) + (sisi * tinggiPrisma) * 4;
         return luasPermukaan;
     }
 
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
-        double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        luasPermukaan = 2 * (0.5 * newAlas * newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
+    public double hitungLuasPermukaan(double newDiagonal1, double newDiagonal2, double newSisi) {
+        luasPermukaan = ((1.0 / 2.0) * newDiagonal1 * newDiagonal2) + (newSisi * tinggiPrisma) * 4;
         return luasPermukaan;
     }
 
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
         while (true) {
-            System.out.print("Apakah ingin mengubah nilai alas dan tinggi segitiga? (Y/N): ");
+            System.out.print("\nApakah ingin mengubah nilai diagonal dan sisi yang baru? (Y/N): ");
             String jawab = inp.nextLine();
 
             if (jawab.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {
-                        System.out.print("Masukkan alas baru: ");
-                        double newAlas = inp.nextDouble();
+                        System.out.print("Masukkan diagonal 1 yang baru: ");
+                        double newDiagonal1 = inp.nextDouble();
                         inp.nextLine();
-                        if (newAlas <= 0) {
-                            System.out.println("Alas harus lebih dari nol.\n");
+                        if (newDiagonal1 <= 0) {
+                            System.out.println("Diagonal 1 harus lebih dari nol.\n");
                             continue;
                         }
 
-                        System.out.print("Masukkan tinggi segitiga baru: ");
-                        double newTinggiSegitiga = inp.nextDouble();
+                        System.out.print("Masukkan diagonal 2 yang baru: ");
+                        double newDiagonal2 = inp.nextDouble();
                         inp.nextLine();
-                        if (newTinggiSegitiga <= 0) {
-                            System.out.println("Tinggi segitiga harus lebih dari nol.\n");
+                        if (newDiagonal2 <= 0) {
+                            System.out.println("Diagonal 2 harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        System.out.print("Masukkan sisi yang baru: ");
+                        double newSisi = inp.nextDouble();
+                        inp.nextLine();
+                        if (newSisi <= 0) {
+                            System.out.println("Sisi harus lebih dari nol.\n");
                             continue;
                         }
 
@@ -73,10 +81,14 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
+
+                        super.diagonal1 = newDiagonal1;
+                        super.diagonal2 = newDiagonal2;
+                        super.sisi = newSisi;
                         this.tinggiPrisma = tinggiPrisma;
                         super.luas = super.hitungLuas();
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        this.volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
+                        this.luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
                         break;
 
                     } catch (InputMismatchException e) {
@@ -95,10 +107,12 @@ public class PrismaSegitiga extends Segitiga{
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
+
                         this.tinggiPrisma = tinggiPrisma;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
+
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
                         inp.nextLine();
@@ -110,8 +124,16 @@ public class PrismaSegitiga extends Segitiga{
             }
         }
     }
-    
-    public double getTinggiPrisma(){
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
+    }
+
+    public double getTinggiPrisma() {
         return tinggiPrisma;
     }
 }

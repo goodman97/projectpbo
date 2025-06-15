@@ -11,8 +11,12 @@ public class PerhitunganThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        proses.run();
-        System.out.println("Thread " + namaProses + " selesai.\n");
+        try {
+            System.out.println("Thread " + namaProses + " mulai...");
+            proses.run();
+            System.out.println("Thread " + namaProses + " selesai.\n");
+        } catch (Exception e) {
+            System.err.println("Error in thread " + namaProses + ": " + e.getMessage());
+        }
     }
 }

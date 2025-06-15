@@ -24,7 +24,7 @@ public class PrismaSegitiga extends Segitiga{
         return  volume;
     }
 
-    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
+    public double hitungVolume(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
         volume = newAlas * newTinggiSegitiga * tinggiPrisma;
         return volume;
     }
@@ -35,7 +35,7 @@ public class PrismaSegitiga extends Segitiga{
         return luasPermukaan;
     }
 
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
+    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
         double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiPrisma, 2));
         luasPermukaan = 2 * (0.5 * newAlas * newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
         return luasPermukaan;
@@ -75,8 +75,8 @@ public class PrismaSegitiga extends Segitiga{
                         }
                         this.tinggiPrisma = tinggiPrisma;
                         super.luas = super.hitungLuas();
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga, tinggiPrisma);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, tinggiPrisma);
                         break;
 
                     } catch (InputMismatchException e) {
@@ -110,8 +110,12 @@ public class PrismaSegitiga extends Segitiga{
             }
         }
     }
+
+    public double getVolume() {
+        return volume;
+    }
     
-    public double getTinggiPrisma(){
-        return tinggiPrisma;
+    public double getLuasPermukaan() {
+        return luasPermukaan;
     }
 }
