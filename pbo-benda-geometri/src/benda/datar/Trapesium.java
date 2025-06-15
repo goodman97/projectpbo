@@ -118,4 +118,8 @@ public class Trapesium extends BangunDatar implements Runnable {
         thread = null; // Reset thread after completion
     }
   
+
+    public Thread getThread() {
+    return thread;
+}
 }

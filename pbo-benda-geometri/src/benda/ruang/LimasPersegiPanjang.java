@@ -1,18 +1,20 @@
 package benda.ruang;
 
 import benda.datar.PersegiPanjang;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LimasPersegiPanjang extends PersegiPanjang{
+public class LimasPersegiPanjang extends PersegiPanjang implements Runnable {
     private double tinggiLimas;
     private double volume;
     private double luasPermukaan;
+    private Thread thread;
+    private String namaProses;
 
     public LimasPersegiPanjang(double panjang, double lebar, double tinggiLimas) {
         super(panjang, lebar);
         this.tinggiLimas = tinggiLimas;
+        this.namaProses = "Perhitungan limas persegi panjang";
     }
 
     @Override
@@ -32,49 +34,85 @@ public class LimasPersegiPanjang extends PersegiPanjang{
         return luasPermukaan;
     }    
 
-      public double hitungVolume(double newPanjang, double newLebar, double newtinggiLimas) {
-        return (1.0 / 3.0) * newPanjang * newLebar * newtinggiLimas; 
+    public double hitungVolume(double newPanjang, double newLebar, double newTinggiLimas) {
+        volume = (1.0 / 3.0) * newPanjang * newLebar * newTinggiLimas;
+        return volume; 
     }
 
-     public double hitungLuasPermukaan(double newPanjang, double newLebar, double newtinggiLimas) {
-        double luasSegitigaPanjang = 0.5 * newPanjang * Math.sqrt(Math.pow(newLebar / 2, 2) + Math.pow(newtinggiLimas, 2));
-        double luasSegitigaLebar = 0.5 * newLebar * Math.sqrt(Math.pow(newPanjang / 2, 2) + Math.pow(newtinggiLimas, 2));
-        return newPanjang*newLebar + 2 * luasSegitigaPanjang + 2 * luasSegitigaLebar;
+    public double hitungLuasPermukaan(double newPanjang, double newLebar, double newTinggiLimas) {
+        double luasSegitigaPanjang = 0.5 * newPanjang * Math.sqrt(Math.pow(newLebar / 2, 2) + Math.pow(newTinggiLimas, 2));
+        double luasSegitigaLebar = 0.5 * newLebar * Math.sqrt(Math.pow(newPanjang / 2, 2) + Math.pow(newTinggiLimas, 2));
+        luasPermukaan = newPanjang * newLebar + 2 * luasSegitigaPanjang + 2 * luasSegitigaLebar;
+        return luasPermukaan;
     }   
 
     public void prosesInputDanValidasi() {
-        Scanner inp = new Scanner(System.in);
+    Scanner inp = new Scanner(System.in);
+    while (true) {
         System.out.print("Apakah ingin mengubah nilai panjang, lebar, dan tinggi limas persegi panjang? (Y/N): ");
         String jawab = inp.nextLine();
-
-        if (jawab.equalsIgnoreCase("Y")) {
-            try {
-                 System.out.print("Masukkan panjang  baru: ");
-                double newPanjang = inp.nextDouble();
-                if (newPanjang <= 0) {
-                    throw new IllegalArgumentException("❌ Panjang harus lebih dari nol.");
-                }
-                System.out.print("Masukkan lebar baru: ");
-                double newLebar = inp.nextDouble();
-                if (newLebar <= 0) {
-                    throw new IllegalArgumentException("❌ lebar harus lebih dari nol.");
-                }
-                System.out.print("Masukkan tinggi baru: ");
-                double newtinggiLimas = inp.nextDouble();
-                if (newtinggiLimas <= 0) {
-                    throw new IllegalArgumentException("❌ Tinggi limas harus lebih dari nol.");
-                }
-                volume = hitungVolume(newPanjang, newLebar, newtinggiLimas);
-                luasPermukaan = hitungLuasPermukaan(newPanjang, newLebar, newtinggiLimas);
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Input an harus berupa angka.");
-            }
-        } else if (jawab.equalsIgnoreCase("N")) {
+        if (!jawab.equalsIgnoreCase("Y") && !jawab.equalsIgnoreCase("N")) {
+            System.out.println("❌ Jawaban hanya boleh Y atau N.");
+            continue;
+        }
+        if (jawab.equalsIgnoreCase("N")) {
             volume = hitungVolume();
             luasPermukaan = hitungLuasPermukaan();
-        } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
+            break;
+        }
+        try {
+            System.out.print("Masukkan panjang baru: ");
+            double newPanjang = inp.nextDouble();
+            if (newPanjang <= 0) {
+                System.out.println("❌ Panjang harus lebih dari nol.");
+                continue;
+            }
+            System.out.print("Masukkan lebar baru: ");
+            double newLebar = inp.nextDouble();
+            if (newLebar <= 0) {
+                System.out.println("❌ Lebar harus lebih dari nol.");
+                continue;
+            }
+            System.out.print("Masukkan tinggi limas baru: ");
+            double newTinggiLimas = inp.nextDouble();
+            if (newTinggiLimas <= 0) {
+                System.out.println("❌ Tinggi limas harus lebih dari nol.");
+                continue;
+            }
+            this.panjang = newPanjang;
+            this.lebar = newLebar;
+            this.tinggiLimas = newTinggiLimas;
+            super.luas = panjang * lebar;
+            volume = hitungVolume(newPanjang, newLebar, newTinggiLimas);
+            luasPermukaan = hitungLuasPermukaan(newPanjang, newLebar, newTinggiLimas);
+            break;
+        } catch (InputMismatchException e) {
+            System.out.println("❌ Input harus berupa angka.");
+            inp.nextLine(); // Clear buffer
+        }
+    
+    }
+    }
+
+    // Thread-related methods
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
         }
     }
 
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Volume limas persegi panjang: %.2f\n", volume);
+        System.out.printf("Luas permukaan limas persegi panjang: %.2f\n", luasPermukaan);
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null; 
+    }
+
+    public Thread getThread() {
+    return thread;
+}
 }

@@ -13,7 +13,6 @@ public class BelahKetupat extends BangunDatar implements Runnable {
     private Thread thread;
     private String namaProses;
 
-    // Konstruktor dengan sisi dihitung otomatis
     public BelahKetupat(double diagonal1, double diagonal2) {
         this.diagonal1 = diagonal1;
         this.diagonal2 = diagonal2;
@@ -85,7 +84,6 @@ public class BelahKetupat extends BangunDatar implements Runnable {
         return sisi;
     }
 
-    // Thread-related methods
     public void startCalculationThread() {
         if (thread == null) {
             thread = new Thread(this, namaProses);
@@ -101,5 +99,9 @@ public class BelahKetupat extends BangunDatar implements Runnable {
         System.out.printf("Keliling belah ketupat: %.2f\n", hitungKeliling());
         System.out.println("Thread " + namaProses + " selesai.\n");
         thread = null; // Reset thread after completion
+    }
+
+     public Thread getThread() {
+        return thread;
     }
 }

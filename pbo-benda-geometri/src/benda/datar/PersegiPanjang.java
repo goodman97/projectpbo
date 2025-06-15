@@ -94,6 +94,10 @@ public class PersegiPanjang extends BangunDatar implements Runnable{
         System.out.printf("Luas trapesium: %.2f\n", hitungLuas());
         System.out.printf("Keliling trapesium: %.2f\n", hitungKeliling());
         System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null; // Reset thread after completion
+        thread = null; 
     }
+
+    public Thread getThread() {
+    return thread;
+}
 }

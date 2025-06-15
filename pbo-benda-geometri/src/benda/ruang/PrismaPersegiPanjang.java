@@ -4,14 +4,17 @@ import benda.datar.PersegiPanjang;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaPersegiPanjang extends PersegiPanjang{
+public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
     private double tinggiPrisma;
     private double volume;
     private double luasPermukaan;
+    private Thread thread;
+    private String namaProses;
 
     public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) {
         super(panjang, lebar);
         this.tinggiPrisma = tinggiPrisma;
+        this.namaProses = "Perhitungan prisma persegi panjang";
     }
 
     @Override
@@ -29,48 +32,81 @@ public class PrismaPersegiPanjang extends PersegiPanjang{
         return luasPermukaan;
     }
 
-    public double hitungVolume(double newPanjang, double newLebar, double newtinggiPrisma) {
-        return newPanjang * newLebar * newtinggiPrisma;
+    public double hitungVolume(double newPanjang, double newLebar, double newTinggiPrisma) {
+        volume = newPanjang * newLebar * newTinggiPrisma;
+        return volume;
     }
 
-    public double hitungLuasPermukaan(double newPanjang, double newLebar, double newtinggiPrisma) {
-        return 2 * newPanjang * newLebar + 2 * (newPanjang + newLebar) * newtinggiPrisma;
+    public double hitungLuasPermukaan(double newPanjang, double newLebar, double newTinggiPrisma) {
+        luasPermukaan = 2 * newPanjang * newLebar + 2 * (newPanjang + newLebar) * newTinggiPrisma;
+        return luasPermukaan;
     }
 
-    
     public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai panjang, lebar, dan tinggi prisma persegi panjang? (Y/N): ");
-        String jawab = inp.nextLine();
-
-        if (jawab.equalsIgnoreCase("Y")) {
+        while (true) {
+            System.out.print("Apakah ingin mengubah nilai panjang, lebar, dan tinggi prisma persegi panjang? (Y/N): ");
+            String jawab = inp.nextLine();
+            if (!jawab.equalsIgnoreCase("Y") && !jawab.equalsIgnoreCase("N")) {
+                System.out.println("❌ Jawaban hanya boleh Y atau N.");
+                continue;
+            }
+            if (jawab.equalsIgnoreCase("N")) {
+                volume = hitungVolume();
+                luasPermukaan = hitungLuasPermukaan();
+                break;
+            }
             try {
-                 System.out.print("Masukkan panjang  baru: ");
+                System.out.print("Masukkan panjang baru: ");
                 double newPanjang = inp.nextDouble();
                 if (newPanjang <= 0) {
-                    throw new IllegalArgumentException("❌ Panjang harus lebih dari nol.");
+                    System.out.println("❌ Panjang harus lebih dari nol.");
+                    continue;
                 }
                 System.out.print("Masukkan lebar baru: ");
                 double newLebar = inp.nextDouble();
                 if (newLebar <= 0) {
-                    throw new IllegalArgumentException("❌ lebar harus lebih dari nol.");
+                    System.out.println("❌ Lebar harus lebih dari nol.");
+                    continue;
                 }
-                System.out.print("Masukkan tinggi baru: ");
-                double newtinggiPrisma = inp.nextDouble();
-                if (newtinggiPrisma <= 0) {
-                    throw new IllegalArgumentException("❌ Tinggi Prisma harus lebih dari nol.");
+                System.out.print("Masukkan tinggi prisma baru: ");
+                double newTinggiPrisma = inp.nextDouble();
+                if (newTinggiPrisma <= 0) {
+                    System.out.println("❌ Tinggi prisma harus lebih dari nol.");
+                    continue;
                 }
-                volume = hitungVolume(newPanjang, newLebar, newtinggiPrisma);
-                luasPermukaan = hitungLuasPermukaan(newPanjang, newLebar, newtinggiPrisma);
+                this.panjang = newPanjang;
+                this.lebar = newLebar;
+                this.tinggiPrisma = newTinggiPrisma;
+                super.luas = panjang * lebar;
+                volume = hitungVolume(newPanjang, newLebar, newTinggiPrisma);
+                luasPermukaan = hitungLuasPermukaan(newPanjang, newLebar, newTinggiPrisma);
+                break;
             } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("❌ Input an harus berupa angka.");
+                System.out.println("❌ Input harus berupa angka.");
+                inp.nextLine(); // Clear buffer
             }
-        } else if (jawab.equalsIgnoreCase("N")) {
-            volume = hitungVolume();
-            luasPermukaan = hitungLuasPermukaan();
-        } else {
-            throw new IllegalArgumentException("❌ Jawaban hanya boleh Y atau N.");
         }
     }
 
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Volume prisma persegi panjang: %.2f\n", volume);
+        System.out.printf("Luas permukaan prisma persegi panjang: %.2f\n", luasPermukaan);
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null; 
+    }
+
+    public Thread getThread() {
+    return thread;
+}
 }
