@@ -52,6 +52,12 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
                 continue;
             }
             if (jawab.equalsIgnoreCase("N")) {
+                System.out.println("Masukkan tinggi Prisma");
+                this.tinggiPrisma = inp.nextDouble();
+                if(tinggiPrisma<=0){
+                    System.out.println("Tingggi prisma harus lebih dari 0\n");
+                    continue;
+                }
                 volume = hitungVolume();
                 luasPermukaan = hitungLuasPermukaan();
                 break;

@@ -28,7 +28,7 @@ public class Main {
         System.out.println("\nInput benda geometri: " + temberengBola.getNama());
         temberengBola.prosesInputDanValidasi();*/
 
-        Segitiga segitiga = new Segitiga(1, 1);
+       /*  Segitiga segitiga = new Segitiga(1, 1);
         System.out.println("\nInput benda geometri: " + segitiga.getNama());
         segitiga.prosesInputDanValidasi();
         System.out.println("Luas segitiga: " + segitiga.hitungLuas());
@@ -50,9 +50,7 @@ public class Main {
         System.out.println("Luas permukaan prisma segitiga: " + prismaSegitiga.hitungLuasPermukaan());
         System.out.println("Luas permukaan prisma segitiga (mengubah alas dan tinggi segitiga): " + prismaSegitiga.hitungLuasPermukaan(0, 0));
         
-        BelahKetupat belahKetupat = new BelahKetupat(0, 0);
-        System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
-        belahKetupat.prosesInputDanValidasi();
+        
         
         LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), 0);
         System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
@@ -68,7 +66,7 @@ public class Main {
         prismaBelahKetupat.hitungVolume(); 
         prismaBelahKetupat.hitungVolume(0, 0, 0); 
         prismaBelahKetupat.hitungLuasPermukaan(); 
-        prismaBelahKetupat.hitungLuasPermukaan(0, 0, 0);
+        prismaBelahKetupat.hitungLuasPermukaan(0, 0, 0);*/
         /*
         // Persegi persegi = new Persegi (0);
         // System.out.println("\nInput benda geometri: " + persegi.getNama());
@@ -93,11 +91,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         List<Runnable> shapes = new ArrayList<>();
 
-        Trapesium Trapesium = new Trapesium(0, 0,0);
+       /*  Trapesium Trapesium = new Trapesium(0, 0,0);
         System.out.println("\nInput benda geometri: " + Trapesium.getNama());
         Trapesium.prosesInputDanValidasi();
         System.out.println("Luas :"+ Trapesium.hitungLuas());
         System.out.println("Keliling :"+ Trapesium.hitungKeliling());
+      
+        System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
+        belahKetupat.prosesInputDanValidasi();*/
         
         while (true) {
             System.out.println("\n=== Kalkulator Geometri ===");
@@ -121,6 +122,7 @@ public class Main {
 
                 switch (option) {
                     case 1:
+                        BelahKetupat belahKetupat = new BelahKetupat(0, 0);
                         System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
                         belahKetupat.prosesInputDanValidasi();
                         System.out.printf("Luas: %.2f\n", belahKetupat.hitungLuas());
