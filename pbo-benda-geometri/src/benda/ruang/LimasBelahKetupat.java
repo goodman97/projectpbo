@@ -6,16 +6,19 @@ import java.util.Scanner;
 
 public class LimasBelahKetupat extends BelahKetupat{
     private double tinggiLimas;
-    private double newDiagonal1;
-    private double newDiagonal2;
-    private double newSisi;
+    private Double newDiagonal1 = null;
+    private Double newDiagonal2 = null;
+    private Double newSisi = null;
     private double volume;
     private double luasPermukaan;
+    private Thread thread;
+    private String namaProses;
 
     public LimasBelahKetupat(double diagonal1, double diagonal2,  double tinggiLimas) {
         super(diagonal1, diagonal2);
         this.tinggiLimas = tinggiLimas;
         this.newSisi = Math.sqrt(Math.pow(newDiagonal1 / 2, 2) + Math.pow(newDiagonal2 / 2, 2));
+        this.namaProses = "Perhitungan limas belah ketupat";
     }
 
     @Override
@@ -128,5 +131,37 @@ public class LimasBelahKetupat extends BelahKetupat{
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
+    }
+    
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        
+        if (newDiagonal1 != null && newDiagonal2 != null && newSisi != null){
+            this.volume = hitungVolume(newDiagonal1, newDiagonal2, newSisi);
+            this.luasPermukaan = hitungLuasPermukaan(newDiagonal1, newDiagonal2, newSisi);
+            System.out.printf("Volmue limas belah ketupat: %.2f\n", volume);
+            System.out.printf("Luas permukaan limas belah ketupat: %.2f\n", luasPermukaan);
+        }else{
+            this.volume = hitungVolume();
+            this.luasPermukaan = hitungLuasPermukaan();
+            System.out.printf("Volmue limas belah ketupat: %.2f\n", volume);
+            System.out.printf("Luas permukaan limas belah ketupat: %.2f\n", luasPermukaan);
+        }
+
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+     public Thread getThread() {
+        return thread;
     }
 }
