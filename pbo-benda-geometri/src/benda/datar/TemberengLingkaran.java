@@ -2,7 +2,7 @@ package benda.datar;
 
 import java.util.*;
 
-public class TemberengLingkaran extends JuringLingkaran{
+public class TemberengLingkaran extends JuringLingkaran implements Runnable{
     private double taliBusur;
     private double luas;
     private double keliling;
@@ -97,5 +97,25 @@ public class TemberengLingkaran extends JuringLingkaran{
 
     public double keliling() {
         return keliling;
+    }
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+     @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Luas segitiga: %.2f\n", hitungLuas());
+        System.out.printf("Keliling segitiga: %.2f\n", hitungKeliling());
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }
