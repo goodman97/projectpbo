@@ -2,11 +2,13 @@ package benda.datar;
 
 import java.util.*;
 
-public class JuringLingkaran extends Lingkaran{
+public class JuringLingkaran extends Lingkaran implements Runnable{
     protected double sudut;
     protected double luas;
     protected double keliling;
     protected double panjangBusur;
+    private Thread thread;
+    private String namaProses;
     
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
@@ -81,5 +83,26 @@ public class JuringLingkaran extends Lingkaran{
 
     public double keliling() {
         return keliling;
+    }
+
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+     @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+        System.out.printf("Luas Juring Lingkaran: %.2f\n", hitungLuas());
+        System.out.printf("Keliling Juring Lingkaran: %.2f\n", hitungKeliling());
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }

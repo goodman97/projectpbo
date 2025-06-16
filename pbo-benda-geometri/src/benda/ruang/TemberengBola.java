@@ -3,14 +3,17 @@ package benda.ruang;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TemberengBola extends Bola {
+public class TemberengBola extends Bola implements Runnable {
     private double tinggi;
     private double volume;
     private double luasPermukaan;
+    private Thread thread;
+    private String namaProses;
 
-    public TemberengBola(double jariJari, double tinggi) {
+    public TemberengBola(double jariJari, double tinggi, String namaProses) {
         super(jariJari);
         this.tinggi = tinggi;
+        this.namaProses = namaProses;
     }
 
     @Override
@@ -20,67 +23,85 @@ public class TemberengBola extends Bola {
 
     @Override
     protected double hitungVolume() {
-        volume = ((Math.PI * Math.pow(tinggi, 2))/3 * (3 * super.jariJari - tinggi));
-        return volume;    
+        volume = ((Math.PI * Math.pow(tinggi, 2)) / 3) * (3 * super.jariJari - tinggi);
+        return volume;
     }
 
-    // overload
     protected double hitungVolume(double newJariJari, double tinggi) {
-        volume = ((Math.PI * Math.pow(tinggi, 2))/3) * (3 * newJariJari - tinggi);
-        return volume;    
+        return ((Math.PI * Math.pow(tinggi, 2)) / 3) * (3 * newJariJari - tinggi);
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaan = super.keliling * tinggi; // luas permukaan tanpa alas
-        return luasPermukaan; 
+        luasPermukaan = 2 * Math.PI * super.jariJari * tinggi;
+        return luasPermukaan;
     }
 
-    // Overload
     public double hitungLuasPermukaan(double newJariJari, double tinggi) {
-        luasPermukaan = 2 * Math.PI * newJariJari * tinggi; // luas permukaan tanpa alas
-        return luasPermukaan; 
+        return 2 * Math.PI * newJariJari * tinggi;
     }
 
     public void prosesInputDanValidasi() {
-        Scanner inp = new Scanner(System.in);
-        while (true) {
-            System.out.print("Nilai jari-jari Bola saat ini adalah " + super.jariJari + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
-            String jawab = inp.nextLine();
+        try (Scanner inp = new Scanner(System.in)) {
+            while (true) {
+                System.out.print("Nilai jari-jari Bola saat ini adalah " + super.jariJari
+                        + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
+                String jawab = inp.nextLine();
 
-            if (jawab.equalsIgnoreCase("Y")) {
-                while (true) {
-                    try {
-                        System.out.print("Masukkan jari-jari baru: ");
-                        double newJariJari = inp.nextDouble();
-                        inp.nextLine();
-                        System.out.print("Masukkan tinggi tembereng: ");
-                        tinggi = inp.nextDouble();
-                        inp.nextLine();
-                        if (newJariJari <= 0 || tinggi <= 0) {
-                            System.out.println("Jari-jari dan tinggi tembereng harus lebih dari nol.\n");
-                            continue;
+                if (jawab.equalsIgnoreCase("Y")) {
+                    while (true) {
+                        try {
+                            System.out.print("Masukkan jari-jari baru: ");
+                            double newJariJari = inp.nextDouble();
+                            System.out.print("Masukkan tinggi tembereng: ");
+                            double tinggiBaru = inp.nextDouble();
+                            inp.nextLine();
+
+                            if (newJariJari <= 0 || tinggiBaru <= 0) {
+                                System.out.println("Jari-jari dan tinggi tembereng harus lebih dari nol.\n");
+                                continue;
+                            }
+
+                            super.jariJari = newJariJari;
+                            this.tinggi = tinggiBaru;
+                            this.volume = hitungVolume(newJariJari, tinggiBaru);
+                            this.luasPermukaan = hitungLuasPermukaan(newJariJari, tinggiBaru);
+                            break;
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("Input harus berupa angka.");
+                            inp.nextLine();
                         }
-                        super.jariJari = newJariJari;
-                        this.tinggi = tinggi;
-                        this.volume = hitungVolume(newJariJari, tinggi);
-                        this.luasPermukaan = hitungLuasPermukaan(newJariJari, tinggi);
-                        break;
-                    } catch (InputMismatchException e) {
-                        System.out.println("Input jari-jari harus berupa angka.");
-                        inp.nextLine();
                     }
+                    break;
+
+                } else if (jawab.equalsIgnoreCase("N")) {
+                    while (true) {
+                        try {
+                            System.out.print("Masukkan tinggi tembereng bola: ");
+                            double tinggiBaru = inp.nextDouble();
+                            inp.nextLine();
+
+                            if (tinggiBaru <= 0) {
+                                System.out.println("Tinggi harus lebih dari nol.\n");
+                                continue;
+                            }
+
+                            this.tinggi = tinggiBaru;
+                            this.volume = hitungVolume();
+                            this.luasPermukaan = hitungLuasPermukaan();
+                            break;
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("Input harus berupa angka.");
+                            inp.nextLine();
+                        }
+                    }
+                    break;
+
+                } else {
+                    System.out.println("Jawaban hanya boleh Y atau N.\n");
                 }
-                break;
-            } else if (jawab.equalsIgnoreCase("N")) {
-                System.out.print("Masukkan tinggi tembereng bola: ");
-                super.jariJari = jariJari;
-                this.tinggi = inp.nextDouble();
-                this.volume = hitungVolume();
-                this.luasPermukaan = hitungLuasPermukaan();
-                break;
-            } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
     }
@@ -93,5 +114,31 @@ public class TemberengBola extends Bola {
     @Override
     public double getLuasPermukaan() {
         return luasPermukaan;
+    }
+
+    public void startCalculationThread() {
+        if (thread == null) {
+            thread = new Thread(this, namaProses);
+            thread.start();
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + namaProses + " mulai...");
+        System.out.println("Hitung: " + getNama());
+
+        this.volume = hitungVolume();
+        this.luasPermukaan = hitungLuasPermukaan();
+
+        System.out.printf("Volume Tembereng Bola: %.2f\n", volume);
+        System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaan);
+
+        System.out.println("Thread " + namaProses + " selesai.\n");
+        thread = null;
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }
