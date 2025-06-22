@@ -6,6 +6,8 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable{
     private double taliBusur;
     private double luas;
     private double keliling;
+    private Thread thread;
+    private String namaProses;
 
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut);

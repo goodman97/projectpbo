@@ -29,7 +29,7 @@ public class LimasSegitiga extends Segitiga{
         return volume;
     }
 
-    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
+    public double hitungVolume(double newAlas, double newTinggiSegitiga, double tinggiLimas) {
         volume = (1.0 / 3.0) * (0.5 * newAlas * newTinggiSegitiga) * tinggiLimas;
         return volume;
     }
@@ -41,7 +41,7 @@ public class LimasSegitiga extends Segitiga{
         return luasPermukaan;
     }
 
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
+    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga, double tinggiLimas) {
         double tinggiSegitigaTegak = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiLimas, 2));
         double luasTegak = 0.5 * newAlas * tinggiSegitigaTegak;
         double luasAlas = 0.5 * newAlas * newTinggiSegitiga;
@@ -72,17 +72,17 @@ public class LimasSegitiga extends Segitiga{
                             continue;
                         }
                         System.out.print("Masukkan tinggi limas: ");
-                        this.tinggiLimas = inp.nextDouble();
+                        double inputTinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiLimas <= 0) {
+                        if (inputTinggiLimas <= 0) {
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-                        super.alas = newAlas;
-                        super.tinggiSegitiga = newTinggiSegitiga;
-                        this.tinggiLimas = tinggiLimas;
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        this.newAlas = newAlas;
+                        this.newTinggiSegitiga = newTinggiSegitiga;
+                        this.tinggiLimas = inputTinggiLimas;
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga, tinggiLimas);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, tinggiLimas);
                         break;
                     } catch (InputMismatchException e) {
                         System.out.println("Input harus berupa angka.");
@@ -94,13 +94,13 @@ public class LimasSegitiga extends Segitiga{
                 while (true) {
                     try {
                         System.out.print("Masukkan tinggi limas: ");
-                        this.tinggiLimas = inp.nextDouble();
+                        double inputTinggiLimas = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiLimas <= 0) {
+                        if (inputTinggiLimas <= 0) {
                             System.out.println("Tinggi limas harus lebih dari nol.\n");
                             continue;
                         }
-                        this.tinggiLimas = tinggiLimas;
+                        this.tinggiLimas = inputTinggiLimas;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
@@ -116,6 +116,18 @@ public class LimasSegitiga extends Segitiga{
         }
     }
     
+    public double getNewAlas(){
+        return newAlas;
+    }
+    
+    public double getNewTinggiSegitiga(){
+        return newTinggiSegitiga;
+    }
+    
+    public double getTinggiLimas(){
+        return tinggiLimas;
+    }
+    
     public void startCalculationThread() {
         if (thread == null) {
             thread = new Thread(this, namaProses);
@@ -129,8 +141,8 @@ public class LimasSegitiga extends Segitiga{
         System.out.println("Hitung: " + getNama());
         
         if (newAlas != null && newTinggiSegitiga != null){
-            this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-            this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+            this.volume = hitungVolume(newAlas, newTinggiSegitiga, tinggiLimas);
+            this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, tinggiLimas);
             System.out.printf("Volmue limas segitiga: %.2f\n", volume);
             System.out.printf("Luas permukaan limas segitiga: %.2f\n", luasPermukaan);
         }else{
