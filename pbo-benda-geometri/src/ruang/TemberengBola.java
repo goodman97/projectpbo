@@ -3,17 +3,16 @@ package ruang;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TemberengBola extends Bola implements Runnable {
+public class TemberengBola extends Bola {
     private double tinggi;
-    private double volume;
-    private double luasPermukaan;
-    private Thread thread;
-    private String namaProses;
+    private double volumeTembereng;
+    private double luasPermukaanTembereng;
 
-    public TemberengBola(double jariJari, double tinggi, String namaProses) {
+    public TemberengBola(double jariJari, double tinggi) {
         super(jariJari);
         this.tinggi = tinggi;
-        this.namaProses = namaProses;
+        this.volumeTembereng = hitungVolume();
+        this.luasPermukaanTembereng = hitungLuasPermukaan();
     }
 
     @Override
@@ -23,122 +22,102 @@ public class TemberengBola extends Bola implements Runnable {
 
     @Override
     protected double hitungVolume() {
-        volume = ((Math.PI * Math.pow(tinggi, 2)) / 3) * (3 * super.jariJari - tinggi);
-        return volume;
+        volumeTembereng = ((Math.PI * Math.pow(tinggi, 2)) / 3) * (3 * jariJari - tinggi);
+        return volumeTembereng;
     }
 
-    protected double hitungVolume(double newJariJari, double tinggi) {
-        return ((Math.PI * Math.pow(tinggi, 2)) / 3) * (3 * newJariJari - tinggi);
+    protected double hitungVolume(double newJariJari, double tinggiBaru) {
+        return ((Math.PI * Math.pow(tinggiBaru, 2)) / 3) * (3 * newJariJari - tinggiBaru);
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaan = 2 * Math.PI * super.jariJari * tinggi;
-        return luasPermukaan;
+        luasPermukaanTembereng = 2 * Math.PI * jariJari * tinggi;
+        return luasPermukaanTembereng;
     }
 
-    public double hitungLuasPermukaan(double newJariJari, double tinggi) {
-        return 2 * Math.PI * newJariJari * tinggi;
+    public double hitungLuasPermukaan(double newJariJari, double tinggiBaru) {
+        return 2 * Math.PI * newJariJari * tinggiBaru;
     }
 
     public void prosesInputDanValidasi() {
-        try (Scanner inp = new Scanner(System.in)) {
-            while (true) {
-                System.out.print("Nilai jari-jari Bola saat ini adalah " + super.jariJari
-                        + ". Apakah ingin mengubah nilai jari-jari? (Y/N): ");
-                String jawab = inp.nextLine();
+        Scanner inp = new Scanner(System.in);
+        while (true) {
+            System.out.printf("\nNilai jari-jari saat ini adalah %.2f. Apakah ingin mengubah nilai jari-jari? (Y/N): ", jariJari);
+            String jawab = inp.nextLine();
 
-                if (jawab.equalsIgnoreCase("Y")) {
-                    while (true) {
-                        try {
-                            System.out.print("Masukkan jari-jari baru: ");
-                            double newJariJari = inp.nextDouble();
-                            System.out.print("Masukkan tinggi tembereng: ");
-                            double tinggiBaru = inp.nextDouble();
-                            inp.nextLine();
+            if (jawab.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan Jari-jari Baru: ");
+                        double newJariJari = inp.nextDouble();
+                        System.out.print("Masukkan Tinggi Tembereng Baru: ");
+                        double tinggiBaru = inp.nextDouble();
+                        inp.nextLine();
 
-                            if (newJariJari <= 0 || tinggiBaru <= 0) {
-                                System.out.println("Jari-jari dan tinggi tembereng harus lebih dari nol.\n");
-                                continue;
-                            }
-
-                            super.jariJari = newJariJari;
-                            this.tinggi = tinggiBaru;
-                            this.volume = hitungVolume(newJariJari, tinggiBaru);
-                            this.luasPermukaan = hitungLuasPermukaan(newJariJari, tinggiBaru);
-                            break;
-
-                        } catch (InputMismatchException e) {
-                            System.out.println("Input harus berupa angka.");
-                            inp.nextLine();
+                        if (newJariJari <= 0 || tinggiBaru <= 0) {
+                            System.out.println("Nilai harus lebih dari nol.\n");
+                            continue;
                         }
+
+                        this.jariJari = newJariJari;
+                        this.tinggi = tinggiBaru;
+                        this.volumeTembereng = hitungVolume(newJariJari, tinggiBaru);
+                        this.luasPermukaanTembereng = hitungLuasPermukaan(newJariJari, tinggiBaru);
+
+                        System.out.printf("\nVolume Tembereng Bola: %.2f\n", volumeTembereng);
+                        System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaanTembereng);
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input tidak valid. Silakan masukkan angka.");
+                        inp.nextLine();
                     }
-                    break;
-
-                } else if (jawab.equalsIgnoreCase("N")) {
-                    while (true) {
-                        try {
-                            System.out.print("Masukkan tinggi tembereng bola: ");
-                            double tinggiBaru = inp.nextDouble();
-                            inp.nextLine();
-
-                            if (tinggiBaru <= 0) {
-                                System.out.println("Tinggi harus lebih dari nol.\n");
-                                continue;
-                            }
-
-                            this.tinggi = tinggiBaru;
-                            this.volume = hitungVolume();
-                            this.luasPermukaan = hitungLuasPermukaan();
-                            break;
-
-                        } catch (InputMismatchException e) {
-                            System.out.println("Input harus berupa angka.");
-                            inp.nextLine();
-                        }
-                    }
-                    break;
-
-                } else {
-                    System.out.println("Jawaban hanya boleh Y atau N.\n");
                 }
+                break;
+
+            } else if (jawab.equalsIgnoreCase("N")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan Tinggi Tembereng: ");
+                        double tinggiBaru = inp.nextDouble();
+                        inp.nextLine();
+
+                        if (tinggiBaru <= 0) {
+                            System.out.println("Tinggi harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        this.tinggi = tinggiBaru;
+                        this.volumeTembereng = hitungVolume();
+                        this.luasPermukaanTembereng = hitungLuasPermukaan();
+
+                        System.out.printf("\nVolume Tembereng Bola: %.2f\n", volumeTembereng);
+                        System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaanTembereng);
+                        break;
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input tidak valid. Silakan masukkan angka.");
+                        inp.nextLine();
+                    }
+                }
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
         }
     }
 
-    @Override
-    public double getVolume() {
-        return volume;
+    // Getter
+    public double getTinggi() {
+        return tinggi;
     }
 
-    @Override
-    public double getLuasPermukaan() {
-        return luasPermukaan;
+    public double getVolumeTembereng() {
+        return volumeTembereng;
     }
 
-    public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-
-        this.volume = hitungVolume();
-        this.luasPermukaan = hitungLuasPermukaan();
-
-        System.out.printf("Volume Tembereng Bola: %.2f\n", volume);
-        System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaan);
-
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null;
-    }
-
-    public Thread getThread() {
-        return thread;
+    public double getLuasPermukaanTembereng() {
+        return luasPermukaanTembereng;
     }
 }
