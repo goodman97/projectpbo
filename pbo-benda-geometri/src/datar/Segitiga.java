@@ -4,20 +4,17 @@ import geometri.BangunDatar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Segitiga extends BangunDatar implements Runnable {
+public class Segitiga extends BangunDatar{
     protected double alas;
     protected double tinggiSegitiga;
     protected double luas;
     protected double keliling;
-    private Thread thread;
-    private String namaProses;
 
     public Segitiga(double alas, double tinggiSegitiga) {
         this.alas = alas;
         this.tinggiSegitiga = tinggiSegitiga;
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
-        this.namaProses = "Perhitungan segitiga";
     }
 
     @Override
@@ -33,6 +30,17 @@ public class Segitiga extends BangunDatar implements Runnable {
     public double hitungKeliling() {
         double sisiMiring = Math.sqrt(Math.pow(alas / 2, 2) + Math.pow(tinggiSegitiga, 2));
         keliling = alas + 2 * sisiMiring;
+        return keliling;
+    }
+    
+    public double hitungLuas(double newAlas, double newTinggiSegitiga) {
+        luas = 0.5 * newAlas * newTinggiSegitiga;
+        return luas;
+    }
+
+    public double hitungKeliling(double newAlas, double newTinggiSegitiga) {
+        double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(newTinggiSegitiga, 2));
+        keliling = newAlas + 2 * sisiMiring;
         return keliling;
     }
 
@@ -76,26 +84,5 @@ public class Segitiga extends BangunDatar implements Runnable {
 
     public double getTinggiSegitiga() {
         return tinggiSegitiga;
-    }
-
-    public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-        System.out.printf("Luas segitiga: %.2f\n", hitungLuas());
-        System.out.printf("Keliling segitiga: %.2f\n", hitungKeliling());
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null;
-    }
-
-    public Thread getThread() {
-        return thread;
     }
 }

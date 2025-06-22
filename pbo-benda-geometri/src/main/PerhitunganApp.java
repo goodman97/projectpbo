@@ -41,19 +41,27 @@ public class PerhitunganApp {
         System.out.println("\nInput benda geometri: " + limasSegitiga.getNama());
         limasSegitiga.prosesInputDanValidasi();
         System.out.println("Volume limas segitiga: " + limasSegitiga.hitungVolume());
-        System.out.println("Volume limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungVolume(0, 0));
+        System.out.println("Volume limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungVolume(limasSegitiga.getNewAlas(), limasSegitiga.getNewTinggiSegitiga(), limasSegitiga.getTinggiLimas()));
         System.out.println("Luas permukaan limas segitiga: " + limasSegitiga.hitungLuasPermukaan());
-        System.out.println("Luas permukaan limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungLuasPermukaan(0, 0));
+        System.out.println("Luas permukaan limas segitiga (mengubah alas dan tinggi segitiga): " + limasSegitiga.hitungLuasPermukaan(limasSegitiga.getNewAlas(), limasSegitiga.getNewTinggiSegitiga(), limasSegitiga.getTinggiLimas()));
 
         PrismaSegitiga prismaSegitiga = new PrismaSegitiga(segitiga.getAlas(), segitiga.getTinggiSegitiga(), 0);
         System.out.println("\nInput benda geometri: " + prismaSegitiga.getNama());
         prismaSegitiga.prosesInputDanValidasi();
         System.out.println("Volume prisma segitiga: " + prismaSegitiga.hitungVolume());
-        System.out.println("Volume prisma segitiga (mengubah alas dan tinggi segitiga)" + prismaSegitiga.hitungVolume(0, 0));
+        System.out.println("Volume prisma segitiga (mengubah alas dan tinggi segitiga)" + prismaSegitiga.hitungVolume(prismaSegitiga.getNewAlas(), prismaSegitiga.getNewTinggiSegitiga(), prismaSegitiga.getTinggiPrisma()));
         System.out.println("Luas permukaan prisma segitiga: " + prismaSegitiga.hitungLuasPermukaan());
-        System.out.println("Luas permukaan prisma segitiga (mengubah alas dan tinggi segitiga): " + prismaSegitiga.hitungLuasPermukaan(0, 0));
+        System.out.println("Luas permukaan prisma segitiga (mengubah alas dan tinggi segitiga): " + prismaSegitiga.hitungLuasPermukaan(prismaSegitiga.getNewAlas(), prismaSegitiga.getNewTinggiSegitiga(), prismaSegitiga.getTinggiPrisma()));
         
+<<<<<<< HEAD:pbo-benda-geometri/src/main/Main.java
+        BelahKetupat belahKetupat = new BelahKetupat(1, 1);
+        System.out.println("\nInput benda geometri: " + belahKetupat.getNama());
+        belahKetupat.prosesInputDanValidasi();
+        System.out.println("Luas belah ketupat: " + belahKetupat.hitungLuas());
+        System.out.println("Keliling belah ketupat: " + belahKetupat.hitungKeliling());
+=======
         
+>>>>>>> 60d38804f4ddb15a4795310d6feff14dcc682f96:pbo-benda-geometri/src/main/PerhitunganApp.java
         
         LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(belahKetupat.getDiagonal1(), belahKetupat.getDiagonal2(), 0);
         System.out.println("\nInput benda geometri: " + limasBelahKetupat.getNama());
@@ -91,7 +99,7 @@ public class PerhitunganApp {
         // System.out.println("\nInput benda geometri: " + prismaPersegiPanjang.getNama());
         // prismaPersegiPanjang.prosesInputDanValidasi();*/      
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         List<Runnable> shapes = new ArrayList<>();
 
        /*  Trapesium Trapesium = new Trapesium(0, 0,0);

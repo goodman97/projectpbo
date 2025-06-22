@@ -10,13 +10,10 @@ public class PrismaSegitiga extends Segitiga{
     private Double newTinggiSegitiga = null;
     private double volume;
     private double luasPermukaan;
-    private Thread thread;
-    private String namaProses;
 
     public PrismaSegitiga(double alas, double tinggiSegitiga, double tinggiPrisma) {
         super(alas, tinggiSegitiga);
         this.tinggiPrisma = tinggiPrisma;
-        this.namaProses = "Perhitungan prisma segitiga";
     }
    
     @Override
@@ -29,8 +26,8 @@ public class PrismaSegitiga extends Segitiga{
         return  volume;
     }
 
-    public double hitungVolume(double newAlas, double newTinggiSegitiga) {
-        volume = newAlas * newTinggiSegitiga * tinggiPrisma;
+    public double hitungVolume(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
+        volume = super.hitungLuas(newAlas, newTinggiSegitiga) * tinggiPrisma;
         return volume;
     }
 
@@ -40,9 +37,9 @@ public class PrismaSegitiga extends Segitiga{
         return luasPermukaan;
     }
 
-    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga) {
+    public double hitungLuasPermukaan(double newAlas, double newTinggiSegitiga, double tinggiPrisma) {
         double sisiMiring = Math.sqrt(Math.pow(newAlas / 2, 2) + Math.pow(tinggiPrisma, 2));
-        luasPermukaan = 2 * (0.5 * newAlas * newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
+        luasPermukaan = 2 * super.hitungLuas(newAlas, newTinggiSegitiga) + 2 * sisiMiring * tinggiPrisma;
         return luasPermukaan;
     }
 
@@ -72,18 +69,17 @@ public class PrismaSegitiga extends Segitiga{
                         }
 
                         System.out.print("Masukkan tinggi prisma: ");
-                        this.tinggiPrisma = inp.nextDouble();
+                        double inputTinggiPrisma = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiPrisma <= 0) {
+                        if (inputTinggiPrisma <= 0) {
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
-                        this.tinggiPrisma = tinggiPrisma;
+                        this.tinggiPrisma = inputTinggiPrisma;
                         this.newAlas = newAlas;
                         this.newTinggiSegitiga = newTinggiSegitiga;
-                        super.luas = super.hitungLuas();
-                        this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
+                        this.volume = hitungVolume(newAlas, newTinggiSegitiga, tinggiPrisma);
+                        this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga, tinggiPrisma);
                         break;
 
                     } catch (InputMismatchException e) {
@@ -96,13 +92,13 @@ public class PrismaSegitiga extends Segitiga{
                 while (true) {
                     try {
                         System.out.print("Masukkan tinggi prisma: ");
-                        this.tinggiPrisma = inp.nextDouble();
+                        double inputTtinggiPrisma = inp.nextDouble();
                         inp.nextLine();
-                        if (tinggiPrisma <= 0) {
+                        if (inputTtinggiPrisma <= 0) {
                             System.out.println("Tinggi prisma harus lebih dari nol.\n");
                             continue;
                         }
-                        this.tinggiPrisma = tinggiPrisma;
+                        this.tinggiPrisma = inputTtinggiPrisma;
                         this.volume = hitungVolume();
                         this.luasPermukaan = hitungLuasPermukaan();
                         break;
@@ -118,35 +114,15 @@ public class PrismaSegitiga extends Segitiga{
         }
     }
     
-    public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
+    public double getNewAlas(){
+        return newAlas;
     }
-
-    @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-        
-        if (newAlas != null && newTinggiSegitiga != null){
-            this.volume = hitungVolume(newAlas, newTinggiSegitiga);
-            this.luasPermukaan = hitungLuasPermukaan(newAlas, newTinggiSegitiga);
-            System.out.printf("Volmue prisma segitiga: %.2f\n", volume);
-            System.out.printf("Luas permukaan prisma segitiga: %.2f\n", luasPermukaan);
-        }else{
-            this.volume = hitungVolume();
-            this.luasPermukaan = hitungLuasPermukaan();
-            System.out.printf("Volmue prisma segitiga: %.2f\n", volume);
-            System.out.printf("Luas permukaan prisma segitiga: %.2f\n", luasPermukaan);
-        }
-
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null;
+    
+    public double getNewTinggiSegitiga(){
+        return newTinggiSegitiga;
     }
-
-    public Thread getThread() {
-        return thread;
+    
+    public double getTinggiPrisma(){
+        return tinggiPrisma;
     }
 }
