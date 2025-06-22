@@ -4,7 +4,7 @@ import datar.PersegiPanjang;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
+public class PrismaPersegiPanjang extends PersegiPanjang {
     private double tinggiPrisma;
     private double volume;
     private double luasPermukaan;
@@ -100,24 +100,4 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
         }
     }
 
-    public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-        System.out.printf("Volume prisma persegi panjang: %.2f\n", volume);
-        System.out.printf("Luas permukaan prisma persegi panjang: %.2f\n", luasPermukaan);
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null; 
-    }
-
-    public Thread getThread() {
-    return thread;
-}
 }

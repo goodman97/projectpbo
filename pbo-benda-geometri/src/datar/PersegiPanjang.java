@@ -3,20 +3,18 @@ package datar;
 import geometri.BangunDatar;
 import java.util.*;
 
-public class PersegiPanjang extends BangunDatar implements Runnable{
+public class PersegiPanjang extends BangunDatar {
     protected double panjang;
     protected double lebar;
     protected double luas;
     protected double keliling;
-    private Thread thread;
-    private String namaProses;
+ 
 
     public PersegiPanjang(double panjang, double lebar) {
         this.panjang = panjang;
         this.lebar = lebar;
         this.luas = hitungLuas();
         this.keliling = hitungKeliling();
-        this.namaProses = "Perhitungan Persegi Panjang";
     }
 
     @Override
@@ -36,13 +34,23 @@ public class PersegiPanjang extends BangunDatar implements Runnable{
         return keliling;
     }
 
+    public double hitungLuas(double newpanjang, double newlebar) {
+        luas = newpanjang * newlebar;
+        return luas;
+    }
+    
+    public double hitungKeliling(double newpanjang,double newlebar){
+        keliling = 2 * (newpanjang + newlebar);
+        return keliling;
+    }
+
     public void prosesInputDanValidasi() {
     Scanner inp = new Scanner(System.in);
     
     while (true) {
         try {
             System.out.print("Masukkan Panjang : ");
-            double panjang = inp.nextDouble();
+            double newpanjang = inp.nextDouble();
             inp.nextLine(); // consume newline
             
             if (panjang <= 0) {
@@ -51,24 +59,23 @@ public class PersegiPanjang extends BangunDatar implements Runnable{
             }
 
             System.out.print("Masukkan Lebar : ");
-            double lebar = inp.nextDouble();
+            double newlebar = inp.nextDouble();
             inp.nextLine(); 
             
             if (lebar <= 0) {
                 System.out.println("Lebar harus lebih dari nol.\n");
                 continue;
             }
-            this.lebar = lebar;
-            this.panjang = panjang;
-             this.luas = hitungLuas();
-             this.keliling = hitungKeliling();
+            lebar = newlebar;
+            panjang = newpanjang;
+            luas = hitungLuas(newpanjang, newlebar);
+            keliling = hitungKeliling(newpanjang, newlebar);
             break;
         } catch (InputMismatchException e) {
             System.out.println("Input panjang harus berupa angka.\n");
             inp.nextLine(); 
         }
     }
-
    
     }
 
@@ -80,24 +87,4 @@ public class PersegiPanjang extends BangunDatar implements Runnable{
         return lebar;
     }
 
-     public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-        System.out.printf("Luas trapesium: %.2f\n", hitungLuas());
-        System.out.printf("Keliling trapesium: %.2f\n", hitungKeliling());
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null; 
-    }
-
-    public Thread getThread() {
-    return thread;
-}
 }
