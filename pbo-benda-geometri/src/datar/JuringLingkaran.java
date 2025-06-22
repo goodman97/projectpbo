@@ -1,22 +1,21 @@
 package datar;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public class JuringLingkaran extends Lingkaran implements Runnable{
+public class JuringLingkaran extends Lingkaran {
     protected double sudut;
-    protected double luas;
-    protected double keliling;
+    protected double luasJuring;
+    protected double kelilingJuring;
     protected double panjangBusur;
-    private Thread thread;
-    private String namaProses;
-    
+
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
         this.sudut = sudut;
-        this.luas = hitungLuas();
-        this.keliling = hitungKeliling();
+        this.luasJuring = hitungLuas();
+        this.kelilingJuring = hitungKeliling();
     }
-    
+
     @Override
     public String getNama() {
         return "Juring Lingkaran";
@@ -24,85 +23,85 @@ public class JuringLingkaran extends Lingkaran implements Runnable{
 
     @Override
     public double hitungLuas() {
-        luas = (sudut / 360.0) * super.luas;
-        return luas;
+        luasJuring = (sudut / 360.0) * super.hitungLuas();
+        return luasJuring;
     }
 
-    public double hitungLuas(double newJarijari, double sudut){
-        luas = (sudut / 360.0) * (Math.pow(newJarijari, 2) * Math.PI);
-        return luas;
+    public double hitungLuas(double newJariJari, double newSudut) {
+        return (newSudut / 360.0) * Math.PI * Math.pow(newJariJari, 2);
     }
 
     @Override
     public double hitungKeliling() {
-        panjangBusur = (sudut / 360.0) * super.keliling;
-        keliling = 2 * jariJari + panjangBusur;
-        return keliling;
+        panjangBusur = (sudut / 360.0) * super.hitungKeliling();
+        kelilingJuring = (2 * jariJari) + panjangBusur;
+        return kelilingJuring;
     }
 
-    public double hitungKeliling(double newJarijari, double sudut){
-        panjangBusur = (sudut / 360.0) * (2 * Math.PI * newJarijari);
-        keliling = 2 * newJarijari + panjangBusur;
-        return keliling;
+    public double hitungKeliling(double newJariJari, double newSudut) {
+        double busur = (newSudut / 360.0) * (2 * Math.PI * newJariJari);
+        return (2 * newJariJari) + busur;
     }
 
-    public void prosesInputDanValidasi(){
+    public void prosesInputDanValidasi() {
         Scanner inp = new Scanner(System.in);
-        System.out.print("Apakah ingin mengubah nilai jari-jari Juring Lingkaran? (Y/N): ");
-        String jawab = inp.nextLine();
+        while (true) {
+            System.out.printf("\nNilai jari-jari saat ini adalah %.2f dan sudut %.2f derajat. Apakah ingin mengubah nilai? (Y/N): ",
+                    super.jariJari, this.sudut);
+            String jawab = inp.nextLine();
 
-        if (jawab.equalsIgnoreCase("Y")) {
-            try {
-                System.out.print("Masukkan jari-jari baru: ");
-                double newJarijari = inp.nextDouble();
-                System.out.print("Masukan besar sudut: ");
-                double sudut = inp.nextDouble();
-                if (newJarijari <= 0 || sudut <= 0) {
-                    throw new IllegalArgumentException("Jari-jari dan sudut harus lebih dari nol.");
+            if (jawab.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan Jari-jari Baru: ");
+                        double newJariJari = inp.nextDouble();
+                        System.out.print("Masukkan Sudut (derajat): ");
+                        double newSudut = inp.nextDouble();
+                        inp.nextLine();
+
+                        if (newJariJari <= 0 || newSudut <= 0) {
+                            System.out.println("Nilai jari-jari dan sudut harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        this.jariJari = newJariJari;
+                        this.sudut = newSudut;
+                        this.luasJuring = hitungLuas(newJariJari, newSudut);
+                        this.kelilingJuring = hitungKeliling(newJariJari, newSudut);
+
+                        System.out.printf("\nLuas Juring Lingkaran: %.2f\n", this.luasJuring);
+                        System.out.printf("Keliling Juring Lingkaran: %.2f\n", this.kelilingJuring);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input tidak valid. Silakan masukkan angka.");
+                        inp.nextLine();
+                    }
                 }
-                luas = hitungLuas(newJarijari, sudut);
-                keliling = hitungKeliling(newJarijari, sudut);
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("Input jari-jari dan sudut harus berupa angka.");
-            }finally{
-                inp.close();
+                break;
+            } else if (jawab.equalsIgnoreCase("N")) {
+                this.luasJuring = hitungLuas();
+                this.kelilingJuring = hitungKeliling();
+                break;
+            } else {
+                System.out.println("Pilihan tidak valid. Silakan masukkan Y atau N.");
             }
-        } else if (jawab.equalsIgnoreCase("N")) {
-            System.out.print("Masukan besar sudut: ");
-            this.sudut = inp.nextDouble();
-            luas = hitungLuas();
-            keliling = hitungKeliling();
-        } else {
-            throw new IllegalArgumentException(" Jawaban hanya boleh Y atau N.");
         }
     }
 
-    public double luas() {
-        return luas;
+    // Getter
+    public double getSudut() {
+        return sudut;
     }
 
-    public double keliling() {
-        return keliling;
+    public double getLuasJuring() {
+        return luasJuring;
     }
 
-    public void startCalculationThread() {
-        if (thread == null) {
-            thread = new Thread(this, namaProses);
-            thread.start();
-        }
+    public double getKelilingJuring() {
+        return kelilingJuring;
     }
 
-     @Override
-    public void run() {
-        System.out.println("Thread " + namaProses + " mulai...");
-        System.out.println("Hitung: " + getNama());
-        System.out.printf("Luas Juring Lingkaran: %.2f\n", hitungLuas());
-        System.out.printf("Keliling Juring Lingkaran: %.2f\n", hitungKeliling());
-        System.out.println("Thread " + namaProses + " selesai.\n");
-        thread = null;
-    }
-
-    public Thread getThread() {
-        return thread;
+    public double getPanjangBusur() {
+        return panjangBusur;
     }
 }
